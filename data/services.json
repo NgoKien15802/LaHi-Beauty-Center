@@ -1,0 +1,156 @@
+{
+  "services": [
+    {
+      "id": "peel-chuyen-sau-mun-tham-trang-sang",
+      "title": "PEEL CHUYÊN SÂU MỤN THÂM, TRẮNG SÁNG",
+      "slug": "peel-chuyen-sau-mun-tham-trang-sang",
+      "category": "Chăm sóc da chuyên sâu",
+      "price": "1,500,000 VNĐ",
+      "duration": "90 phút",
+      "image": "thumbs/300x345x1/upload/news/lieu-trinh-combo-1732255891.JPG.webp",
+      "description": "Liệu trình peel chuyên sâu giúp điều trị mụn thâm, làm sáng da hiệu quả",
+      "benefits": [
+        "Điều trị mụn thâm hiệu quả",
+        "Làm sáng da tự nhiên",
+        "Se khít lỗ chân lông",
+        "Cải thiện kết cấu da"
+      ],
+      "process": [
+        "Tẩy trang và làm sạch da",
+        "Peel chuyên sâu",
+        "Massage thư giãn",
+        "Đắp mặt nạ dưỡng ẩm",
+        "Thoa kem dưỡng"
+      ],
+      "suitable_for": "Da có mụn thâm, da xỉn màu, lỗ chân lông to",
+      "not_suitable_for": "Da đang bị viêm, da nhạy cảm",
+      "aftercare": "Tránh nắng, dưỡng ẩm đều đặn, không sử dụng mỹ phẩm có cồn"
+    },
+    {
+      "id": "peel-da-chuyen-sau-sac-to",
+      "title": "PEEL DA CHUYÊN SÂU SẮC TỐ",
+      "slug": "peel-da-chuyen-sau-sac-to",
+      "category": "Chăm sóc da chuyên sâu",
+      "price": "1,800,000 VNĐ",
+      "duration": "120 phút",
+      "image": "thumbs/300x345x1/upload/news/peel-for-treating-drak-sport-1732805093.jpg.webp",
+      "description": "Liệu trình peel chuyên sâu điều trị sắc tố da, làm đều màu da",
+      "benefits": [
+        "Điều trị nám, tàn nhang",
+        "Làm đều màu da",
+        "Giảm sắc tố đậm",
+        "Da sáng mịn tự nhiên"
+      ],
+      "process": [
+        "Tẩy trang và làm sạch da",
+        "Peel chuyên sâu sắc tố",
+        "Massage thư giãn",
+        "Đắp mặt nạ dưỡng ẩm",
+        "Thoa kem dưỡng"
+      ],
+      "suitable_for": "Da có nám, tàn nhang, sắc tố không đều",
+      "not_suitable_for": "Da đang bị viêm, da nhạy cảm",
+      "aftercare": "Tránh nắng tuyệt đối, dưỡng ẩm đều đặn, sử dụng kem chống nắng"
+    },
+    {
+      "id": "aqua-fresh",
+      "title": "AQUA FRESH",
+      "slug": "aqua-fresh",
+      "category": "Chăm sóc da cơ bản",
+      "price": "800,000 VNĐ",
+      "duration": "60 phút",
+      "image": "thumbs/300x345x1/upload/news/aqua-fresh-1732256812.png.webp",
+      "description": "Liệu trình làm sạch và dưỡng ẩm da với công nghệ Aqua Fresh",
+      "benefits": [
+        "Làm sạch sâu lỗ chân lông",
+        "Dưỡng ẩm tức thì",
+        "Da mềm mịn",
+        "Cải thiện độ đàn hồi"
+      ],
+      "process": [
+        "Tẩy trang và làm sạch da",
+        "Aqua Fresh treatment",
+        "Massage thư giãn",
+        "Đắp mặt nạ dưỡng ẩm",
+        "Thoa kem dưỡng"
+      ],
+      "suitable_for": "Mọi loại da, đặc biệt da khô, thiếu ẩm",
+      "not_suitable_for": "Da đang bị viêm nặng",
+      "aftercare": "Dưỡng ẩm đều đặn, uống đủ nước"
+    },
+    {
+      "id": "basic-anti-acne-control",
+      "title": "BASIC ANTI - ACNE CONTROL",
+      "slug": "basic-anti-acne-control",
+      "category": "Điều trị mụn",
+      "price": "1,200,000 VNĐ",
+      "duration": "75 phút",
+      "image": "thumbs/300x345x1/upload/news/facial-peel-treatment-1732256273.jpg.webp",
+      "description": "Liệu trình điều trị mụn cơ bản, kiểm soát tình trạng mụn hiệu quả",
+      "benefits": [
+        "Kiểm soát mụn hiệu quả",
+        "Giảm viêm, sưng",
+        "Ngăn ngừa mụn mới",
+        "Da sạch sẽ, thông thoáng"
+      ],
+      "process": [
+        "Tẩy trang và làm sạch da",
+        "Điều trị mụn chuyên sâu",
+        "Massage thư giãn",
+        "Đắp mặt nạ dưỡng ẩm",
+        "Thoa kem dưỡng"
+      ],
+      "suitable_for": "Da có mụn, da dầu, lỗ chân lông to",
+      "not_suitable_for": "Da đang bị viêm nặng",
+      "aftercare": "Tránh nắng, dưỡng ẩm đều đặn, không sử dụng mỹ phẩm có cồn"
+    },
+    {
+      "id": "detox-co2",
+      "title": "DETOX CO2",
+      "slug": "detox-co2",
+      "category": "Chăm sóc da chuyên sâu",
+      "price": "2,000,000 VNĐ",
+      "duration": "90 phút",
+      "image": "thumbs/300x345x1/upload/news/cham-soc-da-chuyen-sau-1732256434.jpg.webp",
+      "description": "Liệu trình detox da với công nghệ CO2, làm sạch sâu và trẻ hóa da",
+      "benefits": [
+        "Detox da sâu",
+        "Trẻ hóa da",
+        "Cải thiện kết cấu da",
+        "Da sáng mịn"
+      ],
+      "process": [
+        "Tẩy trang và làm sạch da",
+        "CO2 treatment",
+        "Massage thư giãn",
+        "Đắp mặt nạ dưỡng ẩm",
+        "Thoa kem dưỡng"
+      ],
+      "suitable_for": "Da xỉn màu, da lão hóa, da cần detox",
+      "not_suitable_for": "Da đang bị viêm, da nhạy cảm",
+      "aftercare": "Tránh nắng, dưỡng ẩm đều đặn, uống đủ nước"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cham-soc-da-chuyen-sau",
+      "name": "Chăm sóc da chuyên sâu",
+      "slug": "cham-soc-da-chuyen-sau"
+    },
+    {
+      "id": "cham-soc-da-co-ban",
+      "name": "Chăm sóc da cơ bản",
+      "slug": "cham-soc-da-co-ban"
+    },
+    {
+      "id": "dieu-tri-mun",
+      "name": "Điều trị mụn",
+      "slug": "dieu-tri-mun"
+    },
+    {
+      "id": "phun-xam-tham-my",
+      "name": "Phun xăm thẩm mỹ",
+      "slug": "phun-xam-tham-my"
+    }
+  ]
+}
