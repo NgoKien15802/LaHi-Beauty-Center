@@ -171,5 +171,15 @@
     <!-- Vanilla Router Scripts -->
     <script src="js/router.js"></script>
     <script src="js/layout.js"></script>
+    <script>
+        // Handle GitHub Pages redirect
+        (function() {
+            var redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            if (redirect && redirect !== location.href) {
+                history.replaceState(null, null, redirect);
+            }
+        })();
+    </script>
 </body>
 </html>
