@@ -7,7 +7,30 @@
     <script>
         // Redirect to index.html and let the router handle the routing
         sessionStorage.redirect = location.href;
-        location.replace('/');
+        
+        // Check if we're on GitHub Pages
+        function isGitHubPages() {
+            const hostname = location.hostname;
+            const pathname = location.pathname;
+            
+            const isGitHubPagesDomain = hostname.includes('github.io') || 
+                                       hostname.includes('github.com');
+            
+            const hasRepoName = pathname.split('/')[1] && 
+                               pathname.split('/')[1] !== '' &&
+                               !pathname.split('/')[1].includes('.');
+            
+            return isGitHubPagesDomain && hasRepoName;
+        }
+        
+        // Get base path
+        let basePath = '/';
+        if (isGitHubPages()) {
+            const repoName = location.pathname.split('/')[1];
+            basePath = '/' + repoName + '/';
+        }
+        
+        location.replace(basePath);
     </script>
 </head>
 <body>

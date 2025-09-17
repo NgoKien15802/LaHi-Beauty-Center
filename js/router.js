@@ -38,13 +38,37 @@ class Router {
 
     // Navigate to a route
     navigate(path) {
-        window.history.pushState({}, '', path);
+        // Check if we're on GitHub Pages (has repository name in URL)
+        const isGitHubPages = this.isGitHubPages();
+        let fullPath = path;
+        
+        if (isGitHubPages) {
+            const repoName = this.getRepoName();
+            if (repoName && !path.includes(repoName)) {
+                fullPath = '/' + repoName + path;
+            }
+        }
+        
+        window.history.pushState({}, '', fullPath);
         this.handleRoute();
     }
 
     // Handle route matching and execution
     handleRoute() {
-        const currentPath = window.location.pathname;
+        let currentPath = window.location.pathname;
+        
+        // Remove repository name from GitHub Pages URL if needed
+        if (this.isGitHubPages()) {
+            const repoName = this.getRepoName();
+            if (repoName) {
+                currentPath = currentPath.replace('/' + repoName, '');
+            }
+        }
+        
+        // Ensure path starts with /
+        if (!currentPath.startsWith('/')) {
+            currentPath = '/' + currentPath;
+        }
 
         // Find matching route
         const route = this.routes.find(r => {
@@ -97,6 +121,29 @@ class Router {
         }
         
         return params;
+    }
+
+    // Check if we're running on GitHub Pages
+    isGitHubPages() {
+        const hostname = window.location.hostname;
+        const pathname = window.location.pathname;
+        
+        // GitHub Pages domains
+        const isGitHubPagesDomain = hostname.includes('github.io') || 
+                                   hostname.includes('github.com');
+        
+        // Check if URL has repository name pattern
+        const hasRepoName = pathname.split('/')[1] && 
+                           pathname.split('/')[1] !== '' &&
+                           !pathname.split('/')[1].includes('.');
+        
+        return isGitHubPagesDomain && hasRepoName;
+    }
+    
+    // Get repository name from URL
+    getRepoName() {
+        const pathParts = window.location.pathname.split('/');
+        return pathParts[1] || null;
     }
 
     // Handle 404 - route not found
