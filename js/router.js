@@ -21,14 +21,15 @@ class Router {
             this.handleRoute();
         });
 
-        // Handle link clicks
+        // Handle link clicks (support clicks on children inside [data-route])
         document.addEventListener('click', (e) => {
-            
-            if (e.target.matches('[data-route]')) {
-                e.preventDefault();
-                const route = e.target.getAttribute('data-route');
-                this.navigate(route);
-            }
+            const link = e.target.closest('[data-route]');
+            if (!link) return;
+            // Respect modifier keys and non-left clicks
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+            e.preventDefault();
+            const route = link.getAttribute('data-route');
+            this.navigate(route);
         });
     }
     

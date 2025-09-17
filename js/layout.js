@@ -148,8 +148,9 @@ function loadPage(pageName, pageTitle, params = {}) {
         </style>
     `;
     
-    // Fetch page content
-    fetch(pageName)
+    // Fetch page content - use absolute URL to avoid relative resolution issues
+    const absoluteUrl = pageName.startsWith('/') ? pageName : '/' + pageName;
+    fetch(absoluteUrl)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -185,6 +186,9 @@ function loadPage(pageName, pageTitle, params = {}) {
                     const effectiveParams = params && params.category ? params : { category: 'all' };
                     initializeServicesScripts(effectiveParams);
                 }
+                if (pageName === 'pages/service-detail.html') {
+                    initializeServiceDetailScripts(params);
+                }
                 
                 // Re-initialize AOS if it exists
                 if (typeof AOS !== 'undefined') {
@@ -212,24 +216,8 @@ function loadPage(pageName, pageTitle, params = {}) {
 
 // Load service detail page
 function loadServicePage(serviceId) {
-    
-    const serviceMap = {
-        'triet-long-diode-laser': 'triet-long-diode-laser.html',
-        'phun-moi-phun-may': 'phun-moi-phun-may.html',
-        'hifu-new-double': 'hifu-new-double.html',
-        'glass-skin-da-tang': 'glass-skin-da-tang.html',
-        'giam-dau-mun-lo-chan-long': 'giam-dau-mun-lo-chan-long.html',
-        'duong-trang': 'duong-trang.html',
-        'chemical-peeling': 'chemical-peeling.html',
-        'cham-soc-da-chuyen-sau': 'cham-soc-da-chuyen-sau.html'
-    };
-    
-    const pageName = serviceMap[serviceId];
-    if (pageName) {
-        loadPage(pageName, 'Chi tiết dịch vụ');
-    } else {
-        router.handle404();
-    }
+    // Always use a generic detail page; serviceId will be used to render content
+    loadPage('pages/service-detail.html', 'Chi tiết dịch vụ', { serviceId: serviceId });
 }
 
 function initializePageScripts() {
@@ -258,6 +246,31 @@ function initializeServicesScripts(params = {}) {
     } else if (window.servicesManager && params.category) {
         // Script already loaded, just set the category
         window.servicesManager.setCategory(params.category);
+    }
+}
+
+function initializeServiceDetailScripts(params = {}) {
+    const serviceId = params && params.serviceId ? params.serviceId : null;
+    if (!document.querySelector('script[src*="service-detail.js"]')) {
+        const script = document.createElement('script');
+        script.src = 'js/service-detail.js';
+        script.onload = () => {
+            if (serviceId && window.initServiceDetailPage) {
+                // Wait for container to be available
+                setTimeout(() => {
+                    window.initServiceDetailPage(serviceId);
+                }, 100);
+            }
+        };
+        script.onerror = () => {
+            console.error('Failed to load service-detail.js');
+        };
+        document.head.appendChild(script);
+    } else if (serviceId && window.initServiceDetailPage) {
+        // Wait for container to be available
+        setTimeout(() => {
+            window.initServiceDetailPage(serviceId);
+        }, 100);
     }
 }
 
