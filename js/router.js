@@ -53,6 +53,30 @@ class Router {
         this.handleRoute();
     }
 
+    // Navigate with query parameters
+    navigateWithParams(path, params = {}) {
+        const url = new URL(path, window.location.origin);
+        Object.keys(params).forEach(key => {
+            if (params[key]) {
+                url.searchParams.set(key, params[key]);
+            }
+        });
+        
+        // Check if we're on GitHub Pages
+        const isGitHubPages = this.isGitHubPages();
+        let fullPath = url.pathname + url.search;
+        
+        if (isGitHubPages) {
+            const repoName = this.getRepoName();
+            if (repoName && !fullPath.includes(repoName)) {
+                fullPath = '/' + repoName + fullPath;
+            }
+        }
+        
+        window.history.pushState({}, '', fullPath);
+        this.handleRoute();
+    }
+
     // Handle route matching and execution
     handleRoute() {
         let currentPath = window.location.pathname;
@@ -79,11 +103,16 @@ class Router {
         });
 
         if (route) {
-            console.log('Route found:', route.path);
             this.currentRoute = route;
             
             // Extract params for dynamic routes
             const params = this.extractParams(route.path, currentPath);
+            
+            // Add query parameters to params
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.forEach((value, key) => {
+                params[key] = value;
+            });
             
             // Execute route handler
             route.handler(params);

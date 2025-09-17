@@ -22,6 +22,8 @@ function loadHeaderAndFooter() {
             const headerContainer = document.getElementById('header-container');
             if (headerContainer) {
                 headerContainer.innerHTML = html;
+                // Initialize header menu after header is loaded
+                initializeHeaderMenu();
             }
         })
         .catch(error => {
@@ -42,6 +44,37 @@ function loadHeaderAndFooter() {
         });
 }
 
+// Initialize header menu
+function initializeHeaderMenu() {
+    // Wait a bit for the header to be fully rendered
+    setTimeout(() => {
+        // Check if header menu containers exist
+        const desktopMenu = document.getElementById('services-menu-list');
+        const mobileMenu = document.getElementById('services-menu-mobile-list');
+        
+        if (desktopMenu && mobileMenu) {
+            // Load header menu script if not already loaded
+            if (!document.querySelector('script[src*="header-menu.js"]')) {
+                const script = document.createElement('script');
+                script.src = 'js/header-menu.js';
+                script.onload = () => {
+                    // Header menu script loaded successfully
+                };
+                script.onerror = () => {
+                    console.error('Failed to load header-menu.js');
+                };
+                document.head.appendChild(script);
+            } else if (window.headerMenuLoader) {
+                // Re-initialize if already loaded
+                window.headerMenuLoader.init();
+            }
+        } else {
+            // Retry after a longer delay
+            setTimeout(initializeHeaderMenu, 500);
+        }
+    }, 100);
+}
+
 // Setup all routes
 function setupRoutes() {
     
@@ -56,8 +89,8 @@ function setupRoutes() {
     });
     
     // Services page
-    router.addRoute('/services', function() {
-        loadPage('pages/services.html', 'Dịch vụ');
+    router.addRoute('/services', function(params) {
+        loadPage('pages/services.html', 'Dịch vụ', params);
     });
     
     // Products page
@@ -94,7 +127,7 @@ function setupRoutes() {
 }
 
 // Load page content
-function loadPage(pageName, pageTitle) {
+function loadPage(pageName, pageTitle, params = {}) {
     const content = document.getElementById('content');
     if (!content) {
         return;
@@ -148,7 +181,7 @@ function loadPage(pageName, pageTitle) {
                 
                 // Initialize page-specific scripts
                 if (pageName === 'pages/services.html') {
-                    initializeServicesScripts();
+                    initializeServicesScripts(params);
                 }
                 
                 // Re-initialize AOS if it exists
@@ -204,18 +237,25 @@ function initializePageScripts() {
     }
 }
 
-function initializeServicesScripts() {
+function initializeServicesScripts(params = {}) {
     // Load services.js if not already loaded
     if (!document.querySelector('script[src*="services.js"]')) {
         const script = document.createElement('script');
         script.src = 'js/services.js';
         script.onload = () => {
             // Services script loaded successfully
+            // Pass params to services manager if it exists
+            if (window.servicesManager && params.category) {
+                window.servicesManager.setCategory(params.category);
+            }
         };
         script.onerror = () => {
             console.error('Failed to load services.js');
         };
         document.head.appendChild(script);
+    } else if (window.servicesManager && params.category) {
+        // Script already loaded, just set the category
+        window.servicesManager.setCategory(params.category);
     }
 }
 

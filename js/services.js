@@ -9,6 +9,8 @@ class ServicesManager {
         try {
             await this.loadServicesData();
             this.setupEventListeners();
+            this.handleUrlCategory();
+            this.renderCategories();
             this.renderServices();
         } catch (error) {
             console.error('Error initializing services:', error);
@@ -36,6 +38,50 @@ class ServicesManager {
                 e.preventDefault();
                 this.handleCategoryClick(e.target);
             }
+        });
+    }
+
+    handleUrlCategory() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryParam = urlParams.get('category');
+        if (categoryParam && this.servicesData) {
+            const categoryExists = this.servicesData.categories.some(cat => cat.id === categoryParam);
+            if (categoryExists) {
+                this.currentCategory = categoryParam;
+            }
+        }
+    }
+
+    setCategory(categoryId) {
+        if (categoryId && this.servicesData) {
+            const categoryExists = this.servicesData.categories.some(cat => cat.id === categoryId);
+            if (categoryExists) {
+                this.currentCategory = categoryId;
+                // Re-render categories and services
+                this.renderCategories();
+                this.renderServices();
+            }
+        }
+    }
+
+    renderCategories() {
+        const categoryTabsContainer = document.querySelector('.category-tabs');
+        if (!categoryTabsContainer || !this.servicesData) return;
+
+        // Clear existing tabs (except "Tất Cả")
+        categoryTabsContainer.innerHTML = `
+            <button class="btn btn-outline-primary category-tab ${this.currentCategory === 'all' ? 'active' : ''}" data-category="all">
+                Tất Cả
+            </button>
+        `;
+
+        // Add category tabs
+        this.servicesData.categories.forEach(category => {
+            const button = document.createElement('button');
+            button.className = `btn btn-outline-primary category-tab ${this.currentCategory === category.id ? 'active' : ''}`;
+            button.setAttribute('data-category', category.id);
+            button.textContent = category.name;
+            categoryTabsContainer.appendChild(button);
         });
     }
 
@@ -118,9 +164,8 @@ class ServicesManager {
                         <img class="d-inline-block lazy w-100"
                              data-src="${service.image}"
                              alt="${service.name}"
-                             width="300"
-                             height="345"
                              onerror="this.src='assets/images/noimage.png';"
+                             style="height: 260px !important;"
                              src="assets/images/noimage.png" />
                     </picture>
                 </div>
