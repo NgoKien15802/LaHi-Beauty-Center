@@ -146,6 +146,11 @@ function loadPage(pageName, pageTitle) {
                 // Re-initialize any scripts that might be needed
                 initializePageScripts();
                 
+                // Initialize page-specific scripts
+                if (pageName === 'pages/services.html') {
+                    initializeServicesScripts();
+                }
+                
                 // Re-initialize AOS if it exists
                 if (typeof AOS !== 'undefined') {
                     AOS.refresh();
@@ -196,6 +201,21 @@ function initializePageScripts() {
     // Re-initialize AOS if it exists
     if (typeof AOS !== 'undefined') {
         AOS.refresh();
+    }
+}
+
+function initializeServicesScripts() {
+    // Load services.js if not already loaded
+    if (!document.querySelector('script[src*="services.js"]')) {
+        const script = document.createElement('script');
+        script.src = 'js/services.js';
+        script.onload = () => {
+            // Services script loaded successfully
+        };
+        script.onerror = () => {
+            console.error('Failed to load services.js');
+        };
+        document.head.appendChild(script);
     }
 }
 
