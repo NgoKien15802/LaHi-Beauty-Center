@@ -56,7 +56,18 @@
 </head>
 
 <body>
-    <site-layout id="app"></site-layout>
+    <div id="app">
+        <!-- Header sẽ được load từ header.html -->
+        <div id="header-container"></div>
+        
+        <!-- Nội dung chính sẽ được load bởi router -->
+        <div id="content" class="main-content">
+            <!-- Nội dung trang sẽ được load ở đây -->
+        </div>
+        
+        <!-- Footer sẽ được load từ footer.html -->
+        <div id="footer-container"></div>
+    </div>
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -156,5 +167,9 @@
             }
         }
     </script>
+
+    <!-- Vanilla Router Scripts -->
+    <script src="js/router.js"></script>
+    <script src="js/layout.js"></script>
 </body>
 </html>
