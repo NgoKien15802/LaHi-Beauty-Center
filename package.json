@@ -1,0 +1,16 @@
+{
+  "name": "lahi-beauty-center",
+  "version": "1.0.0",
+  "description": "LaHi Beauty Center Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "keywords": ["spa", "routing", "beauty", "center"],
+  "author": "LaHi Beauty Center",
+  "license": "MIT"
+}
