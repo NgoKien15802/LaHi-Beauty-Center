@@ -23,6 +23,7 @@ class Router {
 
         // Handle link clicks
         document.addEventListener('click', (e) => {
+            
             if (e.target.matches('[data-route]')) {
                 e.preventDefault();
                 const route = e.target.getAttribute('data-route');
@@ -38,6 +39,7 @@ class Router {
 
     // Navigate to a route
     navigate(path) {
+        
         // Check if we're on GitHub Pages (has repository name in URL)
         const isGitHubPages = this.isGitHubPages();
         let fullPath = path;

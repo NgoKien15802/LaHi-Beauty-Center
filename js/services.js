@@ -53,7 +53,17 @@ class ServicesManager {
     }
 
     setCategory(categoryId) {
-        if (categoryId && this.servicesData) {
+        if (!this.servicesData) return;
+
+        // Special case: show all services
+        if (categoryId === 'all' || !categoryId) {
+            this.currentCategory = 'all';
+            this.renderCategories();
+            this.renderServices();
+            return;
+        }
+
+        if (categoryId) {
             const categoryExists = this.servicesData.categories.some(cat => cat.id === categoryId);
             if (categoryExists) {
                 this.currentCategory = categoryId;
@@ -92,7 +102,6 @@ class ServicesManager {
 
         // Update current category
         this.currentCategory = tab.getAttribute('data-category');
-        
         // Re-render services
         this.renderServices();
     }
@@ -223,7 +232,11 @@ class ServicesManager {
     // Service detail and booking handled by router navigation
 }
 
-// Initialize services manager when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize services manager regardless of when this script is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        window.servicesManager = new ServicesManager();
+    });
+} else {
     window.servicesManager = new ServicesManager();
-});
+}

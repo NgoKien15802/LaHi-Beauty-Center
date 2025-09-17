@@ -181,7 +181,9 @@ function loadPage(pageName, pageTitle, params = {}) {
                 
                 // Initialize page-specific scripts
                 if (pageName === 'pages/services.html') {
-                    initializeServicesScripts(params);
+                    // If no category provided, default to 'all' to ensure content renders
+                    const effectiveParams = params && params.category ? params : { category: 'all' };
+                    initializeServicesScripts(effectiveParams);
                 }
                 
                 // Re-initialize AOS if it exists
