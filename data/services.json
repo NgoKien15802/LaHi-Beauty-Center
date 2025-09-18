@@ -61,11 +61,29 @@
       "services": [
         {
           "id": "basic-anti-acne-control",
+          "slug": "basic-anti-acne-control",
           "name": "GIẢM DẦU MỤN - LỖ CHÂN LÔNG",
-          "description": "Điều trị mụn và thu nhỏ lỗ chân lông",
+          "title": "BASIC ANTI - ACNE CONTROL",
+          "description": "Basic Anti-Acne Control: Giải pháp hoàn hảo cho làn da mịn màng tại Her Skinlab. Hỗ trợ loại bỏ mụn, làm sạch sâu và se khít lỗ chân lông.",
+          "category": "Điều Trị Da",
           "price": "400,000 VNĐ",
           "duration": "60 phút",
-          "image": "assets/images/services/giam-dau-mun-lo-chan-long.jpg"
+          "image": "assets/images/services/giam-dau-mun-lo-chan-long.jpg",
+          "benefits": [
+            "Loại bỏ mụn đầu đen, mụn trứng cá và các loại mụn khác",
+            "Làm sạch lỗ chân lông, loại bỏ bụi bẩn và dầu thừa",
+            "Se khít lỗ chân lông, giúp bề mặt da mịn màng"
+          ],
+          "process": [
+            "Tư vấn tình trạng da và đề xuất phương pháp phù hợp",
+            "Làm sạch da để loại bỏ bụi bẩn và dầu thừa",
+            "Lấy mụn: loại bỏ mụn đầu đen, mụn trứng cá",
+            "Làm sạch sâu lỗ chân lông",
+            "Se khít lỗ chân lông, làm dịu và cân bằng da"
+          ],
+          "suitable_for": "Da dầu mụn, lỗ chân lông to, da dễ bít tắc; người muốn làm sạch và mịn da.",
+          "not_suitable_for": "Da đang kích ứng nặng, viêm da cấp tính hoặc mới thực hiện thủ thuật xâm lấn.",
+          "aftercare": "Giữ da sạch, tránh sờ nặn, dùng sản phẩm dịu nhẹ; chống nắng đầy đủ và tái khám theo hẹn."
         },
         {
           "id": "triet-long-diode-laser",
@@ -82,6 +100,33 @@
           "price": "900,000 VNĐ",
           "duration": "120 phút",
           "image": "assets/images/services/chemical-peeling.jpg"
+        }
+        ,
+        {
+          "id": "peel-da-chuyen-sau-sac-to",
+          "slug": "peel-da-chuyen-sau-sac-to",
+          "name": "PEEL DA CHUYÊN SÂU SẮC TỐ",
+          "title": "PEEL DA CHUYÊN SÂU SẮC TỐ",
+          "description": "Giải pháp tối ưu giúp làm mờ sạm nám, tàn nhang, đốm nâu; kích thích tái tạo làn da sáng mịn, đều màu và khoẻ mạnh.",
+          "category": "Điều Trị Da",
+          "price": "Giá liên hệ",
+          "duration": "90 - 120 phút",
+          "image": "assets/images/services/chemical-peeling.jpg",
+          "benefits": [
+            "Làm mờ và loại bỏ sắc tố sạm nám, tàn nhang, đốm nâu",
+            "Kích thích sản sinh collagen và elastin, cải thiện độ đàn hồi",
+            "Cải thiện kết cấu da, giúp da mịn màng và se khít lỗ chân lông",
+            "Tăng cường khả năng hấp thụ dưỡng chất của da"
+          ],
+          "process": [
+            "Thăm khám và tư vấn liệu trình phù hợp theo tình trạng da",
+            "Làm sạch dịu nhẹ, loại bỏ bụi bẩn và bã nhờn để chuẩn bị cho peel",
+            "Thực hiện peel với sản phẩm đạt chuẩn, tập trung vùng cần điều trị",
+            "Hướng dẫn chăm sóc sau peel, cấp ẩm – phục hồi đúng cách"
+          ],
+          "suitable_for": "Da sạm nám, không đều màu, có đốm nâu/tàn nhang; da xỉn màu, kém sức sống; người mong muốn làm sáng da an toàn.",
+          "not_suitable_for": "Phụ nữ mang thai/cho con bú, da đang viêm nhiễm nặng, đang dùng retinoids liều cao hoặc vừa lăn kim/laser gần đây.",
+          "aftercare": "Tránh nắng tuyệt đối 7-14 ngày, dùng kem chống nắng SPF 50+, cấp ẩm phục hồi đều đặn, không tự ý cạy/bóc da bong; tuân thủ hướng dẫn của chuyên gia."
         }
       ]
     },
