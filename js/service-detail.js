@@ -84,62 +84,118 @@ class ServiceDetailPage {
     }
 
     renderFromDetail(detail, fallback) {
-        const title = detail.title || fallback.title || fallback.name;
-        const price = detail.price || fallback.price || '';
-        const duration = detail.duration || fallback.duration || '';
-        const image = detail.hero?.image || fallback.image || '';
+        const title = (detail.title || fallback.title || fallback.name || '').toUpperCase();
+        const subtitle = detail.subtitle || '';
 
-        const renderSubsection = (sub) => {
-            const h = sub.heading ? `<h3 id="${sub.id || ''}" class="mb-2">${sub.heading}</h3>` : '';
-            const content = sub.content ? `<p>${sub.content}</p>` : '';
-            const bullets = Array.isArray(sub.bullets) && sub.bullets.length
-                ? `<ul>` + sub.bullets.map(b => `<li>${b}</li>`).join('') + `</ul>`
-                : '';
-            const steps = Array.isArray(sub.steps) && sub.steps.length
-                ? `<ol>` + sub.steps.map(s => `<li>${s}</li>`).join('') + `</ol>`
-                : '';
-            const img = sub.image ? `<div class="text-center my-3"><img class="img-fluid rounded" src="${sub.image}" alt="${sub.heading || ''}"></div>` : '';
-            return `<div class="mb-3">${h}${content}${bullets}${steps}${img}</div>`;
-        };
+        // helpers to mimic the static template styles
+        const h1 = (text) => `\n<h1 style=\"text-align: center;\"><span style=\"font-size:18px;\"><span style=\"font-family:Times New Roman,Times,serif;\"><strong><span style=\"color:#9b856d;\">${text}</span></strong></span></span></h1>`;
+        const h2 = (id, text) => `\n<h2 id=\"${id}\" style=\"text-align: justify;\"><strong><span style=\"font-size:18px;\"><span style=\"font-family:Times New Roman,Times,serif;\">${text}</span></span></strong></h2>`;
+        const h3 = (id, text) => `\n<h3 id=\"${id || ''}\" style=\"text-align: justify;\"><span style=\"font-size:18px;\"><span style=\"font-family:Times New Roman,Times,serif;\">${text}</span></span></h3>`;
+        const p = (html) => `\n<p style=\"text-align: justify;\">${html}</p>`;
+        const ul = (items) => `\n<ul>\n${items.map(i => `\t<li style=\"text-align: justify;\"><span style=\"font-size:18px;\"><span style=\"font-family:Times New Roman,Times,serif;\">${i}</span></span></li>`).join('\n')}\n</ul>`;
+        const ol = (items) => `\n<ol>\n${items.map(i => `\t<li style=\"text-align: justify;\"><span style=\"font-size:18px;\"><span style=\"font-family:Times New Roman,Times,serif;\">${i}</span></span></li>`).join('\n')}\n</ol>`;
+        const img = (src, alt, w, h) => `\n<p style=\"text-align:center\"><img alt=\"${alt || ''}\" ${h ? `height=\"${h}\"` : ''} ${w ? `width=\"${w}\"` : ''} src=\"${src}\" /></p>`;
 
-        const renderSection = (section) => {
-            const heading = section.heading ? `<h2 id="${section.id}" class="mb-3">${section.heading}</h2>` : '';
-            const content = section.content ? `<p>${section.content}</p>` : '';
-            const bullets = Array.isArray(section.bullets) && section.bullets.length
-                ? `<ul>` + section.bullets.map(b => `<li>${b}</li>`).join('') + `</ul>`
-                : '';
-            const steps = Array.isArray(section.steps) && section.steps.length
-                ? `<ol>` + section.steps.map(s => `<li>${s}</li>`).join('') + `</ol>`
-                : '';
-            const img = section.image ? `<div class="text-center my-3"><img class="img-fluid rounded" src="${section.image}" alt="${section.heading || ''}"></div>` : '';
-            const gallery = Array.isArray(section.gallery) && section.gallery.length
-                ? `<div class="row g-3">` + section.gallery.map(src => `
-                        <div class="col-md-4"><img class="img-fluid rounded" src="${src}" alt=""></div>`).join('') + `</div>`
-                : '';
-            const subs = Array.isArray(section.subsections) && section.subsections.length
-                ? section.subsections.map(renderSubsection).join('')
-                : '';
-            return `<section class="mb-4">${heading}${content}${bullets}${steps}${img}${gallery}${subs}</section>`;
-        };
+        // Build numbering map from TOC (e.g., 1, 1.1)
+        const numberingMap = (() => {
+            const map = {};
+            if (Array.isArray(detail.toc)) {
+                detail.toc.forEach((item, idx) => {
+                    const level1 = `${idx + 1}`;
+                    if (item.id) map[item.id] = level1;
+                    if (Array.isArray(item.children)) {
+                        item.children.forEach((child, cIdx) => {
+                            const level2 = `${level1}.${cIdx + 1}`;
+                            if (child.id) map[child.id] = level2;
+                        });
+                    }
+                });
+            }
+            return map;
+        })();
 
-        const bodySections = Array.isArray(detail.sections) ? detail.sections.map(renderSection).join('') : '';
+        // Intro (gioi-thieu)
+        const intro = (detail.sections || []).find(s => s.id === 'gioi-thieu') || {};
+        const introHtml = [
+            h1(title),
+            subtitle ? h1(subtitle) : '',
+            intro.content ? p(`<span style=\"font-size:18px;\"><span style=\"font-family:Times New Roman,Times,serif;\">${intro.content}</span></span>`) : '',
+            intro.image ? img(intro.image, title) : ''
+        ].join('');
 
-        // Build content block following the static template style (h1/h2/h3, images, lists)
-        const introSection = (detail.sections || []).find(s => s.id === 'gioi-thieu') || {};
-        const introParagraph = introSection.content ? `<p style=\"text-align: justify;\">${introSection.content}</p>` : '';
-        const introImage = introSection.image ? `
-            <p style=\"text-align:center\"><img alt=\"${title}\" src=\"${introSection.image}\" class=\"img-fluid\" /></p>
-        ` : '';
+        // Other sections rendered to match the static frame
+        // Build quick lookup: sectionId -> children from TOC with numbering
+        const tocChildrenMap = (() => {
+            const map = {};
+            if (Array.isArray(detail.toc)) {
+                detail.toc.forEach((item, idx) => {
+                    const level1 = `${idx + 1}`;
+                    if (item && Array.isArray(item.children)) {
+                        map[item.id] = item.children.map((child, cIdx) => ({
+                            ...child,
+                            number: `${level1}.${cIdx + 1}`
+                        }));
+                    }
+                });
+            }
+            return map;
+        })();
 
-        return `
-            <div id=\"toc-content\" class=\"content-main w-clear markdownEditor\">\n\n                <h1 style=\"text-align: center;\"><span style=\"font-size:18px;\"><span style=\"font-family:Times New Roman,Times,serif;\"><strong><span style=\"color:#9b856d;\">${title.toUpperCase()}</span></strong></span></span></h1>
-                ${detail.subtitle ? `<h1 style=\"text-align: center;\"><span style=\"font-size:18px;\"><span style=\"font-family:Times New Roman,Times,serif;\"><strong><span style=\"color:#9b856d;\">${detail.subtitle}</span></strong></span></span></h1>` : ''}
-                ${introParagraph}
-                ${introImage}
+        const sectionHtml = (detail.sections || [])
+            .filter(s => s.id !== 'gioi-thieu')
+            .map(section => {
+                const blocks = [];
+                if (section.heading) {
+                    const num = numberingMap[section.id] ? numberingMap[section.id] + '. ' : '';
+                    blocks.push(h2(section.id, `${num}${section.heading}`));
+                }
+                if (section.subsections && section.subsections.length) {
+                    section.subsections.forEach((sub, idx) => {
+                        if (sub.heading) {
+                            const num = numberingMap[sub.id] ? numberingMap[sub.id] + ' ' : '';
+                            blocks.push(h3(sub.id, `${num}${sub.heading}`));
+                        }
+                        if (sub.content) blocks.push(p(`<span style=\"font-size:18px;\"><span style=\"font-family:Times New Roman,Times,serif;\">${sub.content}</span></span>`));
+                        if (Array.isArray(sub.bullets) && sub.bullets.length) blocks.push(ul(sub.bullets));
+                        if (Array.isArray(sub.steps) && sub.steps.length) blocks.push(ol(sub.steps));
+                        if (sub.image) blocks.push(img(sub.image, sub.heading));
+                    });
+                } else {
+                    if (section.content) blocks.push(p(`<span style=\"font-size:18px;\"><span style=\"font-family:Times New Roman,Times,serif;\">${section.content}</span></span>`));
 
-                ${bodySections}
-            </div>
-        `;
+                    // If TOC has children for this section, render H3 per child and pair with bullets/steps content when possible
+                    const tocChildren = tocChildrenMap[section.id] || [];
+                    if (tocChildren.length) {
+                        const maxLen = Math.max(
+                            tocChildren.length,
+                            Array.isArray(section.bullets) ? section.bullets.length : 0,
+                            Array.isArray(section.steps) ? section.steps.length : 0
+                        );
+                        for (let i = 0; i < maxLen; i++) {
+                            const child = tocChildren[i];
+                            if (child) {
+                                blocks.push(h3(child.id, `${child.number} ${child.label}`));
+                            }
+                            if (Array.isArray(section.bullets) && section.bullets[i]) {
+                                blocks.push(p(`<span style=\"font-size:18px;\"><span style=\"font-family:Times New Roman,Times,serif;\">${section.bullets[i]}</span></span>`));
+                            }
+                            if (Array.isArray(section.steps) && section.steps[i]) {
+                                blocks.push(p(`<span style=\"font-size:18px;\"><span style=\"font-family:Times New Roman,Times,serif;\">${section.steps[i]}</span></span>`));
+                            }
+                        }
+                    } else {
+                        if (Array.isArray(section.bullets) && section.bullets.length) blocks.push(ul(section.bullets));
+                        if (Array.isArray(section.steps) && section.steps.length) blocks.push(ol(section.steps));
+                    }
+                    if (section.image) blocks.push(img(section.image, section.heading, 500));
+                    if (Array.isArray(section.gallery) && section.gallery.length) {
+                        blocks.push(section.gallery.map(src => img(src, '')).join(''));
+                    }
+                }
+                return blocks.join('\n');
+            }).join('\n');
+
+        return `\n<div id=\"toc-content\" class=\"content-main w-clear markdownEditor\">${introHtml}${sectionHtml}</div>`;
     }
 
     renderTOC(detail) {
