@@ -55,7 +55,13 @@
     <!-- <link href="css/dynamic-services.css" rel="stylesheet"> -->
     <script src="js/layout.js" defer></script>
     <script src="js/services.js" defer></script>
-    <script src="js/service-detail.js" defer></script>
+    <!-- Load modules first -->
+    <script src="js/modules/DataLoader.js"></script>
+    <script src="js/modules/TOCRenderer.js"></script>
+    <script src="js/modules/ContentRenderer.js"></script>
+    <!-- Load main service detail script -->
+    <script type="text/javascript" src="js/service-loader.js"></script>
+    <script src="js/service-detail.js"></script>
 </head>
 
 <body>
