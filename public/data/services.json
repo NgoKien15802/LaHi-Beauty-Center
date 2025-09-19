@@ -1,0 +1,228 @@
+{
+  "categories": [
+    {
+      "id": "cham-soc-da",
+      "name": "Chăm Sóc Da",
+      "description": "Các dịch vụ chăm sóc da chuyên nghiệp",
+      "services": [
+        {
+          "id": "cham-soc-da-chuyen-sau",
+          "name": "CHĂM SÓC DA CHUYÊN SÂU",
+          "description": "Liệu trình chăm sóc da chuyên sâu với công nghệ cao",
+          "price": "500,000 VNĐ",
+          "duration": "90 phút",
+          "image": "assets/images/services/cham-soc-da-chuyen-sau.jpg"
+        },
+        {
+          "id": "facial-peel-treatment",
+          "name": "CHEMICAL PEELING",
+          "description": "Điều trị da bằng công nghệ peel hiện đại",
+          "price": "800,000 VNĐ",
+          "duration": "120 phút",
+          "image": "assets/images/services/chemical-peeling.jpg"
+        },
+        {
+          "id": "glow-skin-therapy",
+          "name": "DƯỠNG TRẮNG GENWHITE",
+          "description": "Liệu trình làm sáng da tự nhiên",
+          "price": "600,000 VNĐ",
+          "duration": "75 phút",
+          "image": "assets/images/services/duong-trang-genwhite.jpg"
+        }
+      ]
+    },
+    {
+      "id": "phun-xam",
+      "name": "Phun Xăm Thẩm Mỹ",
+      "description": "Các dịch vụ phun xăm thẩm mỹ công nghệ cao",
+      "services": [
+        {
+          "id": "phun-chan-may",
+          "name": "PHUN CHÂN MÀY",
+          "description": "Phun chân mày tự nhiên, đẹp bền lâu",
+          "price": "1,200,000 VNĐ",
+          "duration": "150 phút",
+          "image": "assets/images/services/phun-may.jpg"
+        },
+        {
+          "id": "phun-moi",
+          "name": "PHUN MÔI",
+          "description": "Phun môi tự nhiên, đẹp bền lâu",
+          "price": "1,500,000 VNĐ",
+          "duration": "180 phút",
+          "image": "assets/images/services/phun-moi.jpg"
+        }
+      ]
+    },
+    {
+      "id": "dieu-tri-da",
+      "name": "Điều Trị Da",
+      "description": "Các liệu trình điều trị da chuyên sâu",
+      "services": [
+        {
+          "id": "basic-anti-acne-control",
+          "slug": "basic-anti-acne-control",
+          "name": "GIẢM DẦU MỤN - LỖ CHÂN LÔNG",
+          "title": "BASIC ANTI - ACNE CONTROL",
+          "description": "Basic Anti-Acne Control: Giải pháp hoàn hảo cho làn da mịn màng tại Her Skinlab. Hỗ trợ loại bỏ mụn, làm sạch sâu và se khít lỗ chân lông.",
+          "category": "Điều Trị Da",
+          "price": "400,000 VNĐ",
+          "duration": "60 phút",
+          "image": "assets/images/services/giam-dau-mun-lo-chan-long.jpg",
+          "benefits": [
+            "Loại bỏ mụn đầu đen, mụn trứng cá và các loại mụn khác",
+            "Làm sạch lỗ chân lông, loại bỏ bụi bẩn và dầu thừa",
+            "Se khít lỗ chân lông, giúp bề mặt da mịn màng"
+          ],
+          "process": [
+            "Tư vấn tình trạng da và đề xuất phương pháp phù hợp",
+            "Làm sạch da để loại bỏ bụi bẩn và dầu thừa",
+            "Lấy mụn: loại bỏ mụn đầu đen, mụn trứng cá",
+            "Làm sạch sâu lỗ chân lông",
+            "Se khít lỗ chân lông, làm dịu và cân bằng da"
+          ],
+          "suitable_for": "Da dầu mụn, lỗ chân lông to, da dễ bít tắc; người muốn làm sạch và mịn da.",
+          "not_suitable_for": "Da đang kích ứng nặng, viêm da cấp tính hoặc mới thực hiện thủ thuật xâm lấn.",
+          "aftercare": "Giữ da sạch, tránh sờ nặn, dùng sản phẩm dịu nhẹ; chống nắng đầy đủ và tái khám theo hẹn."
+        },
+        {
+          "id": "triet-long-diode-laser",
+          "name": "TRIỆT LÔNG DIODE LASER",
+          "description": "Triệt lông vĩnh viễn bằng công nghệ diode laser",
+          "price": "700,000 VNĐ",
+          "duration": "90 phút",
+          "image": "assets/images/services/triet-long-diode-laser.jpg"
+        },
+        {
+          "id": "peel-da-chuyen-sau",
+          "name": "CHEMICAL PEELING",
+          "description": "Peel da chuyên sâu, cải thiện kết cấu da",
+          "price": "900,000 VNĐ",
+          "duration": "120 phút",
+          "image": "assets/images/services/chemical-peeling.jpg"
+        }
+        ,
+        {
+          "id": "peel-da-chuyen-sau-sac-to",
+          "slug": "peel-da-chuyen-sau-sac-to",
+          "name": "PEEL DA CHUYÊN SÂU SẮC TỐ",
+          "title": "PEEL DA CHUYÊN SÂU SẮC TỐ",
+          "description": "Giải pháp tối ưu giúp làm mờ sạm nám, tàn nhang, đốm nâu; kích thích tái tạo làn da sáng mịn, đều màu và khoẻ mạnh.",
+          "category": "Điều Trị Da",
+          "price": "Giá liên hệ",
+          "duration": "90 - 120 phút",
+          "image": "assets/images/services/chemical-peeling.jpg",
+          "benefits": [
+            "Làm mờ và loại bỏ sắc tố sạm nám, tàn nhang, đốm nâu",
+            "Kích thích sản sinh collagen và elastin, cải thiện độ đàn hồi",
+            "Cải thiện kết cấu da, giúp da mịn màng và se khít lỗ chân lông",
+            "Tăng cường khả năng hấp thụ dưỡng chất của da"
+          ],
+          "process": [
+            "Thăm khám và tư vấn liệu trình phù hợp theo tình trạng da",
+            "Làm sạch dịu nhẹ, loại bỏ bụi bẩn và bã nhờn để chuẩn bị cho peel",
+            "Thực hiện peel với sản phẩm đạt chuẩn, tập trung vùng cần điều trị",
+            "Hướng dẫn chăm sóc sau peel, cấp ẩm – phục hồi đúng cách"
+          ],
+          "suitable_for": "Da sạm nám, không đều màu, có đốm nâu/tàn nhang; da xỉn màu, kém sức sống; người mong muốn làm sáng da an toàn.",
+          "not_suitable_for": "Phụ nữ mang thai/cho con bú, da đang viêm nhiễm nặng, đang dùng retinoids liều cao hoặc vừa lăn kim/laser gần đây.",
+          "aftercare": "Tránh nắng tuyệt đối 7-14 ngày, dùng kem chống nắng SPF 50+, cấp ẩm phục hồi đều đặn, không tự ý cạy/bóc da bong; tuân thủ hướng dẫn của chuyên gia."
+        }
+      ]
+    },
+    {
+      "id": "lieu-trinh-combo",
+      "name": "Liệu Trình Combo",
+      "description": "Các gói combo tiết kiệm chi phí",
+      "services": [
+        {
+          "id": "combo-cham-soc-da",
+          "name": "COMBO CHĂM SÓC DA",
+          "description": "Gói combo chăm sóc da toàn diện",
+          "price": "1,500,000 VNĐ",
+          "duration": "180 phút",
+          "image": "assets/images/services/cham-soc-da-chuyen-sau.jpg"
+        },
+        {
+          "id": "combo-phun-xam",
+          "name": "COMBO PHUN XĂM",
+          "description": "Gói combo phun xăm thẩm mỹ",
+          "price": "2,000,000 VNĐ",
+          "duration": "240 phút",
+          "image": "assets/images/services/phun-moi.jpg"
+        }
+      ]
+    },
+    {
+      "id": "cong-nghe-cao",
+      "name": "Công Nghệ Cao",
+      "description": "Các dịch vụ sử dụng công nghệ tiên tiến",
+      "services": [
+        {
+          "id": "aqua-fresh",
+          "name": "GLASS SKIN ĐA TẦNG",
+          "description": "Công nghệ làm sạch da bằng nước",
+          "price": "600,000 VNĐ",
+          "duration": "75 phút",
+          "image": "assets/images/services/glass-skin-da-tang.jpg"
+        },
+        {
+          "id": "detox-co2",
+          "name": "CHĂM SÓC DA CHUYÊN SÂU",
+          "description": "Liệu trình detox da bằng CO2",
+          "price": "800,000 VNĐ",
+          "duration": "90 phút",
+          "image": "assets/images/services/cham-soc-da-chuyen-sau.jpg"
+        },
+        {
+          "id": "egf-treatment",
+          "name": "DƯỠNG TRẮNG GENWHITE",
+          "description": "Điều trị da bằng EGF tự nhiên",
+          "price": "1,000,000 VNĐ",
+          "duration": "120 phút",
+          "image": "assets/images/services/duong-trang-genwhite.jpg"
+        },
+        {
+          "id": "enzym-therapy",
+          "name": "CHEMICAL PEELING",
+          "description": "Liệu trình điều trị bằng enzym",
+          "price": "700,000 VNĐ",
+          "duration": "90 phút",
+          "image": "assets/images/services/chemical-peeling.jpg"
+        },
+        {
+          "id": "hydra-full-treatment",
+          "name": "HIFU NEW DOUBLO 2.0",
+          "description": "Điều trị da toàn diện với Hydra",
+          "price": "1,200,000 VNĐ",
+          "duration": "150 phút",
+          "image": "assets/images/services/hifu-new-doublo-2.0.jpg"
+        },
+        {
+          "id": "mulwang-therapy",
+          "name": "GLASS SKIN ĐA TẦNG",
+          "description": "Liệu trình Mulwang chuyên sâu",
+          "price": "900,000 VNĐ",
+          "duration": "120 phút",
+          "image": "assets/images/services/glass-skin-da-tang.jpg"
+        },
+        {
+          "id": "oxygen-therapy",
+          "name": "CHĂM SÓC DA CHUYÊN SÂU",
+          "description": "Liệu trình oxy hóa da",
+          "price": "800,000 VNĐ",
+          "duration": "90 phút",
+          "image": "assets/images/services/cham-soc-da-chuyen-sau.jpg"
+        },
+        {
+          "id": "white-peel",
+          "name": "DƯỠNG TRẮNG GENWHITE",
+          "description": "Peel trắng da, cải thiện sắc tố",
+          "price": "1,000,000 VNĐ",
+          "duration": "120 phút",
+          "image": "assets/images/services/duong-trang-genwhite.jpg"
+        }
+      ]
+    }
+  ]
+}
