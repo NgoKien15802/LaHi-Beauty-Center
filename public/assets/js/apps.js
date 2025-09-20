@@ -424,6 +424,10 @@ NN_FRAMEWORK.Menu = function () {
   $(document).on("click", "#services-menu-mobile-list li a", function () {
     $(".menu_mobi_add").removeClass("menu_mobi_active");
     $(".menu_baophu").fadeOut(300);
+
+    // Reset submenu (ẩn hết + remove active2)
+    $(".menu_mobi_add ul li a.active2").removeClass("active2");
+    $(".menu_mobi_add ul li div ul").hide(0);
   });
 };
 
