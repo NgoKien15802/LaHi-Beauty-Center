@@ -403,7 +403,7 @@ NN_FRAMEWORK.Menu = function () {
     }
   });
 
-  $(".icon_menu_mobi,.close_menu,.menu_baophu,#mmenu_trigger").click(
+  $(".icon_menu_mobi, .close_menu, .menu_baophu, #mmenu_trigger, .menu_mobi_add li a").click(
     function () {
       if ($(".menu_mobi_add").hasClass("menu_mobi_active")) {
         $(".menu_mobi_add").removeClass("menu_mobi_active");
