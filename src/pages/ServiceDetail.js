@@ -91,6 +91,7 @@ const ServiceDetail = () => {
   const { serviceId } = useParams();
   const [service, setService] = useState(null);
   const [serviceDetail, setServiceDetail] = useState(null);
+  const [servicesData, setServicesData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const htmlHelpers = createHTMLHelpers();
@@ -136,6 +137,7 @@ const ServiceDetail = () => {
       if (foundService) {
         setService(foundService);
         setServiceDetail(serviceDetailData);
+        setServicesData(servicesData);
         // Update page title
         document.title = `${foundService.title} | LaHi Beauty Center`;
       } else {
@@ -343,6 +345,91 @@ const ServiceDetail = () => {
       ));
   };
 
+  // Render related services
+  const renderRelatedServices = (relatedServiceIds, allServicesData) => {
+    if (
+      !relatedServiceIds ||
+      !Array.isArray(relatedServiceIds) ||
+      relatedServiceIds.length === 0 ||
+      !allServicesData ||
+      !allServicesData.categories
+    ) {
+      return null;
+    }
+
+    // Find related services by their IDs across all categories
+    const relatedServices = [];
+    allServicesData.categories.forEach(category => {
+      if (category.services && Array.isArray(category.services)) {
+        category.services.forEach(service => {
+          if (relatedServiceIds.includes(service.id)) {
+            relatedServices.push({
+              ...service,
+              category: category.name
+            });
+          }
+        });
+      }
+    });
+
+    if (relatedServices.length === 0) {
+      return null;
+    }
+
+    return (
+      <div className="wrap-all">
+        <div className="wrap-main">
+          <div className="title-main">
+            <h2
+              style={{
+                fontSize: "46px",
+              }}
+            >
+              Dịch vụ liên quan
+            </h2>
+          </div>
+
+          {/* Services Grid */}
+          <div className="gridNews">
+            {relatedServices.map((service) => (
+              <div key={service.id} className="dvnb_item">
+                <Link
+                  to={`/service/${service.id}`}
+                  className="dvnb_box position-relative d-block"
+                >
+                  <div className="dvnb_pic service-pic scale-img hover-glass">
+                    <picture>
+                      <source
+                        srcSet={`/${service.image}`}
+                        media="(min-width: 0px)"
+                      />
+                      <img
+                        className="d-inline-block w-100"
+                        data-src={`/${service.image}`}
+                        src="/thumbs/300x345x2/assets/images/noimage.png.webp"
+                        alt={service.title}
+                        onError={(e) =>
+                          (e.target.src =
+                            "/thumbs/300x345x2/assets/images/noimage.png.webp")
+                        }
+                      />
+                    </picture>
+                  </div>
+                  <div className="dvnb_bottom"></div>
+                  <div className="dvnb_info">
+                    <h3 className="dvnb__name text-split">{service.title}</h3>
+                    <div className="service-price">{service.price}</div>
+                    <div className="service-duration">{service.duration}</div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   if (loading) {
     return (
       <div className="loading-spinner">
@@ -381,6 +468,27 @@ const ServiceDetail = () => {
           <div id="toc-content" className="content-main w-clear markdownEditor">
             {renderIntro(serviceDetail, service)}
             {renderAllSections(serviceDetail, numberingMap, tocChildrenMap)}
+            <div className="share">
+              <b>Chia sẻ:</b>
+              <div className="social-plugin w-clear">
+                <div className="a2a_kit a2a_kit_size_32 a2a_default_style">
+                  <a className="a2a_dd" href="https://www.addtoany.com/share"></a>
+                  <a className="a2a_button_facebook"></a>
+                  <a className="a2a_button_twitter"></a>
+                  <a className="a2a_button_facebook_messenger"></a>
+                  <a className="a2a_button_copy_link"></a>
+                </div>
+                <div
+                  className="zalo-share-button"
+                  data-href={window.location.href}
+                  data-oaid="579745863508352884"
+                  data-layout="3"
+                  data-color="blue"
+                  data-customize="false"
+                ></div>
+              </div>
+            </div>
+            {renderRelatedServices(service.relatedServices, servicesData)}
           </div>
         </div>
       );
@@ -489,27 +597,6 @@ const ServiceDetail = () => {
           </div>
 
           {renderContent()}
-
-          <div className="share">
-            <b>Chia sẻ:</b>
-            <div className="social-plugin w-clear">
-              <div className="a2a_kit a2a_kit_size_32 a2a_default_style">
-                <a className="a2a_dd" href="https://www.addtoany.com/share"></a>
-                <a className="a2a_button_facebook"></a>
-                <a className="a2a_button_twitter"></a>
-                <a className="a2a_button_facebook_messenger"></a>
-                <a className="a2a_button_copy_link"></a>
-              </div>
-              <div
-                className="zalo-share-button"
-                data-href={window.location.href}
-                data-oaid="579745863508352884"
-                data-layout="3"
-                data-color="blue"
-                data-customize="false"
-              ></div>
-            </div>
-          </div>
         </div>
       </div>
     </>
