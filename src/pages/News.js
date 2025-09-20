@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './News.css';
+import '../styles/News.css';
 
 const News = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
     fetchNews();
@@ -33,27 +32,36 @@ const News = () => {
 
   const fetchNews = async () => {
     try {
+      console.log("Fetching news from /data/news.json");
       const response = await fetch("/data/news.json");
+      console.log("Response status:", response.status);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
+      console.log("Fetched data:", data);
+      console.log("News array:", data.news);
+      
       setNews(data.news || []);
     } catch (error) {
       console.error("Error loading news:", error);
+      // Try alternative path
+      try {
+        console.log("Trying alternative path: ./data/news.json");
+        const altResponse = await fetch("./data/news.json");
+        const altData = await altResponse.json();
+        console.log("Alternative fetch successful:", altData);
+        setNews(altData.news || []);
+      } catch (altError) {
+        console.error("Alternative fetch also failed:", altError);
+      }
     } finally {
       setLoading(false);
     }
   };
 
-  const filteredNews =
-    selectedCategory === "all"
-      ? news || []
-      : (news || []).filter(
-          (article) => article.category === selectedCategory
-        );
-
-  const categories = [
-    "all",
-    ...new Set((news || []).map((article) => article.category)),
-  ];
 
   if (loading) {
     return (
@@ -70,35 +78,17 @@ const News = () => {
     <div className="wrap-all">
       <div className="wrap-main">
         <div className="title-main">
-          <h2>Tin tức & Blog</h2>
-        </div>
-
-        {/* Category Filter */}
-        <div className="category-filter mb-4">
-          <div className="btn-group" role="group">
-            {categories.map((category) => (
-              <button
-                key={category}
-                type="button"
-                className={`btn ${
-                  selectedCategory === category ? "btn-primary" : "btn-outline-primary"
-                }`}
-                onClick={() => setSelectedCategory(category)}
-              >
-                {category === "all" ? "Tất cả" : category}
-              </button>
-            ))}
-          </div>
+          <h2>Tin tức</h2>
         </div>
 
         {/* News Grid */}
         <div className="gridNews">
-          {filteredNews.length === 0 ? (
+          {news.length === 0 ? (
             <div className="text-center py-5">
-              <h3>Không có tin tức nào trong danh mục này.</h3>
+              <h3>Không có tin tức nào.</h3>
             </div>
           ) : (
-            filteredNews.map((article) => (
+            news.map((article) => (
               <div key={article.id} className="news_item">
                 <Link
                   to={`/news/${article.slug}`}
@@ -116,9 +106,6 @@ const News = () => {
                         alt="Her Skinlab"
                         width="400"
                         height="285"
-                        onError={(e) =>
-                          (e.target.src = "/thumbs/400x285x1/assets/images/noimage.png.webp")
-                        }
                         src="/thumbs/400x285x2/assets/images/noimage.png.webp"
                       />
                     </picture>
@@ -128,7 +115,7 @@ const News = () => {
                       {article.title}
                     </h3>
                     <div className="news__date d-block">
-                      <i className="fa-light fa-clock"></i>
+                      <i className="fa-light fa-clock" style={{ marginRight: "5px" }}></i>
                       {article.dateFormatted}
                     </div>
                     <div className="news__desc text-split news__desc-detail">
