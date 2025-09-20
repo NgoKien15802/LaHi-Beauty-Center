@@ -12,7 +12,8 @@
       "category": "Công nghệ làm đẹp",
       "author": "LaHi Beauty Center",
       "tags": ["trẻ hóa da", "công nghệ spa", "làm đẹp"],
-      "featured": true
+      "featured": true,
+      "relatedNews": ["10-bi-quyet-giu-gin-lan-da-tre-khoe-tai-spa", "xu-huong-lam-dep-spa-nam-2024-cong-nghe-va-phong-cach"]
     },
     {
       "id": "10-bi-quyet-giu-gin-lan-da-tre-khoe-tai-spa",
@@ -26,7 +27,8 @@
       "category": "Chăm sóc da",
       "author": "LaHi Beauty Center",
       "tags": ["chăm sóc da", "bí quyết", "spa"],
-      "featured": true
+      "featured": true,
+      "relatedNews": ["cong-nghe-tre-hoa-da-nhung-diem-noi-bat-trong-nganh-spa", "massage-tri-lieu-loi-ich-vuot-xa-thu-gian"]
     },
     {
       "id": "massage-tri-lieu-loi-ich-vuot-xa-thu-gian",
@@ -40,7 +42,8 @@
       "category": "Massage trị liệu",
       "author": "LaHi Beauty Center",
       "tags": ["massage", "trị liệu", "sức khỏe"],
-      "featured": true
+      "featured": true,
+      "relatedNews": ["10-bi-quyet-giu-gin-lan-da-tre-khoe-tai-spa", "xu-huong-lam-dep-spa-nam-2024-cong-nghe-va-phong-cach"]
     },
     {
       "id": "xu-huong-lam-dep-spa-nam-2024-cong-nghe-va-phong-cach",
@@ -54,7 +57,8 @@
       "category": "Xu hướng làm đẹp",
       "author": "LaHi Beauty Center",
       "tags": ["xu hướng", "2024", "công nghệ"],
-      "featured": true
+      "featured": true,
+      "relatedNews": ["cong-nghe-tre-hoa-da-nhung-diem-noi-bat-trong-nganh-spa", "massage-tri-lieu-loi-ich-vuot-xa-thu-gian"]
     },
     {
       "id": "cach-chon-sua-rua-mat-phu-hop-cho-tung-loai-da",
@@ -68,7 +72,8 @@
       "category": "Chăm sóc da",
       "author": "LaHi Beauty Center",
       "tags": ["sữa rửa mặt", "chăm sóc da", "mỹ phẩm"],
-      "featured": false
+      "featured": false,
+      "relatedNews": ["10-bi-quyet-giu-gin-lan-da-tre-khoe-tai-spa", "nhung-loi-sai-lam-khi-cham-soc-da-mat"]
     },
     {
       "id": "nhung-loi-sai-lam-khi-cham-soc-da-mat",
@@ -82,7 +87,8 @@
       "category": "Chăm sóc da",
       "author": "LaHi Beauty Center",
       "tags": ["lỗi sai lầm", "chăm sóc da", "tips"],
-      "featured": false
+      "featured": false,
+      "relatedNews": ["cach-chon-sua-rua-mat-phu-hop-cho-tung-loai-da", "10-bi-quyet-giu-gin-lan-da-tre-khoe-tai-spa"]
     }
   ]
 }

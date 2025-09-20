@@ -10,6 +10,7 @@ import ServiceDetail from './pages/ServiceDetail';
 import Products from './pages/Products';
 import Feedback from './pages/Feedback';
 import News from './pages/News';
+import NewsDetail from './pages/NewsDetail';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 
@@ -51,6 +52,7 @@ function App() {
           <Route path="products" element={<Products />} />
           <Route path="feedback" element={<Feedback />} />
           <Route path="news" element={<News />} />
+          <Route path="news/:newsSlug" element={<NewsDetail />} />
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Route>

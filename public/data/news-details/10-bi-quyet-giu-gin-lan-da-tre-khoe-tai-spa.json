@@ -1,0 +1,84 @@
+{
+  "id": "10-bi-quyet-giu-gin-lan-da-tre-khoe-tai-spa",
+  "slug": "10-bi-quyet-giu-gin-lan-da-tre-khoe-tai-spa",
+  "title": "10 Bí Quyết Giữ Gìn Làn Da Trẻ Khỏe Tại Spa",
+  "subtitle": "Hướng Dẫn Chăm Sóc Da Toàn Diện Tại LaHi Beauty Center",
+  "date": "2024-11-22",
+  "dateFormatted": "thứ sáu, 22 Tháng 11 2024",
+  "category": "Chăm sóc da",
+  "author": "LaHi Beauty Center",
+  "tags": ["chăm sóc da", "bí quyết", "spa"],
+  "featured": true,
+  "hero": {
+    "image": "thumbs/400x285x1/upload/news/cham-soc-da-chuyen-sau-1732243225.jpg.webp",
+    "alt": "Chăm sóc da tại spa",
+    "caption": "Bí quyết chăm sóc da trẻ khỏe tại spa"
+  },
+  "toc": [
+    {
+      "id": "gioi-thieu",
+      "label": "Giới Thiệu"
+    },
+    {
+      "id": "bi-quyet",
+      "label": "10 Bí Quyết Chăm Sóc Da Tại Spa",
+      "children": [
+        { "id": "bq1", "label": "1. Làm Sạch Da Đúng Cách" },
+        { "id": "bq2", "label": "2. Tẩy Tế Bào Chết Định Kỳ" },
+        { "id": "bq3", "label": "3. Dưỡng Ẩm Đầy Đủ" },
+        { "id": "bq4", "label": "4. Bảo Vệ Da Khỏi Ánh Nắng" },
+        { "id": "bq5", "label": "5. Massage Da Mặt" },
+        { "id": "bq6", "label": "6. Sử Dụng Mặt Nạ Phù Hợp" },
+        { "id": "bq7", "label": "7. Chế Độ Ăn Uống Lành Mạnh" },
+        { "id": "bq8", "label": "8. Ngủ Đủ Giấc" },
+        { "id": "bq9", "label": "9. Uống Đủ Nước" },
+        { "id": "bq10", "label": "10. Thư Giãn và Giảm Stress" }
+      ]
+    },
+    {
+      "id": "ket-luan",
+      "label": "Kết Luận"
+    }
+  ],
+  "sections": [
+    {
+      "id": "gioi-thieu",
+      "heading": "Giới Thiệu",
+      "content": "Làn da trẻ khỏe là mong muốn của hầu hết mọi người, đặc biệt là trong thời đại nhan sắc được xem là một phần quan trọng của sự tự tin. Spa không chỉ là nơi thư giãn mà còn là điểm đến lý tưởng để chăm sóc da toàn diện. Dưới đây là 10 bí quyết giúp bạn giữ gìn làn da trẻ khỏe nhờ vào các liệu trình và kỹ thuật tại spa.",
+      "image": "thumbs/400x285x1/upload/news/cham-soc-da-chuyen-sau-1732243225.jpg.webp"
+    },
+    {
+      "id": "bi-quyet",
+      "heading": "10 Bí Quyết Chăm Sóc Da Tại Spa",
+      "steps": [
+        "Làm sạch da đúng cách: Sử dụng sản phẩm làm sạch phù hợp với loại da của bạn, massage nhẹ nhàng để loại bỏ bụi bẩn và dầu thừa.",
+        "Tẩy tế bào chết định kỳ: Thực hiện tẩy tế bào chết 1-2 lần/tuần để loại bỏ lớp da chết, giúp da sáng mịn và dễ dàng hấp thụ dưỡng chất.",
+        "Dưỡng ẩm đầy đủ: Sử dụng kem dưỡng ẩm phù hợp với loại da để duy trì độ ẩm tự nhiên và ngăn ngừa lão hóa.",
+        "Bảo vệ da khỏi ánh nắng: Luôn sử dụng kem chống nắng với SPF phù hợp để bảo vệ da khỏi tác hại của tia UV.",
+        "Massage da mặt: Thực hiện massage da mặt nhẹ nhàng để tăng cường tuần hoàn máu và thư giãn cơ mặt.",
+        "Sử dụng mặt nạ phù hợp: Chọn mặt nạ phù hợp với tình trạng da và sử dụng đều đặn để cung cấp dưỡng chất cần thiết.",
+        "Chế độ ăn uống lành mạnh: Bổ sung đầy đủ vitamin và khoáng chất từ rau củ quả để nuôi dưỡng da từ bên trong.",
+        "Ngủ đủ giấc: Ngủ 7-8 tiếng mỗi đêm để da có thời gian phục hồi và tái tạo.",
+        "Uống đủ nước: Uống ít nhất 2 lít nước mỗi ngày để giữ ẩm cho da và đào thải độc tố.",
+        "Thư giãn và giảm stress: Stress có thể gây ra nhiều vấn đề về da, hãy thư giãn và tìm cách giảm stress hiệu quả."
+      ]
+    },
+    {
+      "id": "ket-luan",
+      "heading": "Kết Luận",
+      "content": "Việc chăm sóc da đúng cách không chỉ giúp bạn có làn da khỏe mạnh mà còn tăng cường sự tự tin. Tại LaHi Beauty Center, chúng tôi cung cấp các dịch vụ chăm sóc da chuyên nghiệp với đội ngũ chuyên gia giàu kinh nghiệm và trang thiết bị hiện đại. Hãy đến với chúng tôi để được tư vấn và chăm sóc da một cách tốt nhất."
+    }
+  ],
+  "relatedNews": [
+    {
+      "id": "cong-nghe-tre-hoa-da-nhung-diem-noi-bat-trong-nganh-spa",
+      "title": "Công Nghệ Trẻ Hóa Da: Những Điểm Nổi Bật Trong Ngành Spa",
+      "image": "thumbs/400x285x1/upload/news/phun-cm-1732243260.jpg.webp"
+    },
+    {
+      "id": "massage-tri-lieu-loi-ich-vuot-xa-thu-gian",
+      "title": "Massage Trị Liệu: Lợi Ích Vượt Xa Thư Giãn",
+      "image": "thumbs/400x285x1/upload/news/spa-therapist-lam-viec-1732265135.webp.webp"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "../styles/DetailPages.css";
+import "../styles/News.css";
 
 // Helper functions for rendering content
 const createHTMLHelpers = () => ({
@@ -82,67 +83,85 @@ const createHTMLHelpers = () => ({
   ),
   img: (src, alt, width, height) => (
     <p style={{ textAlign: "center" }}>
-      <img alt={alt || ""} src={src} width={width} height={height} />
+      <img 
+        alt={alt || ""} 
+        src={src} 
+        width={width} 
+        height={height}
+        className="lazy"
+        data-src={src}
+        onError={(e) =>
+          (e.target.src = "/thumbs/400x285x1/assets/images/noimage.png.webp")
+        }
+      />
     </p>
   ),
 });
 
-const ServiceDetail = () => {
-  const { serviceId } = useParams();
-  const [service, setService] = useState(null);
-  const [serviceDetail, setServiceDetail] = useState(null);
+const NewsDetail = () => {
+  const { newsSlug } = useParams();
+  const [news, setNews] = useState(null);
+  const [newsDetail, setNewsDetail] = useState(null);
+  const [newsData, setNewsData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const htmlHelpers = createHTMLHelpers();
 
   useEffect(() => {
-    fetchServiceDetail();
-  }, [serviceId]);
+    fetchNewsDetail();
+  }, [newsSlug]);
 
-  const fetchServiceDetail = async () => {
+  // Initialize lazy loading after content is loaded
+  useEffect(() => {
+    if (!loading && news) {
+      // Wait for DOM to be updated
+      setTimeout(() => {
+        // Initialize lazy loading
+        if (window.LazyLoad) {
+          new window.LazyLoad({
+            elements_selector: ".lazy",
+          });
+        }
+
+        // Also try jQuery lazy loading
+        if (window.$ && window.$().lazy) {
+          window.$(".lazy").lazy();
+        }
+      }, 100);
+    }
+  }, [loading, news]);
+
+  const fetchNewsDetail = async () => {
     try {
-      // Load service detail data
-      const detailResponse = await fetch(
-        `/data/service-details/${serviceId}.json`
-      );
-      let serviceDetailData = null;
+      // Load news detail data
+      const detailResponse = await fetch(`/data/news-details/${newsSlug}.json`);
+      let newsDetailData = null;
 
       if (detailResponse.ok) {
-        serviceDetailData = await detailResponse.json();
+        newsDetailData = await detailResponse.json();
       }
 
-      // Load service basic info
-      const servicesResponse = await fetch("/data/services.json");
-      const servicesData = await servicesResponse.json();
+      // Load news basic info
+      const newsResponse = await fetch("/data/news.json");
+      const newsData = await newsResponse.json();
 
-      // Search through all categories for the service
-      let foundService = null;
-      if (servicesData.categories && Array.isArray(servicesData.categories)) {
-        for (const category of servicesData.categories) {
-          if (category.services && Array.isArray(category.services)) {
-            const service = category.services.find((s) => s.id === serviceId);
-            if (service) {
-              foundService = {
-                ...service,
-                category: category.name,
-                title: service.name || service.title,
-              };
-              break;
-            }
-          }
-        }
+      // Find the news article
+      let foundNews = null;
+      if (newsData.news && Array.isArray(newsData.news)) {
+        foundNews = newsData.news.find((article) => article.slug === newsSlug);
       }
 
-      if (foundService) {
-        setService(foundService);
-        setServiceDetail(serviceDetailData);
+      if (foundNews) {
+        setNews(foundNews);
+        setNewsDetail(newsDetailData);
+        setNewsData(newsData);
         // Update page title
-        document.title = `${foundService.title} | LaHi Beauty Center`;
+        document.title = `${foundNews.title} | LaHi Beauty Center`;
       } else {
         setNotFound(true);
       }
     } catch (error) {
-      console.error("Error loading service details:", error);
+      console.error("Error loading news details:", error);
       setNotFound(true);
     } finally {
       setLoading(false);
@@ -178,7 +197,7 @@ const ServiceDetail = () => {
       if (item && Array.isArray(item.children)) {
         map[item.id] = item.children.map((child, cIdx) => ({
           ...child,
-          number: `${level1}.${cIdx + 1}`
+          number: `${level1}.${cIdx + 1}`,
         }));
       }
     });
@@ -213,12 +232,7 @@ const ServiceDetail = () => {
 
   // Content rendering functions
   const renderIntro = (detail, fallback) => {
-    const title = (
-      detail?.title ||
-      fallback?.title ||
-      fallback?.name ||
-      ""
-    ).toUpperCase();
+    const title = (detail?.title || fallback?.title || "").toUpperCase();
     const subtitle = detail?.subtitle || "";
     const intro =
       (detail?.sections || []).find((s) => s.id === "gioi-thieu") || {};
@@ -299,14 +313,14 @@ const ServiceDetail = () => {
         blocks.push(htmlHelpers.img(section.image, section.heading, 500));
       }
       if (Array.isArray(section.gallery) && section.gallery.length) {
-        section.gallery.forEach((src, imgIndex) => blocks.push(htmlHelpers.img(src, "")));
+        section.gallery.forEach((src, imgIndex) =>
+          blocks.push(htmlHelpers.img(src, ""))
+        );
       }
     }
 
     return blocks.map((block, index) => (
-      <React.Fragment key={`${section.id}-${index}`}>
-        {block}
-      </React.Fragment>
+      <React.Fragment key={`${section.id}-${index}`}>{block}</React.Fragment>
     ));
   };
 
@@ -315,14 +329,15 @@ const ServiceDetail = () => {
     tocChildren.forEach((child, index) => {
       // Add the child heading with numbering
       blocks.push(htmlHelpers.h3(child.id, child.label));
-      
+
       // Add corresponding content from bullets or steps
-      const content = Array.isArray(section.bullets) && section.bullets[index] 
-        ? section.bullets[index]
-        : Array.isArray(section.steps) && section.steps[index]
-        ? section.steps[index]
-        : null;
-        
+      const content =
+        Array.isArray(section.bullets) && section.bullets[index]
+          ? section.bullets[index]
+          : Array.isArray(section.steps) && section.steps[index]
+          ? section.steps[index]
+          : null;
+
       if (content) {
         blocks.push(
           htmlHelpers.p(
@@ -343,24 +358,101 @@ const ServiceDetail = () => {
       ));
   };
 
+  // Render related news
+  const renderRelatedNews = (relatedNewsIds, allNewsData) => {
+    if (
+      !relatedNewsIds ||
+      !Array.isArray(relatedNewsIds) ||
+      relatedNewsIds.length === 0 ||
+      !allNewsData ||
+      !allNewsData.news
+    ) {
+      return null;
+    }
+
+    // Find related news articles by their IDs
+    const relatedArticles = relatedNewsIds
+      .map((id) => allNewsData.news.find((article) => article.id === id))
+      .filter((article) => article); // Remove undefined items
+
+    if (relatedArticles.length === 0) {
+      return null;
+    }
+
+    return (
+      <div className="wrap-all">
+        <div className="wrap-main">
+          <div className="title-main">
+            <h2
+              style={{
+                fontSize: "46px",
+              }}
+            >
+              Tin tức liên quan
+            </h2>
+          </div>
+
+          {/* News Grid */}
+          <div className="gridNews">
+            {relatedArticles.map((article) => (
+              <div key={article.id} className="news_item">
+                <Link to={`/news/${article.slug}`} className="news_box">
+                  <div className="news_pic scale-img hvr-double-box">
+                    <picture>
+                      <source
+                        srcSet={`/${article.image}`}
+                        media="(min-width: 0px)"
+                      />
+                      <img
+                        className="d-inline-block lazy w-100"
+                        data-src={`/${article.image}`}
+                        alt="Her Skinlab"
+                        width="400"
+                        height="285"
+                        src="/thumbs/400x285x2/assets/images/noimage.png.webp"
+                      />
+                    </picture>
+                  </div>
+                  <div className="news_info">
+                    <h3 className="news__name text-split">{article.title}</h3>
+                    <div className="news__date d-block">
+                      <i
+                        className="fa-light fa-clock"
+                        style={{ marginRight: "5px" }}
+                      ></i>
+                      {article.dateFormatted}
+                    </div>
+                    <div className="news__desc text-split news__desc-detail">
+                      {article.description}
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   if (loading) {
     return (
       <div className="loading-spinner">
         <div className="spinner-border text-primary" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
-        <p className="mt-3">Đang tải chi tiết dịch vụ...</p>
+        <p className="mt-3">Đang tải chi tiết tin tức...</p>
       </div>
     );
   }
 
-  if (notFound || !service) {
+  if (notFound || !news) {
     return (
       <div className="text-center py-5">
-        <h3 className="text-danger">Không tìm thấy dịch vụ này.</h3>
+        <h3 className="text-danger">Không tìm thấy tin tức này.</h3>
         <p>
           Vui lòng kiểm tra lại đường dẫn hoặc quay lại{" "}
-          <Link to="/services">trang dịch vụ</Link>.
+          <Link to="/news">trang tin tức</Link>.
         </p>
       </div>
     );
@@ -368,90 +460,93 @@ const ServiceDetail = () => {
 
   // Render content based on data availability
   const renderContent = () => {
-    if (!service) return null;
+    if (!news) return null;
 
-    // If we have detailed service data, render with TOC
-    if (serviceDetail && serviceDetail.toc) {
-      const numberingMap = createNumberingMap(serviceDetail.toc);
-      const tocChildrenMap = createTOCChildrenMap(serviceDetail.toc);
+    // If we have detailed news data, render with TOC
+    if (newsDetail && newsDetail.toc) {
+      const numberingMap = createNumberingMap(newsDetail.toc);
+      const tocChildrenMap = createTOCChildrenMap(newsDetail.toc);
 
       return (
-        <div className="service-detail-container">
-          {renderTOC(serviceDetail.toc)}
+        <div className="news-detail-container">
+          {renderTOC(newsDetail.toc)}
           <div id="toc-content" className="content-main w-clear markdownEditor">
-            {renderIntro(serviceDetail, service)}
-            {renderAllSections(serviceDetail, numberingMap, tocChildrenMap)}
+            {renderIntro(newsDetail, news)}
+            {renderAllSections(newsDetail, numberingMap, tocChildrenMap)}
+            <div className="share">
+              <b>Chia sẻ:</b>
+              <div className="social-plugin w-clear">
+                <div className="a2a_kit a2a_kit_size_32 a2a_default_style">
+                  <a
+                    className="a2a_dd"
+                    href="https://www.addtoany.com/share"
+                  ></a>
+                  <a className="a2a_button_facebook"></a>
+                  <a className="a2a_button_twitter"></a>
+                  <a className="a2a_button_facebook_messenger"></a>
+                  <a className="a2a_button_copy_link"></a>
+                </div>
+                <div
+                  className="zalo-share-button"
+                  data-href={window.location.href}
+                  data-oaid="579745863508352884"
+                  data-layout="3"
+                  data-color="blue"
+                  data-customize="false"
+                ></div>
+              </div>
+            </div>
+            {renderRelatedNews(news.relatedNews, newsData)}
           </div>
         </div>
       );
     }
 
-    // Fallback: render basic service info
+    // Fallback: render basic news info
     return (
-      <div className="service-detail-container">
-        <div className="service-detail-header">
+      <div className="news-detail-container">
+        <div className="news-detail-header">
           <img
-            src={`/${service.image}`}
-            alt={service.title}
-            className="service-detail-image"
+            src={`/${news.image}`}
+            alt={news.title}
+            className="news-detail-image"
           />
-          <h1 className="service-detail-title">{service.title}</h1>
-          <p className="service-detail-category">
-            Danh mục: {service.category}
-          </p>
-          <p className="service-detail-price">Giá: {service.price}</p>
-          <p className="service-detail-duration">
-            Thời lượng: {service.duration}
-          </p>
+          <h1 className="news-detail-title">{news.title}</h1>
+          <div className="news-meta">
+            <span className="news-date">
+              <i className="fa-light fa-clock"></i>
+              {news.dateFormatted}
+            </span>
+            <span className="news-category">{news.category}</span>
+            <span className="news-author">Tác giả: {news.author}</span>
+          </div>
         </div>
 
-        {service.description && (
-          <div className="service-detail-section">
-            <h3>Mô tả dịch vụ</h3>
-            <div dangerouslySetInnerHTML={{ __html: service.description }} />
+        {news.description && (
+          <div className="news-detail-section">
+            <div dangerouslySetInnerHTML={{ __html: news.description }} />
           </div>
         )}
 
-        {service.benefits && service.benefits.length > 0 && (
-          <div className="service-detail-section">
-            <h3>Lợi ích</h3>
-            <ul>
-              {service.benefits.map((benefit, index) => (
-                <li key={index}>{benefit}</li>
-              ))}
-            </ul>
+        {news.content && (
+          <div className="news-detail-section">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: news.content.replace(/\n/g, "<br>"),
+              }}
+            />
           </div>
         )}
 
-        {service.process && service.process.length > 0 && (
-          <div className="service-detail-section">
-            <h3>Quy trình thực hiện</h3>
-            <ol>
-              {service.process.map((step, index) => (
-                <li key={index}>{step}</li>
-              ))}
-            </ol>
-          </div>
-        )}
-
-        {service.suitable_for && (
-          <div className="service-detail-section">
-            <h3>Phù hợp với</h3>
-            <p>{service.suitable_for}</p>
-          </div>
-        )}
-
-        {service.not_suitable_for && (
-          <div className="service-detail-section">
-            <h3>Không phù hợp với</h3>
-            <p>{service.not_suitable_for}</p>
-          </div>
-        )}
-
-        {service.aftercare && (
-          <div className="service-detail-section">
-            <h3>Chăm sóc sau điều trị</h3>
-            <p>{service.aftercare}</p>
+        {news.tags && news.tags.length > 0 && (
+          <div className="news-tags">
+            <strong>Tags: </strong>
+            {news.tags.map((tag, index) => (
+              <span key={index} className="tag">
+                {tag}
+                {index < news.tags.length - 1 && ", "}
+              </span>
+            ))}
           </div>
         )}
       </div>
@@ -470,12 +565,12 @@ const ServiceDetail = () => {
                 </Link>
               </li>
               <li className="breadcrumb-item">
-                <Link className="text-decoration-none" to="/services">
-                  <span>Dịch vụ</span>
+                <Link className="text-decoration-none" to="/news">
+                  <span>Tin tức</span>
                 </Link>
               </li>
               <li className="breadcrumb-item active">
-                <span>{service?.title}</span>
+                <span>{news?.title}</span>
               </li>
             </ol>
           </div>
@@ -485,35 +580,14 @@ const ServiceDetail = () => {
       <div className="wrap-all">
         <div className="wrap-main">
           <div className="title-main">
-            <h2>{service?.title || "Chi tiết dịch vụ"}</h2>
+            <h2>{news?.title || "Chi tiết tin tức"}</h2>
           </div>
 
           {renderContent()}
-
-          <div className="share">
-            <b>Chia sẻ:</b>
-            <div className="social-plugin w-clear">
-              <div className="a2a_kit a2a_kit_size_32 a2a_default_style">
-                <a className="a2a_dd" href="https://www.addtoany.com/share"></a>
-                <a className="a2a_button_facebook"></a>
-                <a className="a2a_button_twitter"></a>
-                <a className="a2a_button_facebook_messenger"></a>
-                <a className="a2a_button_copy_link"></a>
-              </div>
-              <div
-                className="zalo-share-button"
-                data-href={window.location.href}
-                data-oaid="579745863508352884"
-                data-layout="3"
-                data-color="blue"
-                data-customize="false"
-              ></div>
-            </div>
-          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default ServiceDetail;
+export default NewsDetail;

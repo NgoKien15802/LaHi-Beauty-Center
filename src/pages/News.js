@@ -75,11 +75,29 @@ const News = () => {
   }
 
   return (
-    <div className="wrap-all">
-      <div className="wrap-main">
-        <div className="title-main">
-          <h2>Tin tức</h2>
+    <>
+      <div className="breadCrumbs">
+        <div className="max-width">
+          <div className="wrap-content">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link className="text-decoration-none" to="/">
+                  <span>Trang chủ</span>
+                </Link>
+              </li>
+              <li className="breadcrumb-item active">
+                <span>Tin tức</span>
+              </li>
+            </ol>
+          </div>
         </div>
+      </div>
+
+      <div className="wrap-all">
+        <div className="wrap-main">
+          <div className="title-main">
+            <h2>Tin tức</h2>
+          </div>
 
         {/* News Grid */}
         <div className="gridNews">
@@ -128,7 +146,8 @@ const News = () => {
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

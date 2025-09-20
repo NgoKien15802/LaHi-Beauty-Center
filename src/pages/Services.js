@@ -93,54 +93,73 @@ const Services = () => {
   }
 
   return (
-    <div className="wrap-all">
-      <div className="wrap-main">
-        <div className="title-main">
-          <h2>Dịch vụ chăm sóc da chuyên nghiệp</h2>
-        </div>
-
-        {/* Services Grid */}
-        <div className="gridNews" id="services-grid">
-          {filteredServices.length === 0 ? (
-            <div className="text-center py-5">
-              <h3>Không có dịch vụ nào trong danh mục này.</h3>
-            </div>
-          ) : (
-            filteredServices.map((service) => (
-              <div key={service.id} className="dvnb_item">
-                <Link
-                  to={`/service/${service.id}`}
-                  className="dvnb_box position-relative d-block"
-                >
-                  <div className="dvnb_pic service-pic scale-img hover-glass">
-                    <picture>
-                      <source
-                        srcSet={`/${service.image}`}
-                        media="(min-width: 0px)"
-                      />
-                      <img
-                        className="d-inline-block w-100"
-                        data-src={`/${service.image}`}
-                        src="/thumbs/300x345x2/assets/images/noimage.png.webp"
-                        alt={service.title}
-                        onError={(e) =>
-                          (e.target.src =
-                            "/thumbs/300x345x2/assets/images/noimage.png.webp")
-                        }
-                      />
-                    </picture>
-                  </div>
-                  <div className="dvnb_bottom"></div>
-                  <div className="dvnb_info">
-                    <h3 className="dvnb__name text-split">{service.title}</h3>
-                  </div>
+    <>
+      <div className="breadCrumbs">
+        <div className="max-width">
+          <div className="wrap-content">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link className="text-decoration-none" to="/">
+                  <span>Trang chủ</span>
                 </Link>
-              </div>
-            ))
-          )}
+              </li>
+              <li className="breadcrumb-item active">
+                <span>Dịch vụ</span>
+              </li>
+            </ol>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div className="wrap-all">
+        <div className="wrap-main">
+          <div className="title-main">
+            <h2>Dịch vụ chăm sóc da chuyên nghiệp</h2>
+          </div>
+
+          {/* Services Grid */}
+          <div className="gridNews" id="services-grid">
+            {filteredServices.length === 0 ? (
+              <div className="text-center py-5">
+                <h3>Không có dịch vụ nào trong danh mục này.</h3>
+              </div>
+            ) : (
+              filteredServices.map((service) => (
+                <div key={service.id} className="dvnb_item">
+                  <Link
+                    to={`/service/${service.id}`}
+                    className="dvnb_box position-relative d-block"
+                  >
+                    <div className="dvnb_pic service-pic scale-img hover-glass">
+                      <picture>
+                        <source
+                          srcSet={`/${service.image}`}
+                          media="(min-width: 0px)"
+                        />
+                        <img
+                          className="d-inline-block w-100"
+                          data-src={`/${service.image}`}
+                          src="/thumbs/300x345x2/assets/images/noimage.png.webp"
+                          alt={service.title}
+                          onError={(e) =>
+                            (e.target.src =
+                              "/thumbs/300x345x2/assets/images/noimage.png.webp")
+                          }
+                        />
+                      </picture>
+                    </div>
+                    <div className="dvnb_bottom"></div>
+                    <div className="dvnb_info">
+                      <h3 className="dvnb__name text-split">{service.title}</h3>
+                    </div>
+                  </Link>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
