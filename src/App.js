@@ -50,6 +50,7 @@ function App() {
           <Route path="service/:serviceId" element={<ServiceDetail />} />
           <Route path="products" element={<Products />} />
           <Route path="feedback" element={<Feedback />} />
+          <Route path="feedback/:id" element={<Feedback />} />
           <Route path="news" element={<News />} />
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
