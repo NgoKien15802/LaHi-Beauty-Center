@@ -11,7 +11,8 @@
           "description": "Liệu trình chăm sóc da chuyên sâu với công nghệ cao",
           "price": "500,000 VNĐ",
           "duration": "90 phút",
-          "image": "assets/images/services/cham-soc-da-chuyen-sau.jpg"
+          "image": "assets/images/services/cham-soc-da-chuyen-sau.jpg",
+          "relatedServices": ["facial-peel-treatment", "glow-skin-therapy"]
         },
         {
           "id": "facial-peel-treatment",
@@ -19,7 +20,8 @@
           "description": "Điều trị da bằng công nghệ peel hiện đại",
           "price": "800,000 VNĐ",
           "duration": "120 phút",
-          "image": "assets/images/services/chemical-peeling.jpg"
+          "image": "assets/images/services/chemical-peeling.jpg",
+          "relatedServices": ["cham-soc-da-chuyen-sau", "glow-skin-therapy"]
         },
         {
           "id": "glow-skin-therapy",
@@ -27,7 +29,8 @@
           "description": "Liệu trình làm sáng da tự nhiên",
           "price": "600,000 VNĐ",
           "duration": "75 phút",
-          "image": "assets/images/services/duong-trang-genwhite.jpg"
+          "image": "assets/images/services/duong-trang-genwhite.jpg",
+          "relatedServices": ["cham-soc-da-chuyen-sau", "facial-peel-treatment"]
         }
       ]
     },
@@ -42,7 +45,8 @@
           "description": "Phun chân mày tự nhiên, đẹp bền lâu",
           "price": "1,200,000 VNĐ",
           "duration": "150 phút",
-          "image": "assets/images/services/phun-may.jpg"
+          "image": "assets/images/services/phun-may.jpg",
+          "relatedServices": ["phun-moi"]
         },
         {
           "id": "phun-moi",
@@ -50,7 +54,8 @@
           "description": "Phun môi tự nhiên, đẹp bền lâu",
           "price": "1,500,000 VNĐ",
           "duration": "180 phút",
-          "image": "assets/images/services/phun-moi.jpg"
+          "image": "assets/images/services/phun-moi.jpg",
+          "relatedServices": ["phun-chan-may"]
         }
       ]
     },

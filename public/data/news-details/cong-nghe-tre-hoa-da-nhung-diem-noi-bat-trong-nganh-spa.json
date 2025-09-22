@@ -1,0 +1,110 @@
+{
+  "id": "cong-nghe-tre-hoa-da-nhung-diem-noi-bat-trong-nganh-spa",
+  "slug": "cong-nghe-tre-hoa-da-nhung-diem-noi-bat-trong-nganh-spa",
+  "title": "Công Nghệ Trẻ Hóa Da: Những Điểm Nổi Bật Trong Ngành Spa",
+  "subtitle": "Khám Phá Các Công Nghệ Làm Đẹp Hiện Đại Tại LaHi Beauty Center",
+  "date": "2024-11-22",
+  "dateFormatted": "thứ sáu, 22 Tháng 11 2024",
+  "category": "Công nghệ làm đẹp",
+  "author": "LaHi Beauty Center",
+  "tags": ["trẻ hóa da", "công nghệ spa", "làm đẹp"],
+  "featured": true,
+  "hero": {
+    "image": "thumbs/400x285x1/upload/news/phun-cm-1732243260.jpg.webp",
+    "alt": "Công nghệ trẻ hóa da",
+    "caption": "Công nghệ trẻ hóa da hiện đại tại LaHi Beauty Center"
+  },
+  "toc": [
+    {
+      "id": "gioi-thieu",
+      "label": "Giới Thiệu Về Công Nghệ Trẻ Hóa Da"
+    },
+    {
+      "id": "cong-nghe-noi-bat",
+      "label": "Những Công Nghệ Trẻ Hóa Da Nổi Bật",
+      "children": [
+        { "id": "cn1", "label": "1. Công Nghệ HIFU (High Intensity Focused Ultrasound)" },
+        { "id": "cn2", "label": "2. Công Nghệ Radio Frequency" },
+        { "id": "cn3", "label": "3. Công Nghệ Laser Fractional" },
+        { "id": "cn4", "label": "4. Công Nghệ Microneedling" }
+      ]
+    },
+    {
+      "id": "loi-ich",
+      "label": "Lợi Ích Của Công Nghệ Trẻ Hóa Da",
+      "children": [
+        { "id": "li1", "label": "1. Cải Thiện Độ Đàn Hồi Da" },
+        { "id": "li2", "label": "2. Giảm Nếp Nhăn và Đường Nhăn" },
+        { "id": "li3", "label": "3. Tăng Cường Sản Sinh Collagen" }
+      ]
+    },
+    {
+      "id": "quy-trinh",
+      "label": "Quy Trình Thực Hiện Tại LaHi Beauty Center",
+      "children": [
+        { "id": "qt1", "label": "1. Tư Vấn và Đánh Giá Da" },
+        { "id": "qt2", "label": "2. Chuẩn Bị và Làm Sạch Da" },
+        { "id": "qt3", "label": "3. Thực Hiện Liệu Trình" },
+        { "id": "qt4", "label": "4. Chăm Sóc Sau Điều Trị" }
+      ]
+    },
+    {
+      "id": "ket-luan",
+      "label": "Kết Luận"
+    }
+  ],
+  "sections": [
+    {
+      "id": "gioi-thieu",
+      "heading": "Giới Thiệu Về Công Nghệ Trẻ Hóa Da",
+      "content": "Trẻ hóa da là một trong những nhu cầu làm đẹp được quan tâm hàng đầu hiện nay. Với sự phát triển không ngừng của công nghệ, ngành spa đã và đang cung cấp các giải pháp hiện đại, an toàn và hiệu quả để mang lại làn da căng bóng, mịn màng và trẻ trung hơn. Bài viết này sẽ cung cấp thông tin chi tiết về những công nghệ trẻ hóa da nổi bật trong ngành spa, giúp bạn hiểu rõ hơn về các liệu pháp này.",
+      "image": "thumbs/400x285x1/upload/news/phun-cm-1732243260.jpg.webp"
+    },
+    {
+      "id": "cong-nghe-noi-bat",
+      "heading": "Những Công Nghệ Trẻ Hóa Da Nổi Bật",
+      "bullets": [
+        "Công nghệ HIFU (High Intensity Focused Ultrasound) sử dụng sóng siêu âm cường độ cao để kích thích sản sinh collagen tự nhiên, giúp nâng cơ và làm căng da từ bên trong.",
+        "Công nghệ Radio Frequency sử dụng năng lượng nhiệt để làm nóng các lớp sâu của da, kích thích tái tạo collagen và elastin, giúp da săn chắc và đàn hồi hơn.",
+        "Công nghệ Laser Fractional tạo ra những vết thương nhỏ trên da để kích thích quá trình tự chữa lành, giúp cải thiện kết cấu da và giảm sẹo.",
+        "Công nghệ Microneedling sử dụng những kim siêu nhỏ để tạo ra các kênh vi mô trên da, giúp các dưỡng chất thẩm thấu sâu hơn và kích thích tái tạo da."
+      ]
+    },
+    {
+      "id": "loi-ich",
+      "heading": "Lợi Ích Của Công Nghệ Trẻ Hóa Da",
+      "bullets": [
+        "Cải thiện độ đàn hồi da: Các công nghệ này giúp kích thích sản sinh collagen và elastin, làm cho da trở nên săn chắc và đàn hồi hơn.",
+        "Giảm nếp nhăn và đường nhăn: Công nghệ trẻ hóa da có thể làm mờ các nếp nhăn nông và cải thiện kết cấu da tổng thể.",
+        "Tăng cường sản sinh collagen: Collagen là protein quan trọng giúp duy trì độ săn chắc và trẻ trung của da."
+      ]
+    },
+    {
+      "id": "quy-trinh",
+      "heading": "Quy Trình Thực Hiện Tại LaHi Beauty Center",
+      "steps": [
+        "Tư vấn và đánh giá da: Chuyên gia sẽ khám và đánh giá tình trạng da của bạn để đề xuất phương pháp phù hợp nhất.",
+        "Chuẩn bị và làm sạch da: Da sẽ được làm sạch kỹ lưỡng để đảm bảo hiệu quả tối đa của liệu trình.",
+        "Thực hiện liệu trình: Áp dụng công nghệ trẻ hóa da phù hợp với từng loại da và nhu cầu cụ thể.",
+        "Chăm sóc sau điều trị: Hướng dẫn cách chăm sóc da sau khi thực hiện liệu trình để đạt kết quả tốt nhất."
+      ]
+    },
+    {
+      "id": "ket-luan",
+      "heading": "Kết Luận",
+      "content": "Công nghệ trẻ hóa da hiện đại đã mang lại những giải pháp hiệu quả và an toàn cho việc chăm sóc da. Tại LaHi Beauty Center, chúng tôi cam kết mang đến những dịch vụ chất lượng cao với công nghệ tiên tiến nhất, giúp bạn có được làn da trẻ trung và khỏe mạnh. Hãy liên hệ với chúng tôi để được tư vấn chi tiết về các liệu trình phù hợp với nhu cầu của bạn."
+    }
+  ],
+  "relatedNews": [
+    {
+      "id": "10-bi-quyet-giu-gin-lan-da-tre-khoe-tai-spa",
+      "title": "10 Bí Quyết Giữ Gìn Làn Da Trẻ Khỏe Tại Spa",
+      "image": "thumbs/400x285x1/upload/news/cham-soc-da-chuyen-sau-1732243225.jpg.webp"
+    },
+    {
+      "id": "xu-huong-lam-dep-spa-nam-2024-cong-nghe-va-phong-cach",
+      "title": "Xu Hướng Làm Đẹp Spa Năm 2024 – Công Nghệ Và Phong Cách",
+      "image": "thumbs/400x285x1/upload/news/massage-spa-body-1732265546.jpg.webp"
+    }
+  ]
+}
