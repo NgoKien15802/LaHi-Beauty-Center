@@ -1,0 +1,189 @@
+{
+  "categories": [
+    {
+      "id": "dieu-tri-mun",
+      "name": "ĐIỀU TRỊ MỤN",
+      "image": "upload/feedback/menu/ic-services-chamsocda.svg",
+      "feedback": [
+        {
+          "id": 1,
+          "name": "Chăm sóc da mụn – 8 buổi – Sạch mụn và sẹo thâm",
+          "image": "upload/feedback/dieutrimun/sach-mun-va-seo-tham.png"
+        },
+        {
+          "id": 2,
+          "name": "Chăm sóc da mụn – 4 buổi – Giảm mụn ẩn gây ngứa",
+          "image": "upload/feedback/dieutrimun/giam-mun-an-gay-ngua.png"
+        },
+        {
+          "id": 3,
+          "name": "Chăm sóc da mụn – 8 buổi – Giảm ngứa và kích ứng",
+          "image": "upload/feedback/dieutrimun/giam-ngua-va-kich-ung.png"
+        },
+        {
+          "id": 4,
+          "name": "Chăm sóc da mụn – 7 buổi – Kiểm soát dầu hiệu quả",
+          "image": "upload/feedback/dieutrimun/kiem-soat-dau-hieu-qua.png"
+        },
+        {
+          "id": 5,
+          "name": "Chăm sóc da mụn – 7 buổi – Da đều màu giảm thâm",
+          "image": "upload/feedback/dieutrimun/da-deu-mau-giam-tham.png"
+        }
+      ]
+    },
+    {
+      "id": "dieu-tri-nam",
+      "name": "ĐIỀU TRỊ NÁM",
+      "image": "upload/feedback/menu/ic-services-dieutrida.svg",
+      "feedback": [
+        {
+          "id": 6,
+          "name": "Trị sắc tố – 5 Liệu trình – Cải thiện nám cánh bướm",
+          "image": "upload/feedback/dieutrinam/cai-thien-nam-canh-buom.png"
+        },
+        {
+          "id": 7,
+          "name": "Trị sắc tố – 3 Liệu trình – Da sáng mịn đều màu",
+          "image": "upload/feedback/dieutrinam/da-sang-min-deu-mau.png"
+        },
+        {
+          "id": 8,
+          "name": "Trị sắc tố – 3 Liệu trình – Giảm đốm nâu rõ rệt",
+          "image": "upload/feedback/dieutrinam/giam-dom-nau-ro-ret.png"
+        },
+        {
+          "id": 9,
+          "name": "Trị sắc tố – 4 Liệu trình – Da sáng khỏe mờ thâm",
+          "image": "upload/feedback/dieutrinam/da-sang-khoe-mo-tham.png"
+        },
+        {
+          "id": 10,
+          "name": "Trị sắc tố – Liệu trình – Giảm nám và tàn nhang",
+          "image": "upload/feedback/dieutrinam/giam-nam-va-tan-nhang.png"
+        }
+      ]
+    },
+    {
+      "id": "phun-xam",
+      "name": "PHUN XĂM",
+      "image": "upload/feedback/menu/ic-services-phunxam.svg",
+      "feedback": [
+        {
+          "id": 11,
+          "name": "Phun môi flora – 60 phút – Môi hồng đào rạng ngời",
+          "image": "upload/feedback/phunsam/moi-hong-dao-rang-ro.png"
+        },
+        {
+          "id": 12,
+          "name": "Phun môi flora – 90 phút – Môi hồng baby sáng da",
+          "image": "upload/feedback/phunsam/moi-hong-sang-da.png"
+        },
+        {
+          "id": 13,
+          "name": "Phun môi flora – 60 phút – Môi cam san hô trẻ trung",
+          "image": "upload/feedback/phunsam/moi-cam-san-ho-tre-trung.png"
+        },
+        {
+          "id": 14,
+          "name": "Phun mày ombre – 75 phút – Mày mịn đều cuốn hút",
+          "image": "upload/feedback/phunsam/may-min-deu-cuon-hut.png"
+        },
+        {
+          "id": 15,
+          "name": "Phun mày Ombre – 75 phút – Mày đều màu sắc sảo",
+          "image": "upload/feedback/phunsam/may-deu-mau-sac-sao.png"
+        }
+      ]
+    },
+    {
+      "id": "triet-long",
+      "name": "TRIỆT LÔNG",
+      "image": "upload/feedback/menu/ic-services-trietlong.svg",
+      "feedback": [
+        {
+          "id": 16,
+          "name": "Triệt lông chân – 8 buổi – Giảm lông chân mọc ngược",
+          "image": "upload/feedback/trietlong/giam-long-chan-moc-nguoc.png"
+        },
+        {
+          "id": 17,
+          "name": "Triệt lông chân – 7 buổi – Sạch lông chân an toàn",
+          "image": "upload/feedback/trietlong/sach-long-chan-an-toan.png"
+        },
+        {
+          "id": 18,
+          "name": "Triệt lông nách – 10 buổi – Giảm mùi vùng cánh",
+          "image": "upload/feedback/trietlong/giam-mui-vung-canh.png"
+        },
+        {
+          "id": 19,
+          "name": "Triệt lông nách – 7 buổi – Vùng cánh tay thông thoáng cả ngày",
+          "image": "upload/feedback/trietlong/nach-thong-thoang-ca-ngay.png"
+        },
+        {
+          "id": 20,
+          "name": "Triệt lông nách – 4 buổi – Vùng cánh sáng màu rõ rệt",
+          "image": "upload/feedback/trietlong/vung-canh-sang-mau-ro-ret.png"
+        },
+        {
+          "id": 21,
+          "name": "Giảm thâm nách – 7 buổi – Vùng cánh tay sạch khỏe mờ thâm",
+          "image": "upload/feedback/giamthamnach/nach-sang-khoe-mo-tham.png"
+        },
+        {
+          "id": 22,
+          "name": "Giảm thâm nách – 5 buổi – Giảm mùi cơ thể",
+          "image": "upload/feedback/giamthamnach/giam-mui-co-the.png"
+        },
+        {
+          "id": 23,
+          "name": "Giảm thâm nách – 4 buổi – Giảm thâm vùng cánh tay",
+          "image": "upload/feedback/giamthamnach/giam-tham-nach.png"
+        },
+        {
+          "id": 24,
+          "name": "Giảm thâm nách – 6 buổi – Sạch lông trắng sáng",
+          "image": "upload/feedback/giamthamnach/sach-long-trang-sang.png"
+        },
+        {
+          "id": 25,
+          "name": "Giảm thâm nách – 10 buổi – Trắng sáng vùng cánh tay",
+          "image": "upload/feedback/trietlong/vung-canh-sang-mau-ro-ret.png"
+        }
+      ]
+    },
+    {
+      "id": "hifu new doublo 2.0",
+      "name": "HIFU NEW DOUBLO 2.0",
+      "image": "upload/feedback/menu/ic-services-chamsocda.svg",
+      "feedback": [
+        {
+          "id": 26,
+          "name": "Căng bóng vùng mắt",
+          "image": "upload/feedback/hifu/hifu1.png"
+        },
+        {
+          "id": 27,
+          "name": "Căng bóng da mặt",
+          "image": "upload/feedback/hifu/hifu2.png"
+        },
+        {
+          "id": 28,
+          "name": "Giảm nếp nhăn",
+          "image": "upload/feedback/hifu/hifu3.png"
+        },
+        {
+          "id": 29,
+          "name": "Căng bóng da mặt",
+          "image": "upload/feedback/hifu/hifu4.png"
+        },
+        {
+          "id": 30,
+          "name": "Giảm nếp nhăn rãnh cười",
+          "image": "upload/feedback/hifu/hifu5.png"
+        }
+      ]
+    }
+  ]
+}
