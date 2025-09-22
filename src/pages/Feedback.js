@@ -6,6 +6,7 @@ const Feedback = () => {
     const [feedbackGroups, setFeedbackGroups] = useState([]);
     const [activeGroup, setActiveGroup] = useState("all");
     const [keyword, setKeyword] = useState("");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchData();
@@ -15,30 +16,62 @@ const Feedback = () => {
         setActiveGroup(groupSlug || "all");
     }, [groupSlug]);
 
+    // Initialize lazy loading after services are loaded
+    useEffect(() => {
+        if (!loading && feedbackGroups.length > 0) {
+            // Wait for DOM to be updated
+            setTimeout(() => {
+            // Initialize lazy loading
+            if (window.LazyLoad) {
+                new window.LazyLoad({
+                elements_selector: ".lazy",
+                });
+            }
+
+            // Also try jQuery lazy loading
+            if (window.$ && window.$().lazy) {
+                window.$(".lazy").lazy();
+            }
+            }, 100);
+        }
+    }, [loading, feedbackGroups]);
+
     const fetchData = async () => {
         try {
-        const res = await fetch("/data/feedback.json");
-        const data = await res.json();
-        setFeedbackGroups(data.categories);
+            const res = await fetch("/data/feedback.json");
+            const data = await res.json();
+            setFeedbackGroups(data.categories);
         } catch (error) {
-        console.error("Error loading feedback:", error);
+            console.error("Error loading feedback:", error);
+        } finally {
+            setLoading(false);
         }
     };
 
     // lấy danh sách feedback theo nhóm + filter keyword
     const getFeedbackList = () => {
-        let list =
-        activeGroup === "all"
+        let list = activeGroup === "all"
             ? feedbackGroups.flatMap(group => group.feedback)
             : feedbackGroups.find(group => group.id === activeGroup)?.feedback || [];
 
         if (keyword.trim() !== "") {
-        list = list.filter(fb =>
-            fb.name.toLowerCase().includes(keyword.toLowerCase())
-        );
+            list = list.filter(fb =>
+                fb.name.toLowerCase().includes(keyword.toLowerCase())
+            );
         }
         return list;
     };
+
+    if (loading) {
+        return (
+        <div className="loading-spinner">
+            <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+            </div>
+            <p className="mt-3">Đang tải danh sách feedback...</p>
+        </div>
+        );
+    }
 
     return (
         <>
@@ -68,8 +101,8 @@ const Feedback = () => {
 
                     <div className="container">
                         {/* Menu feedback */}
-                        <div className="row justify-content-center my-4 mx-5">
-                            <div className="col-6 col-sm-4 col-md-2 text-center mb-1">
+                        <div className="row justify-content-center my-4 mx-lg-5">
+                            <div className="col-4 col-md-4 col-lg-2 text-center mb-1">
                                 <Link to="/feedback" className={`d-block ${activeGroup === "all" ? "text-primary fw-bold" : "text-secondary"}`}>
                                     <div className={`rounded-circle border ${activeGroup === "all" ? "border-primary" : "border-secondary"} mx-auto`} 
                                         style={{ width: 80, height: 80, display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -80,7 +113,7 @@ const Feedback = () => {
                             </div>
 
                             {feedbackGroups.map(group => (
-                                <div key={group.id} className="col-6 col-sm-4 col-md-2 text-center mb-1">
+                                <div key={group.id} className="col-4 col-md-4 col-lg-2 text-center mb-1">
                                     <Link to={`/feedback/${group.id}`} className={`d-block ${activeGroup === group.id ? "text-primary fw-bold" : "text-secondary"}`}>
                                         <div className={`rounded-circle border ${activeGroup === group.id ? "border-primary" : "border-secondary"} mx-auto`} 
                                             style={{ width: 80, height: 80, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
