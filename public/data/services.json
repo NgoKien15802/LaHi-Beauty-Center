@@ -139,6 +139,11 @@
               "price": "Giá liên hệ",
               "duration": "90 - 120 phút",
               "image": "assets/images/services/chemical-peeling.jpg",
+              "relatedServices": [
+                "basic-anti-acne-control",
+                "glow-skin-therapy",
+                "phun-chan-may"
+              ],
               "benefits": [
                 "Làm mờ và loại bỏ sắc tố sạm nám, tàn nhang, đốm nâu",
                 "Kích thích sản sinh collagen và elastin, cải thiện độ đàn hồi",
