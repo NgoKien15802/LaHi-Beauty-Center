@@ -97,7 +97,7 @@ const Header = () => {
                     servicesData.categories.map(category => (
                       <li key={category.id} className="level-0">
                         <Link 
-                          to={`/services?category=${encodeURIComponent(category.name)}`}
+                          to={`/services?category=${category.id}`}
                           className="transition"
                           title={category.name}
                         >
