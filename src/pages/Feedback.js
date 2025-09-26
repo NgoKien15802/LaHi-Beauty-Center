@@ -9,19 +9,22 @@ const Feedback = () => {
     const [activeSubMenu, setActiveSubMenu] = useState(null);
     const [keyword, setKeyword] = useState("");
     const [loading, setLoading] = useState(true);
+    const [selectedIndex, setSelectedIndex] = useState(null);
 
     useEffect(() => {
         fetchData();
     }, []);
 
+	// Cập nhật activeCategory và activeSubMenu khi feedBackId thay đổi
     useEffect(() => {
+		// Xử lý khi chọn menu "Tất cả" hoặc không có feedBackId
         if (!feedBackId || feedBackId === "all") {
             setActiveCategory("all");
             setActiveSubMenu(null);
             return;
         }
 
-        // menu
+        // xử lý khi chọn category
         const category = feedbackGroups.find((cat) => cat.id.toString() === feedBackId);
         if (category) {
             setActiveCategory(category.id);
@@ -29,7 +32,7 @@ const Feedback = () => {
             return;
         }
 
-        // submenu
+        // xử lý khi chọn submenu
         const sub = feedbackGroups
             .flatMap((cat) => cat.subMenu.map((s) => ({ ...s, parentId: cat.id })))
             .find((s) => s.id.toString() === feedBackId);
@@ -60,6 +63,7 @@ const Feedback = () => {
         }
     }, [loading, feedbackGroups]);
 
+	// load feedback data from local JSON file
     const fetchData = async () => {
         try {
             const res = await fetch("/data/feedback.json");
@@ -78,14 +82,14 @@ const Feedback = () => {
 
         if (activeCategory === "all") {
             if (activeSubMenu) {
-                // Lọc theo submenu khi chọn "Tất cả"
+                // Lọc theo submenu khi chọn menu "Tất cả"
                 const sub = feedbackGroups
                     .flatMap(cat => cat.subMenu.map(s => ({ ...s, parentId: cat.id })))
                     .find(s => s.id === activeSubMenu);
 
                 list = sub ? sub.feedbacks : [];
             } else {
-                // Chưa chọn submenu → gom toàn bộ feedback
+                // hiển thị toàn bộ feedback
                 list = feedbackGroups.flatMap(cat =>
                     cat.subMenu.flatMap(sub => sub.feedbacks)
                 );
@@ -99,7 +103,7 @@ const Feedback = () => {
                 const sub = category.subMenu.find(s => s.id === activeSubMenu);
                 list = sub ? sub.feedbacks : [];
             } else {
-                // chưa chọn submenu → gom tất cả feedback của category
+                // hiển thị toàn bộ feedback của menu đó
                 list = category.subMenu.flatMap(sub => sub.feedbacks);
             }
         }
@@ -112,6 +116,23 @@ const Feedback = () => {
         }
 
         return list;
+    };
+
+	// Danh sách feedback hiện tại theo category/submenu đang chọn
+    const activeList = getFeedbackList();
+	// Xử lý selectedIndex luôn hợp lệ khi activeList đổi.
+    useEffect(() => {
+        if (selectedIndex !== null && (activeList.length === 0 || selectedIndex >= activeList.length)) {
+            setSelectedIndex(null);
+        }
+    }, [activeList, selectedIndex]);
+
+	// Xử lý chuyển ảnh feedback trước/sau trong popup
+    const showPrev = () => {
+    	setSelectedIndex(prev => (prev === 0 ? activeList.length - 1 : prev - 1));
+    };
+    const showNext = () => {
+    	setSelectedIndex(prev => (prev === activeList.length - 1 ? 0 : prev + 1));
     };
 
   if (loading) {
@@ -222,10 +243,10 @@ const Feedback = () => {
 
             {/* list feedback */}
             <div className="row">
-              {getFeedbackList().map((fb) => (
+              {getFeedbackList().map((fb, index) => (
                 <div key={`${activeCategory}-${fb.id}`} className="col-6 col-sm-4 col-md-3 mb-3">
                   <div className="border p-2 text-center">
-                    <img src={`/${fb.image}`} alt={fb.name} className="img-fluid" />
+                    <img src={`/${fb.image}`} alt={fb.name} className="img-fluid" onClick={() => setSelectedIndex(index)}/>
                     <p>{fb.name}</p>
                   </div>
                 </div>
@@ -235,6 +256,48 @@ const Feedback = () => {
                 <p className="text-center">Không có feedback nào</p>
               )}
             </div>
+
+			{/* Popup lightbox */}
+			{selectedIndex !== null && activeList.length > 0 && (
+				<div className="modal d-block bg-dark bg-opacity-75" tabIndex="-1" onClick={() => setSelectedIndex(null)}>
+					<div className="modal-dialog modal-dialog-centered" style={{ maxWidth: "95vw" }} onClick={(e) => e.stopPropagation()}>
+						<div className="modal-content bg-transparent border-0 text-center position-relative">
+							<button 
+								type="button" 
+								className="btn btn-warning rounded-circle position-absolute top-0 end-0 m-2 d-flex align-items-center justify-content-center" 
+								style={{ width: 50, height: 50, zIndex: 10 }}
+								onClick={() => setSelectedIndex(null)}
+							>
+								✕
+							</button>
+
+							<img src={`/${activeList[selectedIndex].image}`} alt={activeList[selectedIndex].name} className="popup-img" />
+
+							<button
+								className="btn position-absolute top-50 start-0 translate-middle-y text-white"
+								style={{ left: "-20px", fontSize: "80px" }}
+								onClick={showPrev}
+								aria-label="Prev"
+							>
+								‹
+							</button>
+
+							<button
+								className="btn position-absolute top-50 end-0 translate-middle-y text-white"
+								style={{ right: "-20px", fontSize: "80px" }}
+								onClick={showNext}
+								aria-label="Next"
+							>
+								›
+							</button>
+
+							<div className="mt-3 text-white">
+								<h5 className="mb-0">{activeList[selectedIndex].name}</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
           </div>
         </div>
       </div>
