@@ -230,7 +230,7 @@ const Feedback = () => {
                     <Link
                         key={sub.id}
                         to={`/feedback/${sub.id}`}
-                        className={`submenu-item px-3 py-2 mx-2 rounded-pill ${
+                        className={`submenu-item rounded-pill ${
                             activeSubMenu === sub.id ? "active" : ""
                         }`}
                         onClick={() => setActiveSubMenu(sub.id)}
@@ -242,7 +242,7 @@ const Feedback = () => {
 
             {/* Search input */}
             <div className="row justify-content-center my-4">
-                <div className="col-12 col-sm-10 col-md-6">
+                <div className="col-12 col-sm-10 col-lg-8">
                     <div className="d-flex align-items-center border rounded-pill overflow-hidden" style={{ backgroundColor: "#fff" }}>
                     <div className="d-flex align-items-center justify-content-center p-3">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" style={{ width: "20px", height: "20px" }}>

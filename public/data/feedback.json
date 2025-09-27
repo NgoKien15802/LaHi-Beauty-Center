@@ -71,8 +71,8 @@
       ]
     },
     {
-      "id": "phun-xam-tham-my",
-      "name": "PHUN XĂM THẨM MỸ",
+      "id": "phun-xam",
+      "name": "PHUN XĂM",
       "image": "upload/feedback/menu/ic-services-phunxam.svg",
       "subMenu": [
         {
@@ -119,6 +119,76 @@
               "id": "may-dam-net-tu-nhien",
               "name": "Phun mày chạm hạt – 60 phút – Mày đậm nét tự nhiên",
               "image": "upload/feedback/phunsam/moi-cam-san-ho-tre-trung.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dieu-tri-da",
+      "name": "ĐIỀU TRỊ DA",
+      "image": "upload/feedback/menu/ic-services-dieutrida.svg",
+      "subMenu": [
+        {
+          "id": "dieu-tri-tham",
+          "name": "Điều trị thâm",
+          "feedbacks": [
+            {
+              "id": "tam-biet-ve-met-moi-u-am",
+              "name": "Trị thâm mắt – 5 liệu trình – Tạm biệt vẻ mệt mỏi u ám",
+              "image": "upload/feedback/phunsam/moi-hong-dao-rang-ro.png"
+            }
+          ]
+        },
+        {
+          "id": "se-khit-lo-chan-long",
+          "name": "Se khít lỗ chân lông",
+          "feedbacks": [
+            {
+              "id": "da-lang-min-rang-ro",
+              "name": "Se khít lỗ chân lông – 6 Buổi – Da láng mịn rạng rỡ",
+              "image": "upload/feedback/phunsam/may-deu-mau-sac-sao.png"
+            },
+            {
+              "id": "giam-dau-thua-tren-da",
+              "name": "Se khít lỗ chân lông – 5 Buổi – Giảm dầu thừa trên da",
+              "image": "upload/feedback/phunsam/moi-hong-sang-da.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lieu-trinh-combo",
+      "name": "LIỆU TRÌNH COMBO",
+      "image": "upload/feedback/menu/ic-services-dieutrida.svg",
+      "subMenu": [
+        {
+          "id": "combo-cham-soc-da",
+          "name": "Combo chăm sóc da",
+          "feedbacks": [
+            {
+              "id": "da-giam-nam-deu-mau",
+              "name": "Trẻ hóa da – 7 buổi – Da giảm nám đều màu",
+              "image": "upload/feedback/phunsam/moi-hong-dao-rang-ro.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cong-nghe-cao",
+      "name": "CÔNG NGHỆ CAO",
+      "image": "upload/feedback/menu/ic-services-dieutrida.svg",
+      "subMenu": [
+        {
+          "id": "u-trang-mat-skin-white",
+          "name": "Ủ trắng mặt Skin White",
+          "feedbacks": [
+            {
+              "id": "da-sang-min-rang-ro",
+              "name": "Ủ trắng mặt skin white – 8 buổi – Da sáng mịn rạng rỡ",
+              "image": "upload/feedback/phunsam/moi-hong-dao-rang-ro.png"
             }
           ]
         }
