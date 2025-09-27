@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../styles/Feedback.css";
+import Pagination from "../components/Pagination";
 
 const Feedback = () => {
     const { feedBackId } = useParams();
@@ -10,6 +11,9 @@ const Feedback = () => {
     const [keyword, setKeyword] = useState("");
     const [loading, setLoading] = useState(true);
     const [selectedIndex, setSelectedIndex] = useState(null);
+    const [pageLoading, setPageLoading] = useState(false);
+    const pageSize = 12;
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         fetchData();
@@ -118,6 +122,17 @@ const Feedback = () => {
         return list;
     };
 
+    // Danh sách feedback đã phân trang
+    const getPagedList = () => {
+        const list = getFeedbackList();
+        const totalPages = Math.max(1, Math.ceil(list.length / pageSize));
+        const page = Math.min(currentPage, totalPages);
+        const start = (page - 1) * pageSize;
+        const pagedList = list.slice(start, start + pageSize);
+
+        return { list, pagedList, start, totalPages };
+    };
+
 	// Danh sách feedback hiện tại theo category/submenu đang chọn
     const activeList = getFeedbackList();
 	// Xử lý selectedIndex luôn hợp lệ khi activeList đổi.
@@ -134,6 +149,11 @@ const Feedback = () => {
     const showNext = () => {
     	setSelectedIndex(prev => (prev === activeList.length - 1 ? 0 : prev + 1));
     };
+
+    // reset to first page when filters or keyword change
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [activeCategory, activeSubMenu, keyword]);
 
   if (loading) {
     return (
@@ -243,61 +263,86 @@ const Feedback = () => {
 
             {/* list feedback */}
             <div className="row">
-              {getFeedbackList().map((fb, index) => (
-                <div key={`${activeCategory}-${fb.id}`} className="col-6 col-sm-4 col-md-3 mb-3">
-                  <div className="border p-2 text-center">
-                    <img src={`/${fb.image}`} alt={fb.name} className="img-fluid" onClick={() => setSelectedIndex(index)}/>
-                    <p>{fb.name}</p>
-                  </div>
-                </div>
-              ))}
+                {(() => {
+                    const { list, pagedList, start } = getPagedList();
 
-              {getFeedbackList().length === 0 && (
-                <p className="text-center">Không có feedback nào</p>
-              )}
+                    return (
+                        <>
+                            {pagedList.map((fb, index) => {
+                                const globalIndex = start + index;
+                                return (
+                                    <div key={`${activeCategory}-${fb.id}`} className="col-6 col-sm-4 col-md-3 mb-3">
+                                        <div className="border p-2 text-center">
+                                            <img src={`/${fb.image}`} alt={fb.name} className="img-fluid" onClick={() => setSelectedIndex(globalIndex)}/>
+                                            <p>{fb.name}</p>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+
+                            {list.length === 0 && <p className="text-center">Không có feedback nào</p>}
+                        </>
+                    );
+                })()}
             </div>
 
 			{/* Popup lightbox */}
-			{selectedIndex !== null && activeList.length > 0 && (
-				<div className="modal d-block bg-dark bg-opacity-75" tabIndex="-1" onClick={() => setSelectedIndex(null)}>
-					<div className="modal-dialog modal-dialog-centered" style={{ maxWidth: "95vw" }} onClick={(e) => e.stopPropagation()}>
-						<div className="modal-content bg-transparent border-0 text-center position-relative">
-							<button 
-								type="button" 
-								className="btn btn-warning rounded-circle position-absolute top-0 end-0 m-2 d-flex align-items-center justify-content-center" 
-								style={{ width: 50, height: 50, zIndex: 10 }}
-								onClick={() => setSelectedIndex(null)}
-							>
-								✕
-							</button>
+            {selectedIndex !== null && activeList.length > 0 && (
+                <div className="modal d-block bg-dark bg-opacity-75" tabIndex="-1" onClick={() => setSelectedIndex(null)}>
+                    <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: "95vw" }} onClick={(e) => e.stopPropagation()}>
+                    <div className="modal-content bg-transparent border-0 text-center position-relative">
+                        <button
+                        type="button"
+                        className="btn btn-warning rounded-circle position-absolute top-0 end-0 m-2 d-flex align-items-center justify-content-center"
+                        style={{ width: 50, height: 50, zIndex: 10 }}
+                        onClick={() => setSelectedIndex(null)}
+                        >
+                        ✕
+                        </button>
 
-							<img src={`/${activeList[selectedIndex].image}`} alt={activeList[selectedIndex].name} className="popup-img" />
+                        <img src={`/${activeList[selectedIndex].image}`} alt={activeList[selectedIndex].name} className="popup-img" />
 
-							<button
-								className="btn position-absolute top-50 start-0 translate-middle-y text-white"
-								style={{ left: "-20px", fontSize: "80px" }}
-								onClick={showPrev}
-								aria-label="Prev"
-							>
-								‹
-							</button>
+                        <button
+                        className="btn position-absolute top-50 start-0 translate-middle-y text-white"
+                        style={{ left: "-20px", fontSize: "80px" }}
+                        onClick={showPrev}
+                        aria-label="Prev"
+                        >
+                        ‹
+                        </button>
 
-							<button
-								className="btn position-absolute top-50 end-0 translate-middle-y text-white"
-								style={{ right: "-20px", fontSize: "80px" }}
-								onClick={showNext}
-								aria-label="Next"
-							>
-								›
-							</button>
+                        <button
+                        className="btn position-absolute top-50 end-0 translate-middle-y text-white"
+                        style={{ right: "-20px", fontSize: "80px" }}
+                        onClick={showNext}
+                        aria-label="Next"
+                        >
+                        ›
+                        </button>
 
-							<div className="mt-3 text-white">
-								<h5 className="mb-0">{activeList[selectedIndex].name}</h5>
-							</div>
-						</div>
-					</div>
-				</div>
-			)}
+                        <div className="mt-3 text-white">
+                        <h5 className="mb-0">{activeList[selectedIndex].name}</h5>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            )}
+
+            {/* pagination */}
+            {!pageLoading && getFeedbackList().length > 0 && (
+              <Pagination
+                total={getFeedbackList().length}
+                pageSize={pageSize}
+                currentPage={currentPage}
+                onChange={(p) => {
+                  setPageLoading(true);
+                  setCurrentPage(p);
+                  setTimeout(() => setPageLoading(false), 350);
+                }}
+                scrollToId="services-grid"
+                alwaysShow={true}
+              />
+            )}
           </div>
         </div>
       </div>
