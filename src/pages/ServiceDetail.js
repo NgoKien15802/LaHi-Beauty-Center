@@ -116,19 +116,24 @@ const ServiceDetail = () => {
       const servicesResponse = await fetch("/data/services.json");
       const servicesData = await servicesResponse.json();
 
-      // Search through all categories for the service
+      // Search through all categories and their submenus for the service (new 2-level structure)
       let foundService = null;
       if (servicesData.categories && Array.isArray(servicesData.categories)) {
-        for (const category of servicesData.categories) {
-          if (category.services && Array.isArray(category.services)) {
-            const service = category.services.find((s) => s.id === serviceId);
-            if (service) {
-              foundService = {
-                ...service,
-                category: category.name,
-                title: service.name || service.title,
-              };
-              break;
+        outer: for (const category of servicesData.categories) {
+          if (Array.isArray(category.subMenu)) {
+            for (const sub of category.subMenu) {
+              if (Array.isArray(sub.services)) {
+                const svc = sub.services.find((s) => s.id === serviceId);
+                if (svc) {
+                  foundService = {
+                    ...svc,
+                    category: category.name,
+                    submenu: sub.name,
+                    title: svc.title || svc.name,
+                  };
+                  break outer;
+                }
+              }
             }
           }
         }
@@ -139,7 +144,7 @@ const ServiceDetail = () => {
         setServiceDetail(serviceDetailData);
         setServicesData(servicesData);
         // Update page title
-        document.title = `${foundService.title} | LaHi Beauty Center`;
+        document.title = `${foundService.title || foundService.name} | LaHi Beauty Center`;
       } else {
         setNotFound(true);
       }
@@ -318,7 +323,7 @@ const ServiceDetail = () => {
       // Add the child heading with numbering
       blocks.push(htmlHelpers.h3(child.id, child.label));
       
-      // Add corresponding content from bullets or steps
+      // Add corresponding content from bullets or steps with indentation
       const content = Array.isArray(section.bullets) && section.bullets[index] 
         ? section.bullets[index]
         : Array.isArray(section.steps) && section.steps[index]
@@ -328,7 +333,7 @@ const ServiceDetail = () => {
       if (content) {
         blocks.push(
           htmlHelpers.p(
-            `<span style="font-size:18px;font-family:Times New Roman,Times,serif;">${content}</span>`
+            `<span style="font-size:18px;font-family:Times New Roman,Times,serif;margin-left:20px;display:block;">${content}</span>`
           )
         );
       }
@@ -357,15 +362,20 @@ const ServiceDetail = () => {
       return null;
     }
 
-    // Find related services by their IDs across all categories
+    // Find related services by their IDs across all categories/submenus (2-level)
     const relatedServices = [];
     allServicesData.categories.forEach(category => {
-      if (category.services && Array.isArray(category.services)) {
-        category.services.forEach(service => {
-          if (relatedServiceIds.includes(service.id)) {
-            relatedServices.push({
-              ...service,
-              category: category.name
+      if (Array.isArray(category.subMenu)) {
+        category.subMenu.forEach(sub => {
+          if (Array.isArray(sub.services)) {
+            sub.services.forEach(svc => {
+              if (relatedServiceIds.includes(svc.id)) {
+                relatedServices.push({
+                  ...svc,
+                  category: category.name,
+                  title: svc.title || svc.name
+                });
+              }
             });
           }
         });
@@ -393,35 +403,33 @@ const ServiceDetail = () => {
           <div className="gridNews">
             {relatedServices.map((service) => (
               <div key={service.id} className="dvnb_item">
-                <Link
-                  to={`/service/${service.id}`}
-                  className="dvnb_box position-relative d-block"
-                >
-                  <div className="dvnb_pic service-pic scale-img hover-glass">
-                    <picture>
-                      <source
-                        srcSet={`/${service.image}`}
-                        media="(min-width: 0px)"
-                      />
-                      <img
-                        className="d-inline-block w-100"
-                        data-src={`/${service.image}`}
-                        src="/thumbs/300x345x2/assets/images/noimage.png.webp"
-                        alt={service.title}
-                        onError={(e) =>
-                          (e.target.src =
-                            "/thumbs/300x345x2/assets/images/noimage.png.webp")
-                        }
-                      />
-                    </picture>
-                  </div>
-                  <div className="dvnb_bottom"></div>
-                  <div className="dvnb_info">
-                    <h3 className="dvnb__name text-split">{service.title}</h3>
-                    <div className="service-price">{service.price}</div>
-                    <div className="service-duration">{service.duration}</div>
-                  </div>
-                </Link>
+                 <Link
+                    to={`/service/${service.id}`}
+                    className="dvnb_box position-relative d-block"
+                  >
+                    <div className="dvnb_pic service-pic scale-img hover-glass">
+                      <picture>
+                        <source
+                          srcSet={`/${service.image}`}
+                          media="(min-width: 0px)"
+                        />
+                        <img
+                          className="d-inline-block w-100"
+                          data-src={`/${service.image}`}
+                          src="/thumbs/300x345x2/assets/images/noimage.png.webp"
+                            alt={service.name}
+                          onError={(e) =>
+                            (e.target.src =
+                              "/thumbs/300x345x2/assets/images/noimage.png.webp")
+                          }
+                        />
+                      </picture>
+                    </div>
+                    <div className="dvnb_bottom"></div>
+                    <div className="dvnb_info">
+                        <h3 className="dvnb__name text-split">{service.name}</h3>
+                    </div>
+                  </Link>
               </div>
             ))}
           </div>
