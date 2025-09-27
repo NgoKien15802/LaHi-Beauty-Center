@@ -80,4 +80,12 @@
   }
 }
 
+.footer_article,
+.footer_powered {
+    background-color: #e4b74e;
+}
+
+.custom-link-website:hover {
+    color: #c60002 !important;
+}
 

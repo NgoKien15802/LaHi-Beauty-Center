@@ -10,27 +10,35 @@ const Footer = () => {
             <div className="footer_flex">
               <div className="footer_news">
                 <Link to="/" className="footer_logo">
-                  <img src="thumbs/139x119x1/upload/photo/logo-chinh.jpg" alt="" style={{width: '205px', height: '210px'}} />
+                  <img src="upload/trangchu/logo_trang.png" alt=""/>
                 </Link>
               </div>
               <div className="footer_news">
                 <h3 className="footer_title">Thông tin liên hệ</h3>
-                <div className="footer_info">
+                <div className="footer_info" style={{ lineHeight: '1', fontSize: '16px' }}>
                   <p>
                     <img alt="" height="20" src="upload/filemanager/files/icon/icons8-map-marker-20.png" width="20" /> 
-                    Địa chỉ: 194 Nguyễn Văn Tuyết, Đống Đa, Hà Nội
+                    CS1 : S2.16 - Vinhomes Ocean Park, Gia Lâm, Hà Nội
+                  </p>
+                  <p>
+                    <img alt="" height="20" src="upload/filemanager/files/icon/icons8-help-20.png" width="20" /> 
+                    Hotline 1: <a href="tel:0876638686" className="info__hotline">087.663.8686</a>
+                  </p>
+                  <p>
+                    <img alt="" height="20" src="upload/filemanager/files/icon/icons8-map-marker-20.png" width="20" /> 
+                    CS2 : 194 Nguyễn Văn Tuyết - Quận Đống Đa, Tp. Hà Nội
+                  </p>
+                  <p>
+                    <img alt="" height="20" src="upload/filemanager/files/icon/icons8-help-20.png" width="20" /> 
+                    Hotline 2: <a href="tel:0961658866" className="info__hotline">096.165.8866</a>
                   </p>
                   <p>
                     <img alt="" height="20" src="upload/filemanager/files/icon/icons8-email-20.png" width="20" /> 
                     Email: lahibeautycenter@gmail.com
                   </p>
                   <p>
-                    <img alt="" height="20" src="upload/filemanager/files/icon/icons8-help-20.png" width="20" /> 
-                    Hotline: 096 165 88 66
-                  </p>
-                  <p>
                     <img alt="" height="20" src="upload/filemanager/files/icon/icons8-website-20.png" width="20" /> 
-                    Website: lahibeautycenter.com
+                    Website: <a href="http://lahibeautycenter.com" className="text-white custom-link-website" target="_blank" rel="noopener">lahibeautycenter.com </a>
                   </p>
                 </div>
                 <ul className="social socialf">
@@ -61,20 +69,8 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="footer_news">
-                <div className="fb-page" 
-                     data-href="https://www.facebook.com/lahibeautycenter1" 
-                     data-width="500"
-                     data-height="250" 
-                     data-small-header="false" 
-                     data-adapt-container-width="true"
-                     data-hide-cover="false" 
-                     data-show-facepile="true">
-                  <blockquote cite="https://www.facebook.com/lahibeautycenter1" className="fb-xfbml-parse-ignore">
-                    <a href="https://www.facebook.com/lahibeautycenter1"></a>
-                  </blockquote>
-                </div>
                 <a href="https://www.facebook.com/lahibeautycenter1" target="_blank" rel="noopener noreferrer" className="fb-page-img">
-                  <img src="upload/trangchu/snaptik_7472736510807133456_6.jpeg" alt="Her Skinlab" style={{height: '120px', width: '300px'}} />
+                  <img src="upload/trangchu/snaptik_7472736510807133456_6.jpeg" alt="Her Skinlab" />
                 </a>
               </div>
             </div>

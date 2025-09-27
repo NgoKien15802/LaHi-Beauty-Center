@@ -230,7 +230,7 @@ const Feedback = () => {
                     <Link
                         key={sub.id}
                         to={`/feedback/${sub.id}`}
-                        className={`submenu-item rounded-pill ${
+                        className={`submenu-item me-2 rounded-pill ${
                             activeSubMenu === sub.id ? "active" : ""
                         }`}
                         onClick={() => setActiveSubMenu(sub.id)}
