@@ -452,17 +452,22 @@ const Home = () => {
               <h2>Tại Sao Chọn Chúng Tôi</h2>
             </div>
             <div className="tieuchi__info_main">
-              <div className="logo_tieuchi-main d-none d-lg-block">
+              <div
+                className="logo_tieuchi-main d-none d-lg-block"
+                style={{
+                  left: "51%",
+                }}
+              >
                 <picture>
                   <source
                     srcSet="
-                  http://herskinlab.com.vn/thumbs/333x342x1/upload/photo/logo-1731991788.png.webp
+                  upload/trangchu/logo png.png
                 "
                     media="(min-width: 0px)"
                   />
                   <img
                     className="d-inline-block lazy"
-                    data-src="http://herskinlab.com.vn/thumbs/333x342x1/upload/photo/logo-1731991788.png.webp"
+                    data-src="upload/trangchu/logo png.png"
                     alt="Her Skinlab"
                     width="333"
                     height="342"
@@ -605,65 +610,53 @@ const Home = () => {
               <div className="name-title">LaHi Beauty Center</div>
               <h2>Kiến Thức Làm Đẹp</h2>
             </div>
-            <div className="news_wrap">
-              <div className="splide news">
-                <div className="splide__track">
-                  <div className="gridNews">
-                    {newsLoading ? (
-                      <div className="text-center py-5">
-                        <div
-                          className="spinner-border text-primary"
-                          role="status"
-                        >
-                          <span className="visually-hidden">Loading...</span>
-                        </div>
-                        <p className="mt-3">Đang tải tin tức...</p>
-                      </div>
-                    ) : (
-                      featuredNews.map((article) => (
-                        <div key={article.id} className="news_item">
-                          <Link
-                            to={`/news/${article.slug}`}
-                            className="news_box"
-                          >
-                            <div className="news_pic scale-img hvr-double-box">
-                              <picture>
-                                <source
-                                  srcSet={`/${article.image}`}
-                                  media="(min-width: 0px)"
-                                />
-                                <img
-                                  className="d-inline-block lazy w-100"
-                                  data-src={`/${article.image}`}
-                                  alt="Her Skinlab"
-                                  width="400"
-                                  height="285"
-                                  src="/thumbs/400x285x2/assets/images/noimage.png.webp"
-                                />
-                              </picture>
-                            </div>
-                            <div className="news_info">
-                              <h3 className="news__name text-split">
-                                {article.title}
-                              </h3>
-                              <div className="news__date d-block">
-                                <i
-                                  className="fa-light fa-clock"
-                                  style={{ marginRight: "5px" }}
-                                ></i>
-                                {article.dateFormatted}
-                              </div>
-                              <div className="news__desc text-split news__desc-detail">
-                                {article.description}
-                              </div>
-                            </div>
-                          </Link>
-                        </div>
-                      ))
-                    )}
+            <div className="gridNews">
+              {newsLoading ? (
+                <div className="text-center py-5">
+                  <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
                   </div>
+                  <p className="mt-3">Đang tải tin tức...</p>
                 </div>
-              </div>
+              ) : (
+                featuredNews.map((article) => (
+                  <div key={article.id} className="news_item">
+                    <Link to={`/news/${article.slug}`} className="news_box">
+                      <div className="news_pic scale-img hvr-double-box">
+                        <picture>
+                          <source
+                            srcSet={`/${article.image}`}
+                            media="(min-width: 0px)"
+                          />
+                          <img
+                            className="d-inline-block w-100"
+                            data-src={`/${article.image}`}
+                            alt="Her Skinlab"
+                            width="400"
+                            height="285"
+                            src="/thumbs/400x285x2/assets/images/noimage.png.webp"
+                          />
+                        </picture>
+                      </div>
+                      <div className="news_info">
+                        <h3 className="news__name text-split">
+                          {article.title}
+                        </h3>
+                        <div className="news__date d-block">
+                          <i
+                            className="fa-light fa-clock"
+                            style={{ marginRight: "5px" }}
+                          ></i>
+                          {article.dateFormatted}
+                        </div>
+                        <div className="news__desc text-split news__desc-detail">
+                          {article.description}
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>
