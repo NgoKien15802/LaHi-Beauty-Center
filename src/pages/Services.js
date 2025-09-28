@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import "../styles/Services.css";
-import Pagination from "../components/Pagination";
+import ServiceList from "../components/ServiceList";
 
 const Services = () => {
   const [serviceGroups, setServiceGroups] = useState([]);
@@ -10,8 +10,6 @@ const Services = () => {
   const [keyword, setKeyword] = useState("");
   const [loading, setLoading] = useState(true);
   const [searchLoading, setSearchLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageLoading, setPageLoading] = useState(false);
   const pageSize = 12;
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -61,10 +59,8 @@ const Services = () => {
     return () => clearTimeout(handle);
   }, [keyword]);
 
-  // reset to first page when filters or keyword change
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [activeCategory, activeSubMenu, keyword]);
+  // reset to first page of ServiceList is handled internally; keep effect for UX hooks if needed
+  useEffect(() => {}, [activeCategory, activeSubMenu, keyword]);
 
   const fetchData = async () => {
     try {
@@ -254,7 +250,7 @@ const Services = () => {
             </div>
 
             {/* Search input */}
-            <div className="row justify-content-center my-4">
+            <div className="row justify-content-center my-4" id="search-services">
               <div className="col-12 col-sm-10 col-md-6">
                 <div className="d-flex align-items-center border rounded-pill overflow-hidden" style={{ backgroundColor: "#fff" }}>
                   <div className="d-flex align-items-center justify-content-center p-3">
@@ -274,75 +270,15 @@ const Services = () => {
               </div>
             </div>
 
-            {/* list services */}
-            {searchLoading || pageLoading ? (
-              <div className="loading-spinner text-center my-4 w-100">
-                <div className="spinner-border text-primary" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </div>
-                <p className="mt-3">Đang tải...</p>
-              </div>
-            ) : (
-              <div className="gridNews" id="services-grid">
-                {(() => {
-                  const list = getServiceList();
-                  const totalPages = Math.max(1, Math.ceil(list.length / pageSize));
-                  const page = Math.min(currentPage, totalPages);
-                  const start = (page - 1) * pageSize;
-                  return list.slice(start, start + pageSize);
-                })().map((service) => (
-                <div key={service.id} className="dvnb_item">
-                  <Link
-                    to={`/service/${service.id}`}
-                    className="dvnb_box position-relative d-block"
-                  >
-                    <div className="dvnb_pic service-pic scale-img hover-glass">
-                      <picture>
-                        <source
-                          srcSet={`/${service.image}`}
-                          media="(min-width: 0px)"
-                        />
-                        <img
-                          className="d-inline-block w-100"
-                          data-src={`/${service.image}`}
-                          src="/thumbs/300x345x2/assets/images/noimage.png.webp"
-                            alt={service.name}
-                          onError={(e) =>
-                            (e.target.src =
-                              "/thumbs/300x345x2/assets/images/noimage.png.webp")
-                          }
-                        />
-                      </picture>
-                    </div>
-                    <div className="dvnb_bottom"></div>
-                    <div className="dvnb_info">
-                        <h3 className="dvnb__name text-split">{service.name}</h3>
-                    </div>
-                  </Link>
-                </div>
-                ))}
-
-                {getServiceList().length === 0 && (
-                  <p className="text-center">Không có dịch vụ nào</p>
-                )}
-              </div>
-            )}
-
-            {/* pagination */}
-            {!searchLoading && !pageLoading && getServiceList().length > 0 && (
-              <Pagination
-                total={getServiceList().length}
-                pageSize={pageSize}
-                currentPage={currentPage}
-                onChange={(p) => {
-                  setPageLoading(true);
-                  setCurrentPage(p);
-                  setTimeout(() => setPageLoading(false), 350);
-                }}
-                scrollToId="services-grid"
-                alwaysShow={true}
-              />
-            )}
+            {/* list services using reusable component */}
+            <ServiceList
+              services={getServiceList()}
+              loading={searchLoading}
+              pageSize={pageSize}
+              className="gridNews"
+              showPagination={true}
+              scrollToId="search-services"
+            />
           </div>
         </div>
       </div>

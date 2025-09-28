@@ -38,71 +38,168 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     
-    <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "LaHi Beauty Center",
-        "url": "http://lahibeautycenter.com.vn/",
-        "sameAs": [
-            "",
-            "https://zalo.me/0961658866",
-            ""
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "194 Nguyễn Văn Tuyết, Đống Đa, Hà Nội",
-          "addressRegion": "Hà Nội",
-          "postalCode": "100000",
-          "addressCountry": "vi"
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Her Skinlab",
+          "url": "http://herskinlab.com.vn/",
+          "sameAs": ["", "https://zalo.me/0949774973", ""],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "651 Điện Biên Phủ, Phường 1, Quận 3",
+            "addressRegion": "Ho Chi Minh",
+            "postalCode": "70000",
+            "addressCountry": "vi"
+          }
         }
-      }
-    </script>
-    
-    <!-- Global Variables -->
-    <script type="text/javascript">
+      </script>
+      <script type="text/javascript">
         var NN_FRAMEWORK = NN_FRAMEWORK || {};
-        var ASSET = 'http://lahibeautycenter.com.vn/assets/';
-        var BASE = 'http://lahibeautycenter.com.vn/';
-        var CSRF_TOKEN = '/load-token';
-        var WEBSITE_NAME = 'LaHi Beauty Center';
+        var ASSET = "http://herskinlab.com.vn/assets/";
+        var BASE = "http://herskinlab.com.vn/";
+        var CSRF_TOKEN = "/load-token";
+        var WEBSITE_NAME = "Her Skinlab";
         var RECAPTCHA_ACTIVE = true;
-        var RECAPTCHA_SITEKEY = '6Lc3IokqAAAAAEFyCF5VyRhUrXhFFhzaNN5Cji3P';
-        var GOTOP = 'upload/trangchu/top.png';
+        var RECAPTCHA_SITEKEY = "6Lc3IokqAAAAAEFyCF5VyRhUrXhFFhzaNN5Cji3P";
+        var GOTOP = ASSET + "images/top.png";
         var CART_URL = {
-            'ADD_CART': '/cart/add-to-cart/vi',
-            'UPDATE_CART': '/cart/update-cart/vi',
-            'DELETE_CART': '/cart/delete-cart/vi',
-            'DELETE_ALL_CART': '/cart/delete-all-cart/vi',
-            'PAGE_CART': '/giohang/vi',
+          ADD_CART: "/cart/add-to-cart/vi",
+          UPDATE_CART: "/cart/update-cart/vi",
+          DELETE_CART: "/cart/delete-cart/vi",
+          DELETE_ALL_CART: "/cart/delete-all-cart/vi",
+          PAGE_CART: "/giohang/vi",
         };
-    </script>
-    
-    <!-- External Scripts -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="assets/fancybox5/fancybox.umd.js"></script>
-    <script src="assets/js/lazyload.min.js"></script>
-    <script src="assets/js/functions.js"></script>
-    <script src="assets/js/cart.js"></script>
-    <script src="assets/js/apps.js"></script>
-    <script>
-        AOS.init();
-    </script>
-    
-    <script>
-        window.onscroll = function () {
-            scrollRotate();
-        };
-        function scrollRotate() {
-            let el = document.getElementsByClassName("svg_circle");
-            if (el.length > 0) {
-                el = el[0];
-                el.style.transform = "rotate(" + window.pageYOffset / 2 + "deg)";
-            }
+      </script>
+      <script
+        type="text/javascript"
+        src="assets/js/jquery.min.js@v=UgPqAajUwh"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/bootstrap/bootstrap.js@v=myH5Ji64X"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/js/lazyload.min.js@v=26NO11Un0N"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/owlcarousel2/owl.carousel.js@v=IGjWF75j84"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/holdon/HoldOn.js@v=b5cJXWzEEz"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/confirm/confirm.js@v=hMwpfMMjXw"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/simplenotify/simple-notify.js@v=0UxsqcqqdA"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/fancybox5/fancybox.umd.js@v=bbVvVtF5W"
+      ></script>
+      <script
+        type="text/javascript"
+        src="http://herskinlab.com.vn/assets/admin/toastify/toastify.js?v=XnmWxvJBJE"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/mmenu/mmenu.js@v=9PTTSRMTxh"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/splide/splide.min.js@v=4NbcOSgek0"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/sweetalert2/sweetalert2.min.js@v=wU7xpkUdC1"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/flipbook/flipbook/dflip.min.js@v=wjCKKYCYjC"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/aos/aos.js@v=OO0uZkPYCl"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/js/shiner.js@v=HYmTEawTTq"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/js/functions.js@v=4wCTHM1QK"
+      ></script>
+      <script
+        type="text/javascript"
+        src="assets/js/cart.js@v=tKlAM9ZxSB"
+      ></script>
+      <script type="text/javascript" src="assets/js/apps.js@v=fhCrLnV9B"></script>
+      <script
+        type="text/javascript"
+        src="assets/js/turn.min.js@v=5mlZnpkdhR"
+      ></script>
+      <script type="text/javascript">
+        $("#hotline").show(500);
+      </script>
+      <script type="text/javascript">
+        $("#social").show(500);
+      </script>
+      <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
+      ></script>
+      <script src="assets/js/alpinejs.js" defer></script>
+      <script>
+        (function (d, s, id) {
+          var js,
+            fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s);
+          js.id = id;
+          js.async = true;
+          js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v15.0";
+          fjs.parentNode.insertBefore(js, fjs);
+        })(document, "script", "facebook-jssdk");
+      </script>
+      <script src="https://www.google.com/recaptcha/api.js?render=6Lc3IokqAAAAAEFyCF5VyRhUrXhFFhzaNN5Cji3P"></script>
+      <!-- Google tag (gtag.js) -->
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-1XG2FE1PPB"
+      ></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
         }
-    </script>
+        gtag("js", new Date());
+  
+        gtag("config", "G-1XG2FE1PPB");
+      </script>
+  
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+      <script>
+        AOS.init();
+      </script>
+  
+      <script>
+        window.onscroll = function () {
+          scrollRotate();
+        };
+  
+        function scrollRotate() {
+          let el = document.getElementsByClassName("svg_circle");
+          if (el.length > 0) {
+            el = el[0];
+            el.style.transform = "rotate(" + window.pageYOffset / 2 + "deg)";
+          }
+        }
+      </script>
 </body>
 </html>
