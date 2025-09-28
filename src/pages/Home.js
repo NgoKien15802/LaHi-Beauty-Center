@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ServiceList from "../components/ServiceList";
 import FeedbackList from "../components/FeedbackList";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   // Dữ liệu hình ảnh gallery
@@ -61,6 +62,8 @@ const Home = () => {
   const [servicesLoading, setServicesLoading] = useState(true);
   const [featuredFeedbacks, setFeaturedFeedbacks] = useState([]);
   const [feedbackLoading, setFeedbackLoading] = useState(true);
+  const [featuredNews, setFeaturedNews] = useState([]);
+  const [newsLoading, setNewsLoading] = useState(true);
 
   useEffect(() => {
     const loadFeaturedServices = async () => {
@@ -98,6 +101,23 @@ const Home = () => {
       }
     };
     loadFeaturedFeedbacks();
+  }, []);
+
+  useEffect(() => {
+    const loadFeaturedNews = async () => {
+      try {
+        const res = await fetch("/data/news.json");
+        const data = await res.json();
+        // Lấy tất cả tin tức để hiển thị trên trang chủ
+        const newsList = data.news || [];
+        setFeaturedNews(newsList);
+      } catch (error) {
+        console.error("Error loading featured news:", error);
+      } finally {
+        setNewsLoading(false);
+      }
+    };
+    loadFeaturedNews();
   }, []);
 
   useEffect(() => {
@@ -577,243 +597,76 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {/*<div className="news_wrap spacer">
+
+        {/* Tin tức */}
+        <div className="news_wrap spacer">
           <div className="wrap-content">
             <div className="title-main">
-              <div className="name-title">Her Skinlab</div>
+              <div className="name-title">LaHi Beauty Center</div>
               <h2>Kiến Thức Làm Đẹp</h2>
             </div>
             <div className="news_wrap">
               <div className="splide news">
                 <div className="splide__track">
-                  <div className="splide__list">
-                    <div className="splide__slide">
-                      <div className="news_item">
-                        <a
-                          href="cong-nghe-tre-hoa-da-nhung-diem-noi-bat-trong-nganh-spa.html"
-                          className="news_box"
+                  <div className="gridNews">
+                    {newsLoading ? (
+                      <div className="text-center py-5">
+                        <div
+                          className="spinner-border text-primary"
+                          role="status"
                         >
-                          <div className="news_pic scale-img hvr-double-box">
-                            <picture>
-                              <source
-                                srcSet="
-                              http://herskinlab.com.vn/thumbs/400x285x1/upload/news/phun-cm-1732243260.jpg.webp
-                            "
-                                media="(min-width: 0px)"
-                              />
-                              <img
-                                className="d-inline-block lazy w-100"
-                                data-src="http://herskinlab.com.vn/thumbs/400x285x1/upload/news/phun-cm-1732243260.jpg.webp"
-                                alt="Her Skinlab"
-                                width="400"
-                                height="285"
-                                onError={(e) =>
-                                  (e.target.src =
-                                    "http://herskinlab.com.vn/thumbs/400x285x1/assets/images/noimage.png.webp")
-                                }
-                                src="thumbs/400x285x2/assets/images/noimage.png.webp"
-                              />
-                            </picture>
-                          </div>
-                          <div className="news_info">
-                            <h3 className="news__name text-split">
-                              C&ocirc;ng Nghệ Trẻ H&oacute;a Da: Những Điểm Nổi
-                              Bật Trong Ng&agrave;nh Spa
-                            </h3>
-                            <div className="news__date d-none">
-                              <i className="fa-light fa-clock"></i>
-                              thứ hai, 18 Th&aacute;ng 8 2025
-                            </div>
-                            <div className="news__desc text-split">
-                              Trẻ h&oacute;a da l&agrave; một trong những nhu
-                              cầu l&agrave;m đẹp được quan t&acirc;m h&agrave;ng
-                              đầu hiện nay. Với sự ph&aacute;t triển kh&ocirc;ng
-                              ngừng của c&ocirc;ng nghệ, ng&agrave;nh spa
-                              đ&atilde; v&agrave; đang cung cấp c&aacute;c giải
-                              ph&aacute;p hiện đại, an to&agrave;n v&agrave;
-                              hiệu quả để mang lại l&agrave;n da căng
-                              b&oacute;ng, mịn m&agrave;ng v&agrave; trẻ trung
-                              hơn. B&agrave;i viết n&agrave;y sẽ cung cấp
-                              th&ocirc;ng tin chi tiết về những c&ocirc;ng nghệ
-                              trẻ h&oacute;a da nổi bật trong ng&agrave;nh spa,
-                              gi&uacute;p bạn hiểu r&otilde; hơn về c&aacute;c
-                              liệu ph&aacute;p n&agrave;y.
-                            </div>
-                          </div>
-                        </a>
+                          <span className="visually-hidden">Loading...</span>
+                        </div>
+                        <p className="mt-3">Đang tải tin tức...</p>
                       </div>
-                    </div>
-                    <div className="splide__slide">
-                      <div className="news_item">
-                        <a
-                          href="10-bi-quyet-giu-gin-lan-da-tre-khoe-tai-spa.html"
-                          className="news_box"
-                        >
-                          <div className="news_pic scale-img hvr-double-box">
-                            <picture>
-                              <source
-                                srcSet="
-                              http://herskinlab.com.vn/thumbs/400x285x1/upload/news/cham-soc-da-chuyen-sau-1732243225.jpg.webp
-                            "
-                                media="(min-width: 0px)"
-                              />
-                              <img
-                                className="d-inline-block lazy w-100"
-                                data-src="http://herskinlab.com.vn/thumbs/400x285x1/upload/news/cham-soc-da-chuyen-sau-1732243225.jpg.webp"
-                                alt="Her Skinlab"
-                                width="400"
-                                height="285"
-                                onError={(e) =>
-                                  (e.target.src =
-                                    "http://herskinlab.com.vn/thumbs/400x285x1/assets/images/noimage.png.webp")
-                                }
-                                src="thumbs/400x285x2/assets/images/noimage.png.webp"
-                              />
-                            </picture>
-                          </div>
-                          <div className="news_info">
-                            <h3 className="news__name text-split">
-                              10 B&iacute; Quyết Giữ G&igrave;n L&agrave;n Da
-                              Trẻ Khỏe Tại Spa
-                            </h3>
-                            <div className="news__date d-none">
-                              <i className="fa-light fa-clock"></i>
-                              thứ hai, 18 Th&aacute;ng 8 2025
+                    ) : (
+                      featuredNews.map((article) => (
+                        <div key={article.id} className="news_item">
+                          <Link
+                            to={`/news/${article.slug}`}
+                            className="news_box"
+                          >
+                            <div className="news_pic scale-img hvr-double-box">
+                              <picture>
+                                <source
+                                  srcSet={`/${article.image}`}
+                                  media="(min-width: 0px)"
+                                />
+                                <img
+                                  className="d-inline-block lazy w-100"
+                                  data-src={`/${article.image}`}
+                                  alt="Her Skinlab"
+                                  width="400"
+                                  height="285"
+                                  src="/thumbs/400x285x2/assets/images/noimage.png.webp"
+                                />
+                              </picture>
                             </div>
-                            <div className="news__desc text-split">
-                              L&agrave;n da trẻ khỏe l&agrave; mong muốn của hầu
-                              hết mọi người, đặc biệt l&agrave; trong thời đại
-                              nhan sắc được xem l&agrave; một phần quan trọng
-                              của sự tự tin. Spa kh&ocirc;ng chỉ l&agrave; nơi
-                              thư gi&atilde;n m&agrave; c&ograve;n l&agrave;
-                              điểm đến l&yacute; tưởng để chăm s&oacute;c da
-                              to&agrave;n diện. Dưới đ&acirc;y l&agrave; 10
-                              b&iacute; quyết gi&uacute;p bạn giữ g&igrave;n
-                              l&agrave;n da trẻ khỏe nhờ v&agrave;o c&aacute;c
-                              liệu tr&igrave;nh v&agrave; kỹ thuật tại spa.
+                            <div className="news_info">
+                              <h3 className="news__name text-split">
+                                {article.title}
+                              </h3>
+                              <div className="news__date d-block">
+                                <i
+                                  className="fa-light fa-clock"
+                                  style={{ marginRight: "5px" }}
+                                ></i>
+                                {article.dateFormatted}
+                              </div>
+                              <div className="news__desc text-split news__desc-detail">
+                                {article.description}
+                              </div>
                             </div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                    <div className="splide__slide">
-                      <div className="news_item">
-                        <a
-                          href="massage-tri-lieu-loi-ich-vuot-xa-thu-gian.html"
-                          className="news_box"
-                        >
-                          <div className="news_pic scale-img hvr-double-box">
-                            <picture>
-                              <source
-                                srcSet="
-                              http://herskinlab.com.vn/thumbs/400x285x1/upload/news/spa-therapist-lam-viec-1732265135.webp.webp
-                            "
-                                media="(min-width: 0px)"
-                              />
-                              <img
-                                className="d-inline-block lazy w-100"
-                                data-src="http://herskinlab.com.vn/thumbs/400x285x1/upload/news/spa-therapist-lam-viec-1732265135.webp.webp"
-                                alt="Her Skinlab"
-                                width="400"
-                                height="285"
-                                onError={(e) =>
-                                  (e.target.src =
-                                    "http://herskinlab.com.vn/thumbs/400x285x1/assets/images/noimage.png.webp")
-                                }
-                                src="thumbs/400x285x2/assets/images/noimage.png.webp"
-                              />
-                            </picture>
-                          </div>
-                          <div className="news_info">
-                            <h3 className="news__name text-split">
-                              Massage Trị Liệu: Lợi &Iacute;ch Vượt Xa Thư
-                              Gi&atilde;n
-                            </h3>
-                            <div className="news__date d-none">
-                              <i className="fa-light fa-clock"></i>
-                              thứ hai, 18 Th&aacute;ng 8 2025
-                            </div>
-                            <div className="news__desc text-split">
-                              Massage trị liệu từ l&acirc;u đ&atilde; được biết
-                              đến như một phương ph&aacute;p chăm s&oacute;c sức
-                              khỏe tự nhi&ecirc;n, kh&ocirc;ng chỉ mang lại cảm
-                              gi&aacute;c thư gi&atilde;n m&agrave; c&ograve;n
-                              hỗ trợ cải thiện sức khỏe thể chất v&agrave; tinh
-                              thần. Trong x&atilde; hội hiện đại, khi căng thẳng
-                              v&agrave; &aacute;p lực ng&agrave;y c&agrave;ng
-                              gia tăng, massage trị liệu ng&agrave;y c&agrave;ng
-                              được nhiều người t&igrave;m đến như một liệu
-                              ph&aacute;p phục hồi to&agrave;n diện. H&atilde;y
-                              c&ugrave;ng kh&aacute;m ph&aacute; s&acirc;u hơn
-                              về massage trị liệu v&agrave; những lợi &iacute;ch
-                              vượt xa sự thư gi&atilde;n m&agrave; phương
-                              ph&aacute;p n&agrave;y mang lại.
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                    <div className="splide__slide">
-                      <div className="news_item">
-                        <a
-                          href="xu-huong-lam-dep-spa-nam-2024-cong-nghe-va-phong-cach.html"
-                          className="news_box"
-                        >
-                          <div className="news_pic scale-img hvr-double-box">
-                            <picture>
-                              <source
-                                srcSet="
-                              http://herskinlab.com.vn/thumbs/400x285x1/upload/news/massage-spa-body-1732265546.jpg.webp
-                            "
-                                media="(min-width: 0px)"
-                              />
-                              <img
-                                className="d-inline-block lazy w-100"
-                                data-src="http://herskinlab.com.vn/thumbs/400x285x1/upload/news/massage-spa-body-1732265546.jpg.webp"
-                                alt="Her Skinlab"
-                                width="400"
-                                height="285"
-                                onError={(e) =>
-                                  (e.target.src =
-                                    "http://herskinlab.com.vn/thumbs/400x285x1/assets/images/noimage.png.webp")
-                                }
-                                src="thumbs/400x285x2/assets/images/noimage.png.webp"
-                              />
-                            </picture>
-                          </div>
-                          <div className="news_info">
-                            <h3 className="news__name text-split">
-                              Xu Hướng L&agrave;m Đẹp Spa Năm 2024 &ndash;
-                              C&ocirc;ng Nghệ V&agrave; Phong C&aacute;ch
-                            </h3>
-                            <div className="news__date d-none">
-                              <i className="fa-light fa-clock"></i>
-                              thứ hai, 18 Th&aacute;ng 8 2025
-                            </div>
-                            <div className="news__desc text-split">
-                              Ng&agrave;nh spa v&agrave; l&agrave;m đẹp
-                              kh&ocirc;ng ngừng đổi mới để đ&aacute;p ứng nhu
-                              cầu ng&agrave;y c&agrave;ng cao của kh&aacute;ch
-                              h&agrave;ng. Năm 2024 đ&aacute;nh dấu sự
-                              ph&aacute;t triển vượt bậc trong lĩnh vực
-                              n&agrave;y với những xu hướng l&agrave;m đẹp hiện
-                              đại, kết hợp c&ocirc;ng nghệ ti&ecirc;n tiến
-                              v&agrave; phong c&aacute;ch c&aacute; nh&acirc;n
-                              h&oacute;a. H&atilde;y c&ugrave;ng kh&aacute;m
-                              ph&aacute; c&aacute;c xu hướng nổi bật sẽ dẫn đầu
-                              ng&agrave;nh spa trong năm 2024.
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
+                          </Link>
+                        </div>
+                      ))
+                    )}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>{" "}
-        */}
+        </div>
       </div>
     </>
   );
