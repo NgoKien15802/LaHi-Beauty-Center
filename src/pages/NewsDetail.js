@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import mammoth from "mammoth/mammoth.browser";
 import { useParams, Link } from "react-router-dom";
 import "../styles/DetailPages.css";
 import "../styles/News.css";
@@ -105,6 +106,8 @@ const NewsDetail = () => {
   const [newsData, setNewsData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [wordHtml, setWordHtml] = useState(null);
+  const [wordToc, setWordToc] = useState(null);
   const htmlHelpers = createHTMLHelpers();
 
   useEffect(() => {
@@ -133,15 +136,7 @@ const NewsDetail = () => {
 
   const fetchNewsDetail = async () => {
     try {
-      // Load news detail data
-      const detailResponse = await fetch(`/data/news-details/${newsSlug}.json`);
-      let newsDetailData = null;
-
-      if (detailResponse.ok) {
-        newsDetailData = await detailResponse.json();
-      }
-
-      // Load news basic info
+      // Load news basic info only
       const newsResponse = await fetch("/data/news.json");
       const newsData = await newsResponse.json();
 
@@ -153,7 +148,11 @@ const NewsDetail = () => {
 
       if (foundNews) {
         setNews(foundNews);
-        setNewsDetail(newsDetailData);
+        // Build a minimal detail object from news.json if it has docxPath
+        const inlineDetail = foundNews.docxPath
+          ? { title: foundNews.title, subtitle: foundNews.subtitle, docxPath: foundNews.docxPath }
+          : null;
+        setNewsDetail(inlineDetail);
         setNewsData(newsData);
         // Update page title
         document.title = `${foundNews.title} | LaHi Beauty Center`;
@@ -167,6 +166,84 @@ const NewsDetail = () => {
       setLoading(false);
     }
   };
+
+  // Load Word (.docx) content when available
+  useEffect(() => {
+    const loadDocxAsHtml = async (docxPath) => {
+      try {
+        setWordHtml(null);
+        setWordToc(null);
+        const response = await fetch(docxPath);
+        if (!response.ok) return;
+        const arrayBuffer = await response.arrayBuffer();
+        const result = await mammoth.convertToHtml(
+          { arrayBuffer },
+          {
+            convertImage: mammoth.images.inline(),
+          }
+        );
+        // Build TOC from generated HTML and inject IDs
+        const container = document.createElement("div");
+        container.innerHTML = result.value || "";
+
+        const headings = Array.from(
+          container.querySelectorAll("h1, h2, h3")
+        );
+
+        const generatedToc = [];
+        let currentTop = null;
+        let idCounter = 0;
+
+        const stripLeadingIndex = (text) => {
+          if (!text) return "";
+          return text
+            // Remove patterns like "1. ", "1.1. ", "(1) " at start
+            .replace(/^\s*(?:\d+\.){1,3}\s*/, "")
+            .replace(/^\s*\(\d+\)\s*/, "")
+            .trim();
+        };
+
+        const generateId = (text) => {
+          const base = stripLeadingIndex(text)
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9\s-\u00C0-\u1EF9]/gi, "")
+            .replace(/\s+/g, "-");
+          idCounter += 1;
+          return base ? `${base}-${idCounter}` : `section-${idCounter}`;
+        };
+
+        headings.forEach((el) => {
+          const tag = el.tagName.toUpperCase();
+          const rawLabel = el.textContent || "";
+          const label = stripLeadingIndex(rawLabel);
+          if (!el.id) el.id = generateId(label);
+
+          if (tag === "H2") {
+            currentTop = { id: el.id, label, children: [] };
+            generatedToc.push(currentTop);
+          } else if (tag === "H3") {
+            const child = { id: el.id, label };
+            if (currentTop) {
+              currentTop.children.push(child);
+            } else {
+              // No H2 before, start a top-level implicitly
+              generatedToc.push({ id: el.id, label, children: [] });
+            }
+          }
+        });
+
+        setWordHtml(container.innerHTML);
+        setWordToc(generatedToc.length ? generatedToc : null);
+      } catch (err) {
+        console.error("Failed to load .docx content:", err);
+      }
+    };
+
+    if (newsDetail && newsDetail.docxPath) {
+      loadDocxAsHtml(newsDetail.docxPath);
+    }
+  }, [newsDetail]);
 
   // TOC rendering functions
   const createNumberingMap = (tocData) => {
@@ -208,11 +285,29 @@ const NewsDetail = () => {
   const renderTOC = (tocData) => {
     if (!tocData || !Array.isArray(tocData)) return null;
 
+    const handleTOCClick = (event, targetId) => {
+      event.preventDefault();
+      if (!targetId) return;
+      const el = document.getElementById(targetId);
+      if (!el) return;
+      const headerOffset = 100; // adjust if your header height differs
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      if (history && history.replaceState) {
+        history.replaceState(null, "", `#${targetId}`);
+      }
+    };
+
     const renderTOCItems = (items) => (
       <ul className="toc-list">
         {items.map((item, index) => (
           <li key={index}>
-            <a href={`#${item.id}`} data-rel={`#${item.id}`}>
+            <a
+              href={`#${item.id}`}
+              data-rel={`#${item.id}`}
+              onClick={(e) => handleTOCClick(e, item.id)}
+            >
               {item.label}
             </a>
             {Array.isArray(item.children) &&
@@ -404,7 +499,7 @@ const NewsDetail = () => {
                         media="(min-width: 0px)"
                       />
                       <img
-                        className="d-inline-block lazy w-100"
+                        className="d-inline-block w-100"
                         data-src={`/${article.image}`}
                         alt="Her Skinlab"
                         width="400"
@@ -461,6 +556,42 @@ const NewsDetail = () => {
   // Render content based on data availability
   const renderContent = () => {
     if (!news) return null;
+
+    // Prefer Word-rendered content if provided
+    if (newsDetail && newsDetail.docxPath && wordHtml) {
+      return (
+        <div className="news-detail-container">
+          {wordToc ? renderTOC(wordToc) : null}
+          <div id="toc-content" className="content-main w-clear markdownEditor">
+            <div
+              className="word-content"
+              dangerouslySetInnerHTML={{ __html: wordHtml }}
+            />
+            <div className="share">
+              <b>Chia sẻ:</b>
+              <div className="social-plugin w-clear">
+                <div className="a2a_kit a2a_kit_size_32 a2a_default_style">
+                  <a className="a2a_dd" href="https://www.addtoany.com/share"></a>
+                  <a className="a2a_button_facebook"></a>
+                  <a className="a2a_button_twitter"></a>
+                  <a className="a2a_button_facebook_messenger"></a>
+                  <a className="a2a_button_copy_link"></a>
+                </div>
+                <div
+                  className="zalo-share-button"
+                  data-href={window.location.href}
+                  data-oaid="579745863508352884"
+                  data-layout="3"
+                  data-color="blue"
+                  data-customize="false"
+                ></div>
+              </div>
+            </div>
+            {renderRelatedNews(news.relatedNews, newsData)}
+          </div>
+        </div>
+      );
+    }
 
     // If we have detailed news data, render with TOC
     if (newsDetail && newsDetail.toc) {
