@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useEffect } from "react";
 import Pagination from "./Pagination";
+import { Link } from "react-router-dom";
 
 const ProductList = ({
   products = [],
@@ -47,7 +48,7 @@ const ProductList = ({
         <div className="gridNews" id={scrollToId}>
           {currentItems.map((product) => (
             <div key={product.id} className="dvnb_item">
-              <div className="dvnb_box position-relative d-block">
+              <Link to={`/product/${product.id}`} className="dvnb_box position-relative d-block text-decoration-none">
                 <div className="dvnb_pic service-pic scale-img hover-glass">
                   <picture>
                     <source srcSet={`/${product.image}`} media="(min-width: 0px)" />
@@ -63,9 +64,8 @@ const ProductList = ({
                 <div className="dvnb_bottom"></div>
                 <div className="dvnb_info">
                   <h3 className="dvnb__name text-split">{product.name}</h3>
-                  {/* {product.price && <div className="mt-1 text-primary fw-semibold">{product.price}</div>} */}
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
         </div>

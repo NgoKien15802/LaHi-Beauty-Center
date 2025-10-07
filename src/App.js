@@ -8,6 +8,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
 import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
 import Feedback from './pages/Feedback';
 import News from './pages/News';
 import NewsDetail from './pages/NewsDetail';
@@ -50,6 +51,7 @@ function App() {
           <Route path="services" element={<Services />} />
           <Route path="service/:serviceId" element={<ServiceDetail />} />
           <Route path="products" element={<Products />} />
+          <Route path="product/:productId" element={<ProductDetail />} />
           <Route path="feedback" element={<Feedback />} />
           <Route path="feedback/:feedBackId" element={<Feedback />} />
           <Route path="news" element={<News />} />

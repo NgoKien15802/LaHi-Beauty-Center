@@ -56,7 +56,7 @@ const Products = () => {
       <div className="wrap-all">
         <div className="wrap-main">
           <div className="title-main">
-            <h2>Sản phẩm chăm sóc da</h2>
+            <h2>Sản phẩm</h2>
           </div>
 
           <div className="container">
