@@ -1,21 +1,75 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import ProductList from '../components/ProductList';
 
 const Products = () => {
-  return (
-    <div className="wrap-all">
-      <div className="wrap-main">
-        <div className="title-main">
-          <h2>Sản phẩm chăm sóc da</h2>
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const pageSize = 12;
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch('/data/products.json');
+        const data = await res.json();
+        setProducts(data.products || []);
+      } catch (error) {
+        console.error('Error loading products:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="loading-spinner">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
-        <div className="content-main w-clear markdownEditor">
-          <div style={{textAlign: 'center', padding: '50px'}}>
-            <h3>Sản phẩm đang được cập nhật</h3>
-            <p>Chúng tôi đang chuẩn bị danh mục sản phẩm chăm sóc da chất lượng cao.</p>
-            <p>Vui lòng quay lại sau hoặc liên hệ hotline <strong>096 165 88 66</strong> để được tư vấn.</p>
+        <p className="mt-3">Đang tải danh sách sản phẩm...</p>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <div className="breadCrumbs">
+        <div className="max-width">
+          <div className="wrap-content">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link className="text-decoration-none" to="/">
+                  <span>Trang chủ</span>
+                </Link>
+              </li>
+              <li className="breadcrumb-item active">
+                <span>Sản phẩm</span>
+              </li>
+            </ol>
           </div>
         </div>
       </div>
-    </div>
+
+      <div className="wrap-all">
+        <div className="wrap-main">
+          <div className="title-main">
+            <h2>Sản phẩm chăm sóc da</h2>
+          </div>
+
+          <div className="container">
+            <ProductList
+              products={products}
+              loading={false}
+              pageSize={pageSize}
+              scrollToId="products-grid"
+            />
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

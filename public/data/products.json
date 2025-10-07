@@ -1,0 +1,119 @@
+{
+  "products": [
+    {
+      "id": "ahohwa-ntg-whitening-ampoule",
+      "name": "AHOHWA NTG Whitening Ampoule",
+      "price": "Giá liên hệ",
+      "image": "upload/product/ahohwantgwhiteningampoule/AHOHWANTGWhiteningAmpoule.webp",
+      "images": {
+        "main": "upload/product/ahohwantgwhiteningampoule/AHOHWANTGWhiteningAmpoule.webp",
+        "gallery": [
+          "upload/product/ahohwantgwhiteningampoule/AHOHWA_NTG_Whitening_Ampoule_1.webp",
+          "upload/product/ahohwantgwhiteningampoule/AHOHWANTGWhiteningAmpoule(2).webp"
+        ]
+      }
+    },
+    {
+      "id": "my-payot-vitamin-c-radiance-serum",
+      "name": "My Payot Sérum Vitamine C Éclat - My Payot Vitamin C Radiance Serum",
+      "price": "Giá liên hệ",
+      "image": "upload/product/ahohwantgwhiteningampoule/AHOHWANTGWhiteningAmpoule.webp",
+      "images": {
+        "main": "upload/product/ahohwantgwhiteningampoule/AHOHWANTGWhiteningAmpoule.webp",
+        "gallery": [
+          "upload/product/ahohwantgwhiteningampoule/AHOHWA_NTG_Whitening_Ampoule_1.webp",
+          "upload/product/ahohwantgwhiteningampoule/AHOHWANTGWhiteningAmpoule(2).webp"
+        ]
+      }
+    },
+    {
+      "id": "ahohwa-ntg-whitening-cream",
+      "name": "AHOHWA NTG Whitening Cream",
+      "price": "Giá liên hệ",
+      "image": "upload/product/HOHWANTGwhiteningcream/AHOHWANTGWhiteningCream1.webp",
+      "images": {
+        "main": "upload/product/HOHWANTGwhiteningcream/AHOHWANTGWhiteningCream1.webp",
+        "gallery": [
+          "upload/product/HOHWANTGwhiteningcream/AHOHWANTGWhiteningCream2.webp",
+          "upload/product/HOHWANTGwhiteningcream/AHOHWANTGWhiteningCream3.webp",
+          "upload/product/HOHWANTGwhiteningcream/AHOHWANTGWhiteningCream4.jpg"
+        ]
+      }
+    },
+    {
+      "id": "bot-rua-mat-payot-nue-gentle-cleansing-foam-150ml",
+      "name": "Bọt Rửa Mặt PAYOT Nue Gentle Cleansing Foam 150ml",
+      "price": "Giá liên hệ",
+      "image": "upload/product/botruamatpayotnuegentlecleansingfoam150ml/BotRuaMatPAYOTNueGentleCleansingFoam150ml.webp",
+      "images": {
+        "main": "upload/product/botruamatpayotnuegentlecleansingfoam150ml/BotRuaMatPAYOTNueGentleCleansingFoam150ml.webp",
+        "gallery": [
+          "upload/product/botruamatpayotnuegentlecleansingfoam150ml/BotRuaMatPAYOTNueGentleCleansingFoam150ml2.webp",
+          "upload/product/botruamatpayotnuegentlecleansingfoam150ml/BotRuaMatPAYOTNueGentleCleansingFoam150ml3.webp"
+        ]
+      }
+    },
+    {
+      "id": "histolab-post-laser-sun-block-365-plus",
+      "name": "HISTOLAB POST LASER SUN BLOCK 365 PLUS - KEM CHỐNG NẮNG VẬT LÝ SPF50+-PA+++",
+      "price": "Giá liên hệ",
+      "image": "upload/product/histolabpostlasersunblock365plus-kemchongnangvatlyspf50-pa/HISTOLABPOSTLASERSUNBLOCK365PLUS_KEMCHONGNANGVATLYSPF50_PA.webp",
+      "images": {
+        "main": "upload/product/histolabpostlasersunblock365plus-kemchongnangvatlyspf50-pa/HISTOLABPOSTLASERSUNBLOCK365PLUS_KEMCHONGNANGVATLYSPF50_PA.webp",
+        "gallery": [
+          "upload/product/histolabpostlasersunblock365plus-kemchongnangvatlyspf50-pa/HISTOLABPOSTLASERSUNBLOCK365PLUS_KEMCHONGNANGVATLYSPF50_PA2.webp"
+        ]
+      }
+    },
+    {
+      "id": "ivatherm-aquafil-hydra-serum",
+      "name": "Ivatherm Aquafil Hydra Serum – Tinh chất dưỡng ẩm chuyên sâu",
+      "price": "Giá liên hệ",
+      "image": "upload/product/ivathermaquafilhydraserumtinhchatduongamchuyensau/IvathermAquafilHydraSerumTinhchatduongamchuyensau.jpg",
+      "images": {
+        "main": "upload/product/ivathermaquafilhydraserumtinhchatduongamchuyensau/IvathermAquafilHydraSerumTinhchatduongamchuyensau.jpg",
+        "gallery": [
+          "upload/product/ivathermaquafilhydraserumtinhchatduongamchuyensau/IvathermAquafilHydraSerumTinhchatduongamchuyensau2.png",
+          "upload/product/ivathermaquafilhydraserumtinhchatduongamchuyensau/IvathermAquafilHydraSerumTinhchatduongamchuyensau3.webp"
+        ]
+      }
+    },
+    {
+      "id": "kem-duong-phuc-hoi-da-ivatherm-cicaderm-40ml",
+      "name": "KEM DƯỠNG PHỤC HỒI DA IVATHERM CICADERM 40ML",
+      "price": "Giá liên hệ",
+      "image": "upload/product/kemduongphuchoidaivathermcicaderm40ml/KEMDUONGPHUCHOIDAIVATHERMCICADERM40ML.webp",
+      "images": {
+        "main": "upload/product/kemduongphuchoidaivathermcicaderm40ml/KEMDUONGPHUCHOIDAIVATHERMCICADERM40ML.webp",
+        "gallery": []
+      }
+    },
+    {
+      "id": "peel-icon-skin-anti-acne-smart-pell-system-18-cho-da-dau-mun",
+      "name": "Peel Icon Skin Anti Acne Smart Pell System 18% cho da dầu mụn",
+      "price": "Giá liên hệ",
+      "image": "upload/product/peeliconskinantiacnesmartpellsystem18_chodadaumun/PeelIconSkinAntiAcneSmartPellSystem18_chodadaumun1.png",
+      "images": {
+        "main": "upload/product/peeliconskinantiacnesmartpellsystem18_chodadaumun/PeelIconSkinAntiAcneSmartPellSystem18_chodadaumun1.png",
+        "gallery": [
+          "upload/product/peeliconskinantiacnesmartpellsystem18_chodadaumun/PeelIconSkinAntiAcneSmartPellSystem18_chodadaumun2.jpg",
+          "upload/product/peeliconskinantiacnesmartpellsystem18_chodadaumun/PeelIconSkinAntiAcneSmartPellSystem18_chodadaumun3.jpeg"
+        ]
+      }
+    },
+    {
+      "id": "payot-clear-skin-serum",
+      "name": "Tinh chất hỗ trợ giảm thâm mụn Payot Clear Skin Serum",
+      "price": "Giá liên hệ",
+      "image": "upload/product/tinhchathotrogiamthammunpayotclearskinserum/TinhchathotrogiamthammunPayotClearSkinSerum.webp",
+      "images": {
+        "main": "upload/product/tinhchathotrogiamthammunpayotclearskinserum/TinhchathotrogiamthammunPayotClearSkinSerum.webp",
+        "gallery": [
+          "upload/product/tinhchathotrogiamthammunpayotclearskinserum/TinhchathotrogiamthammunPayotClearSkinSerum2.webp"
+        ]
+      }
+    }
+  ]
+}
+
+
