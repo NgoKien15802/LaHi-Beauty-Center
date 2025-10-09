@@ -20,6 +20,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'aos/dist/aos.css';
 
 import { initializeExternalScripts, loadExternalScripts } from './utils/externalScripts';
+import { useLocation } from 'react-router-dom';
+
+function ScrollToTop() {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+  return null;
+}
 
 function App() {
   useEffect(() => {
@@ -44,6 +53,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
