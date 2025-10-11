@@ -34,16 +34,6 @@ const Header = () => {
 
   return (
     <div className="wap_main">
-      <ul className="h-card hidden">
-        <li className="h-fn fn">LaHi Beauty Center</li>
-        <li className="h-org org">LaHi Beauty Center</li>
-        <li className="h-tel tel">0949774973</li>
-        <li>
-          <Link className="u-url ul" to="/">http://lahibeautycenter.com/</Link>
-        </li>
-      </ul>
-      <h1 className="hidden-seoh hidden">LaHi Beauty Center</h1>
-      
       <div className="header_wrap">
         <div className="header_top">
           <div className="wrap-content">
@@ -113,7 +103,7 @@ const Header = () => {
             </li>
             <div className="logo__header">
               <Link to="/" className="header_logo">
-                <img src="thumbs/139x119x1/upload/photo/logo-tron.png" alt="" style={{width: '139px', height: '120px'}} />
+                <img src="thumbs/139x119x1/upload/photo/logo-tron.png" alt=""/>
               </Link>
             </div>
             <li className={`level-0 ${location.pathname === '/products' ? 'active' : ''}`}>

@@ -19,18 +19,12 @@ const Footer = () => {
                   <p>
                     <img alt="" height="20" src="upload/filemanager/files/icon/icons8-map-marker-20.png" width="20" /> 
                     CS1 : S2.16 - Vinhomes Ocean Park, Gia Lâm, Hà Nội
-                  </p>
-                  <p>
-                    <img alt="" height="20" src="upload/filemanager/files/icon/icons8-help-20.png" width="20" /> 
-                    Hotline 1: <a href="tel:0876638686" className="info__hotline">087.663.8686</a>
+                    - <span>Hotline: <a href="tel:0876638686" className="info__hotline">087.663.8686</a></span>
                   </p>
                   <p>
                     <img alt="" height="20" src="upload/filemanager/files/icon/icons8-map-marker-20.png" width="20" /> 
                     CS2 : 194 Nguyễn Văn Tuyết - Quận Đống Đa, Tp. Hà Nội
-                  </p>
-                  <p>
-                    <img alt="" height="20" src="upload/filemanager/files/icon/icons8-help-20.png" width="20" /> 
-                    Hotline 2: <a href="tel:0961658866" className="info__hotline">096.165.8866</a>
+                    - <span>Hotline: <a href="tel:0961658866" className="info__hotline">096.165.8866</a></span>
                   </p>
                   <p>
                     <img alt="" height="20" src="upload/filemanager/files/icon/icons8-email-20.png" width="20" /> 
