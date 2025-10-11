@@ -8,6 +8,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
 import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
 import Feedback from './pages/Feedback';
 import News from './pages/News';
 import NewsDetail from './pages/NewsDetail';
@@ -19,6 +20,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'aos/dist/aos.css';
 
 import { initializeExternalScripts, loadExternalScripts } from './utils/externalScripts';
+import { useLocation } from 'react-router-dom';
+
+function ScrollToTop() {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+  return null;
+}
 
 function App() {
   useEffect(() => {
@@ -43,6 +53,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -50,6 +61,7 @@ function App() {
           <Route path="services" element={<Services />} />
           <Route path="service/:serviceId" element={<ServiceDetail />} />
           <Route path="products" element={<Products />} />
+          <Route path="product/:productId" element={<ProductDetail />} />
           <Route path="feedback" element={<Feedback />} />
           <Route path="feedback/:feedBackId" element={<Feedback />} />
           <Route path="news" element={<News />} />
