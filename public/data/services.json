@@ -18,6 +18,7 @@
               "price": "500,000 VNĐ",
               "duration": "90 phút",
               "image": "upload/service/chăm sóc da/Chăm sóc da chuyên sâu/chăm sóc da 1.jpg",
+              "docxPath": "upload/service/chăm sóc da/Chăm sóc da chuyên sâu/chăm sóc da chuyên sâu.docx",
               "relatedServices": [
                 "thanh-loc-da-phyto",
                 "toning-tre-hoa-da"
@@ -30,6 +31,7 @@
               "price": "450,000 VNĐ",
               "duration": "75 phút",
               "image": "upload/service/chăm sóc da/Thanh lọc da, kiểm soát dầu mụn Phyto/pexels-arina-krasnikova-6663459.jpg",
+              "docxPath": "upload/service/chăm sóc da/Thanh lọc da, kiểm soát dầu mụn Phyto/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "cham-soc-da-chuyen-sau",
                 "toning-tre-hoa-da"
@@ -42,6 +44,7 @@
               "price": "400,000 VNĐ",
               "duration": "60 phút",
               "image": "upload/service/chăm sóc da/Toning trẻ hoá da/pexels-arina-krasnikova-6663456.jpg",
+              "docxPath": "upload/service/chăm sóc da/Toning trẻ hoá da/Toning trẻ hoá da.docx",
               "relatedServices": [
                 "cham-soc-da-chuyen-sau",
                 "thanh-loc-da-phyto"
@@ -69,6 +72,7 @@
               "price": "800,000 VNĐ",
               "duration": "120 phút",
               "image": "upload/service/giảm nám - tàn nhang/nám.webp",
+              "docxPath": "upload/service/giảm nám - tàn nhang/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "cham-soc-da-chuyen-sau"
               ]
@@ -94,6 +98,7 @@
               "price": "600,000 VNĐ",
               "duration": "90 phút",
               "image": "upload/service/chemical peel/Peel Image/DeWatermark.ai_1754969562817.jpeg",
+              "docxPath": "upload/service/chemical peel/Peel Image/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "peel-recovery",
                 "peel-tao"
@@ -106,6 +111,7 @@
               "price": "550,000 VNĐ",
               "duration": "75 phút",
               "image": "upload/service/chemical peel/peel recovery/peel recovery.jpg",
+              "docxPath": "upload/service/chemical peel/peel recovery/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "peel-image",
                 "peel-tao"
@@ -118,6 +124,7 @@
               "price": "500,000 VNĐ",
               "duration": "80 phút",
               "image": "upload/service/chemical peel/Peel tảo/pexels-shvetsa-5069423.jpg",
+              "docxPath": "upload/service/chemical peel/Peel tảo/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "peel-image",
                 "peel-recovery"
@@ -145,6 +152,7 @@
               "price": "700,000 VNĐ",
               "duration": "100 phút",
               "image": "upload/service/glass skin đa tầng/Căng bóng, cấp ẩm, thu nhỏ lỗ chân lông/ca.jpg",
+              "docxPath": "upload/service/glass skin đa tầng/Căng bóng, cấp ẩm, thu nhỏ lỗ chân lông/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "giam-dau-mun-thu-nho-lo-chan-long"
               ]
@@ -156,6 +164,7 @@
               "price": "650,000 VNĐ",
               "duration": "90 phút",
               "image": "upload/service/glass skin đa tầng/Giảm dầu mụn - Thu nhỏ lỗ chân lông/glass skin đa tầng 1.jpg",
+              "docxPath": "upload/service/glass skin đa tầng/Giảm dầu mụn - Thu nhỏ lỗ chân lông/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "cang-bong-cap-am"
               ]
@@ -182,6 +191,7 @@
               "price": "580,000 VNĐ",
               "duration": "85 phút",
               "image": "upload/service/kiểm soát dầu mụn/kiểm soát dầu mụn 1.jpg",
+              "docxPath": "upload/service/kiểm soát dầu mụn/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "thanh-loc-da-phyto"
               ]
@@ -207,6 +217,7 @@
               "price": "1,200,000 VNĐ",
               "duration": "120 phút",
               "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Nâng cơ vùng má, chống chảy xệ/hifu1.jpg",
+              "docxPath": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Nâng cơ vùng má, chống chảy xệ/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "xoa-nong-cam",
                 "xoa-ranh-cuoi"
@@ -219,6 +230,7 @@
               "price": "1,000,000 VNĐ",
               "duration": "90 phút",
               "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Xoá nọng cằm/cằm.jpg",
+              "docxPath": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Xoá nọng cằm/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "nang-co-vung-ma",
                 "xoa-ranh-cuoi"
@@ -231,6 +243,7 @@
               "price": "900,000 VNĐ",
               "duration": "80 phút",
               "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Xoá rãnh cười/rãnh cười.jpg",
+              "docxPath": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Xoá rãnh cười/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "nang-co-vung-ma",
                 "xoa-nong-cam"
@@ -258,6 +271,7 @@
               "price": "300,000 VNĐ",
               "duration": "45 phút",
               "image": "upload/service/triệt lông lạnh/Triệt mặt/Tài liệu không có tiêu đề.docx",
+              "docxPath": "upload/service/triệt lông lạnh/Triệt mặt/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "triet-nach",
                 "triet-tay"
@@ -270,6 +284,7 @@
               "price": "250,000 VNĐ",
               "duration": "30 phút",
               "image": "upload/service/triệt lông lạnh/triệt nách/triệt lông lạnh.jpg",
+              "docxPath": "upload/service/triệt lông lạnh/triệt nách/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "triet-mat",
                 "triet-tay"
@@ -282,6 +297,7 @@
               "price": "350,000 VNĐ",
               "duration": "60 phút",
               "image": "upload/service/triệt lông lạnh/triệt tay/BetterImage_1755847530214.jpeg",
+              "docxPath": "upload/service/triệt lông lạnh/triệt tay/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "triet-mat",
                 "triet-nach"

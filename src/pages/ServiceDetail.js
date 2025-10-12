@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import mammoth from "mammoth/mammoth.browser";
 import { useParams, Link } from "react-router-dom";
 import "../styles/DetailPages.css";
 
@@ -82,7 +83,17 @@ const createHTMLHelpers = () => ({
   ),
   img: (src, alt, width, height) => (
     <p style={{ textAlign: "center" }}>
-      <img alt={alt || ""} src={src} width={width} height={height} />
+      <img
+        alt={alt || ""}
+        src={src}
+        width={width}
+        height={height}
+        className="lazy"
+        data-src={src}
+        onError={(e) =>
+          (e.target.src = "/thumbs/400x285x1/assets/images/noimage.png.webp")
+        }
+      />
     </p>
   ),
 });
@@ -94,25 +105,37 @@ const ServiceDetail = () => {
   const [servicesData, setServicesData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [wordHtml, setWordHtml] = useState(null);
+  const [wordToc, setWordToc] = useState(null);
   const htmlHelpers = createHTMLHelpers();
 
   useEffect(() => {
     fetchServiceDetail();
   }, [serviceId]);
 
+  // Initialize lazy loading after content is loaded
+  useEffect(() => {
+    if (!loading && service) {
+      // Wait for DOM to be updated
+      setTimeout(() => {
+        // Initialize lazy loading
+        if (window.LazyLoad) {
+          new window.LazyLoad({
+            elements_selector: ".lazy",
+          });
+        }
+
+        // Also try jQuery lazy loading
+        if (window.$ && window.$().lazy) {
+          window.$(".lazy").lazy();
+        }
+      }, 100);
+    }
+  }, [loading, service]);
+
   const fetchServiceDetail = async () => {
     try {
-      // Load service detail data
-      const detailResponse = await fetch(
-        `/data/service-details/${serviceId}.json`
-      );
-      let serviceDetailData = null;
-
-      if (detailResponse.ok) {
-        serviceDetailData = await detailResponse.json();
-      }
-
-      // Load service basic info
+      // Load service basic info only
       const servicesResponse = await fetch("/data/services.json");
       const servicesData = await servicesResponse.json();
 
@@ -141,10 +164,20 @@ const ServiceDetail = () => {
 
       if (foundService) {
         setService(foundService);
-        setServiceDetail(serviceDetailData);
+        // Build a minimal detail object from services.json if it has docxPath
+        const inlineDetail = foundService.docxPath
+          ? {
+              title: foundService.title,
+              subtitle: foundService.subtitle,
+              docxPath: foundService.docxPath,
+            }
+          : null;
+        setServiceDetail(inlineDetail);
         setServicesData(servicesData);
         // Update page title
-        document.title = `${foundService.title || foundService.name} | LaHi Beauty Center`;
+        document.title = `${
+          foundService.title || foundService.name
+        } | LaHi Beauty Center`;
       } else {
         setNotFound(true);
       }
@@ -155,6 +188,84 @@ const ServiceDetail = () => {
       setLoading(false);
     }
   };
+
+  // Load Word (.docx) content when available
+  useEffect(() => {
+    const loadDocxAsHtml = async (docxPath) => {
+      try {
+        setWordHtml(null);
+        setWordToc(null);
+        const response = await fetch(docxPath);
+        if (!response.ok) return;
+        const arrayBuffer = await response.arrayBuffer();
+        const result = await mammoth.convertToHtml(
+          { arrayBuffer },
+          {
+            convertImage: mammoth.images.inline(),
+          }
+        );
+        // Build TOC from generated HTML and inject IDs
+        const container = document.createElement("div");
+        container.innerHTML = result.value || "";
+
+        const headings = Array.from(container.querySelectorAll("h1, h2, h3"));
+
+        const generatedToc = [];
+        let currentTop = null;
+        let idCounter = 0;
+
+        const stripLeadingIndex = (text) => {
+          if (!text) return "";
+          return (
+            text
+              // Remove patterns like "1. ", "1.1. ", "(1) " at start
+              .replace(/^\s*(?:\d+\.){1,3}\s*/, "")
+              .replace(/^\s*\(\d+\)\s*/, "")
+              .trim()
+          );
+        };
+
+        const generateId = (text) => {
+          const base = stripLeadingIndex(text)
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9\s-\u00C0-\u1EF9]/gi, "")
+            .replace(/\s+/g, "-");
+          idCounter += 1;
+          return base ? `${base}-${idCounter}` : `section-${idCounter}`;
+        };
+
+        headings.forEach((el) => {
+          const tag = el.tagName.toUpperCase();
+          const rawLabel = el.textContent || "";
+          const label = stripLeadingIndex(rawLabel);
+          if (!el.id) el.id = generateId(label);
+
+          if (tag === "H2") {
+            currentTop = { id: el.id, label, children: [] };
+            generatedToc.push(currentTop);
+          } else if (tag === "H3") {
+            const child = { id: el.id, label };
+            if (currentTop) {
+              currentTop.children.push(child);
+            } else {
+              // No H2 before, start a top-level implicitly
+              generatedToc.push({ id: el.id, label, children: [] });
+            }
+          }
+        });
+
+        setWordHtml(container.innerHTML);
+        setWordToc(generatedToc.length ? generatedToc : null);
+      } catch (err) {
+        console.error("Failed to load .docx content:", err);
+      }
+    };
+
+    if (serviceDetail && serviceDetail.docxPath) {
+      loadDocxAsHtml(serviceDetail.docxPath);
+    }
+  }, [serviceDetail]);
 
   // TOC rendering functions
   const createNumberingMap = (tocData) => {
@@ -185,7 +296,7 @@ const ServiceDetail = () => {
       if (item && Array.isArray(item.children)) {
         map[item.id] = item.children.map((child, cIdx) => ({
           ...child,
-          number: `${level1}.${cIdx + 1}`
+          number: `${level1}.${cIdx + 1}`,
         }));
       }
     });
@@ -196,11 +307,29 @@ const ServiceDetail = () => {
   const renderTOC = (tocData) => {
     if (!tocData || !Array.isArray(tocData)) return null;
 
+    const handleTOCClick = (event, targetId) => {
+      event.preventDefault();
+      if (!targetId) return;
+      const el = document.getElementById(targetId);
+      if (!el) return;
+      const headerOffset = 100; // adjust if your header height differs
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      if (history && history.replaceState) {
+        history.replaceState(null, "", `#${targetId}`);
+      }
+    };
+
     const renderTOCItems = (items) => (
       <ul className="toc-list">
         {items.map((item, index) => (
           <li key={index}>
-            <a href={`#${item.id}`} data-rel={`#${item.id}`}>
+            <a
+              href={`#${item.id}`}
+              data-rel={`#${item.id}`}
+              onClick={(e) => handleTOCClick(e, item.id)}
+            >
               {item.label}
             </a>
             {Array.isArray(item.children) &&
@@ -306,14 +435,14 @@ const ServiceDetail = () => {
         blocks.push(htmlHelpers.img(section.image, section.heading, 500));
       }
       if (Array.isArray(section.gallery) && section.gallery.length) {
-        section.gallery.forEach((src, imgIndex) => blocks.push(htmlHelpers.img(src, "")));
+        section.gallery.forEach((src, imgIndex) =>
+          blocks.push(htmlHelpers.img(src, ""))
+        );
       }
     }
 
     return blocks.map((block, index) => (
-      <React.Fragment key={`${section.id}-${index}`}>
-        {block}
-      </React.Fragment>
+      <React.Fragment key={`${section.id}-${index}`}>{block}</React.Fragment>
     ));
   };
 
@@ -322,14 +451,15 @@ const ServiceDetail = () => {
     tocChildren.forEach((child, index) => {
       // Add the child heading with numbering
       blocks.push(htmlHelpers.h3(child.id, child.label));
-      
+
       // Add corresponding content from bullets or steps with indentation
-      const content = Array.isArray(section.bullets) && section.bullets[index] 
-        ? section.bullets[index]
-        : Array.isArray(section.steps) && section.steps[index]
-        ? section.steps[index]
-        : null;
-        
+      const content =
+        Array.isArray(section.bullets) && section.bullets[index]
+          ? section.bullets[index]
+          : Array.isArray(section.steps) && section.steps[index]
+          ? section.steps[index]
+          : null;
+
       if (content) {
         blocks.push(
           htmlHelpers.p(
@@ -364,16 +494,16 @@ const ServiceDetail = () => {
 
     // Find related services by their IDs across all categories/submenus (2-level)
     const relatedServices = [];
-    allServicesData.categories.forEach(category => {
+    allServicesData.categories.forEach((category) => {
       if (Array.isArray(category.subMenu)) {
-        category.subMenu.forEach(sub => {
+        category.subMenu.forEach((sub) => {
           if (Array.isArray(sub.services)) {
-            sub.services.forEach(svc => {
+            sub.services.forEach((svc) => {
               if (relatedServiceIds.includes(svc.id)) {
                 relatedServices.push({
                   ...svc,
                   category: category.name,
-                  title: svc.title || svc.name
+                  title: svc.title || svc.name,
                 });
               }
             });
@@ -400,10 +530,11 @@ const ServiceDetail = () => {
           </div>
 
           {/* Services Grid */}
-          <div className="gridNews">
-            {relatedServices.map((service) => (
-              <div key={service.id} className="dvnb_item">
-                 <Link
+          <div className="container">
+            <div className="gridNews">
+              {relatedServices.map((service) => (
+                <div key={service.id} className="dvnb_item">
+                  <Link
                     to={`/service/${service.id}`}
                     className="dvnb_box position-relative d-block"
                   >
@@ -417,7 +548,7 @@ const ServiceDetail = () => {
                           className="d-inline-block w-100"
                           data-src={`/${encodeURIComponent(service.image)}`}
                           src="/thumbs/300x345x2/assets/images/noimage.png.webp"
-                            alt={service.name}
+                          alt={service.name}
                           onError={(e) =>
                             (e.target.src =
                               "/thumbs/300x345x2/assets/images/noimage.png.webp")
@@ -427,11 +558,12 @@ const ServiceDetail = () => {
                     </div>
                     <div className="dvnb_bottom"></div>
                     <div className="dvnb_info">
-                        <h3 className="dvnb__name text-split">{service.name}</h3>
+                      <h3 className="dvnb__name text-split">{service.name}</h3>
                     </div>
                   </Link>
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -465,6 +597,45 @@ const ServiceDetail = () => {
   const renderContent = () => {
     if (!service) return null;
 
+    // Prefer Word-rendered content if provided
+    if (serviceDetail && serviceDetail.docxPath && wordHtml) {
+      return (
+        <div className="service-detail-container">
+          {wordToc ? renderTOC(wordToc) : null}
+          <div id="toc-content" className="content-main w-clear markdownEditor">
+            <div
+              className="word-content"
+              dangerouslySetInnerHTML={{ __html: wordHtml }}
+            />
+            <div className="share">
+              <b>Chia sẻ:</b>
+              <div className="social-plugin w-clear">
+                <div className="a2a_kit a2a_kit_size_32 a2a_default_style">
+                  <a
+                    className="a2a_dd"
+                    href="https://www.addtoany.com/share"
+                  ></a>
+                  <a className="a2a_button_facebook"></a>
+                  <a className="a2a_button_twitter"></a>
+                  <a className="a2a_button_facebook_messenger"></a>
+                  <a className="a2a_button_copy_link"></a>
+                </div>
+                <div
+                  className="zalo-share-button"
+                  data-href={window.location.href}
+                  data-oaid="579745863508352884"
+                  data-layout="3"
+                  data-color="blue"
+                  data-customize="false"
+                ></div>
+              </div>
+            </div>
+            {renderRelatedServices(service.relatedServices, servicesData)}
+          </div>
+        </div>
+      );
+    }
+
     // If we have detailed service data, render with TOC
     if (serviceDetail && serviceDetail.toc) {
       const numberingMap = createNumberingMap(serviceDetail.toc);
@@ -480,7 +651,10 @@ const ServiceDetail = () => {
               <b>Chia sẻ:</b>
               <div className="social-plugin w-clear">
                 <div className="a2a_kit a2a_kit_size_32 a2a_default_style">
-                  <a className="a2a_dd" href="https://www.addtoany.com/share"></a>
+                  <a
+                    className="a2a_dd"
+                    href="https://www.addtoany.com/share"
+                  ></a>
                   <a className="a2a_button_facebook"></a>
                   <a className="a2a_button_twitter"></a>
                   <a className="a2a_button_facebook_messenger"></a>
