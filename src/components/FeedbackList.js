@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
 
 const FeedbackList = ({
@@ -12,6 +13,7 @@ const FeedbackList = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [pageLoading, setPageLoading] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCurrentPage(1);
@@ -58,7 +60,9 @@ const FeedbackList = ({
                   onClick={() => setSelectedIndex(index)}
                   onError={(e) => (e.currentTarget.src = "/thumbs/300x345x2/assets/images/noimage.png.webp")}
                 />
-                <p>{fb.name}</p>
+                <p 
+                  style={{ cursor: "pointer" }}
+                  onClick={() => navigate(`/service/${fb.serviceId}`)}>{fb.name}</p>
               </div>
             </div>
           ))}

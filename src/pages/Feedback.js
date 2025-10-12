@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../styles/Feedback.css";
-import Pagination from "../components/Pagination";
 import FeedbackList from "../components/FeedbackList";
 
 const Feedback = () => {
@@ -207,7 +206,9 @@ const Feedback = () => {
                 </Link>
               </div>
 
-              {feedbackGroups.map(group => (
+              {feedbackGroups
+              .filter(group => group.isShowMenu) 
+              .map(group => (
                     <div key={group.id} className="col-4 col-md-4 col-lg-2 text-center mb-1">
                         <Link to={`/feedback/${group.id}`} className={`d-block ${activeCategory === group.id ? "text-primary fw-bold" : "text-secondary"}`}>
                             <div className={`rounded-circle border ${activeCategory === group.id ? "border-primary" : "border-secondary"} mx-auto`} 

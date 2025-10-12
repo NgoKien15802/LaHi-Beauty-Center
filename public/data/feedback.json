@@ -1,70 +1,176 @@
 {
   "categories": [
     {
-      "id": "cham-soc-da",
-      "name": "CHĂM SÓC DA",
+      "id": "giam-mun",
+      "name": "GIẢM MỤN",
       "image": "upload/feedback/menu/ic-services-chamsocda.svg",
+      "isShowMenu": true,
       "subMenu": [
         {
-          "id": "cham-da-chuyen-sau",
-          "name": "Chăm da chuyên sâu",
+          "id": "gm",
+          "name": "Giảm mụn",
           "feedbacks": [
             {
-              "id": "da-sang-khoe-muot-ma",
-              "name": "Chăm da chuyên sâu – 3 buổi – Da sáng khỏe mượt mà",
-              "image": "upload/feedback/dieutrimun/sach-mun-va-seo-tham.png"
+              "id": "mun-1",
+              "name": "Mụn 1",
+              "image": "upload/feedback/giam-mun/mun1.png",
+              "serviceId": "cham-soc-da-chuyen-sau"
             },
             {
-              "id": "da-am-min-cang-bong",
-              "name": "Chăm da chuyên sâu – 4 buổi – Da ẩm mịn căng bóng",
-              "image": "upload/feedback/dieutrimun/giam-mun-an-gay-ngua.png"
+              "id": "mun-2",
+              "name": "Mụn 2",
+              "image": "upload/feedback/giam-mun/mun2.png",
+              "serviceId": "thanh-loc-da-phyto"
             },
             {
-              "id": "da-trang-dep-rang-ro",
-              "name": "Chăm da chuyên sâu – 5 buổi – Da trắng đẹp rạng rỡ",
-              "image": "upload/feedback/dieutrimun/giam-ngua-va-kich-ung.png"
+              "id": "mun-3",
+              "name": "Mụn 3",
+              "image": "upload/feedback/giam-mun/mun3.png",
+              "serviceId": "cham-soc-da-chuyen-sau"
+            },
+            {
+              "id": "mun-4",
+              "name": "Mụn 4",
+              "image": "upload/feedback/giam-mun/mun4.png",
+              "serviceId": "cham-soc-da-chuyen-sau"
+            },
+            {
+              "id": "mun-5",
+              "name": "Mụn 5",
+              "image": "upload/feedback/giam-mun/mun5.png",
+              "serviceId": "toning-tre-hoa-da"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "giam-nam-tan-nhang",
+      "name": "GIẢM NÁM TÀN NHANG",
+      "image": "upload/feedback/menu/ic-services-phunxam.svg",
+      "isShowMenu": true,
+      "subMenu": [
         {
-          "id": "cham-soc-da-mun",
-          "name": "Chăm sóc da mụn",
+          "id": "gn-tan-nhang",
+          "name": "Giảm nán tàn nhang",
           "feedbacks": [
             {
-              "id": "sach-mun-va-seo-tham",
-              "name": "Chăm sóc da mụn – 8 buổi – Sạch mụn và sẹo thâm",
-              "image": "upload/feedback/dieutrimun/sach-mun-va-seo-tham.png"
+              "id": "nam-1",
+              "name": "Nám 1",
+              "image": "upload/feedback/giam-nam-tan-nhang/nam1.png",
+              "serviceId": "giam-nam-tan-nhang-chuyen-nghiep"
             },
             {
-              "id": "giam-mun-an-gay-ngua",
-              "name": "Chăm sóc da mụn – 4 buổi – Giảm mụn ẩn gây ngứa",
-              "image": "upload/feedback/dieutrimun/giam-mun-an-gay-ngua.png"
+              "id": "nam-2",
+              "name": "Nám 2",
+              "image": "upload/feedback/giam-nam-tan-nhang/nam2.png",
+              "serviceId": "giam-nam-tan-nhang-chuyen-nghiep"
             },
             {
-              "id": "giam-ngua-va-kich-ung",
-              "name": "Chăm sóc da mụn – 7 buổi – Giảm ngứa và kích ứng",
-              "image": "upload/feedback/dieutrimun/giam-ngua-va-kich-ung.png"
+              "id": "nam-3",
+              "name": "Nám 3",
+              "image": "upload/feedback/giam-nam-tan-nhang/nam3.png",
+              "serviceId": "giam-nam-tan-nhang-chuyen-nghiep"
+            },
+            {
+              "id": "nam-4",
+              "name": "Nám 4",
+              "image": "upload/feedback/giam-nam-tan-nhang/nam4.png",
+              "serviceId": "giam-nam-tan-nhang-chuyen-nghiep"
+            },
+            {
+              "id": "nam-5",
+              "name": "Nám 5",
+              "image": "upload/feedback/giam-nam-tan-nhang/nam5.png",
+              "serviceId": "giam-nam-tan-nhang-chuyen-nghiep"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "giam-tham-nach",
+      "name": "GIẢM THÂM NÁCH",
+      "image": "upload/feedback/menu/ic-services-dieutrida.svg",
+      "isShowMenu": true,
+      "subMenu": [
         {
-          "id": "thai-doc-da",
-          "name": "Thải độc da",
+          "id": "gtn",
+          "name": "Giảm thâm nách",
           "feedbacks": [
             {
-              "id": "da-cang-bong-tu-nhien",
-              "name": "Thải độc da – 10 buổi – Da căng bóng tự nhiên",
-              "image": "upload/feedback/dieutrimun/sach-mun-va-seo-tham.png"
+              "id": "nach-1",
+              "name": "Nách 1",
+              "image": "upload/feedback/giam-tham-nach/nach1.png",
+              "serviceId": "peel-image"
             },
             {
-              "id": "da-sang-khoe-bong-muot",
-              "name": "Thải độc da – 5 buổi – Da sáng khỏe bóng mượt",
-              "image": "upload/feedback/dieutrimun/giam-mun-an-gay-ngua.png"
+              "id": "nach-2",
+              "name": "Nách 2",
+              "image": "upload/feedback/giam-tham-nach/nach2.png",
+              "serviceId": "peel-image"
             },
             {
-              "id": "giam-dau-thua-vung-chu-t",
-              "name": "Thải độc da – 5 buổi – Giảm dầu thừa vùng chữ T",
-              "image": "upload/feedback/dieutrimun/giam-ngua-va-kich-ung.png"
+              "id": "nach-3",
+              "name": "Nách 3",
+              "image": "upload/feedback/giam-tham-nach/nach3.png",
+              "serviceId": "peel-image"
+            },
+            {
+              "id": "nach-4",
+              "name": "Nách 4",
+              "image": "upload/feedback/giam-tham-nach/nach4.png",
+              "serviceId": "peel-image"
+            },
+            {
+              "id": "nach-5",
+              "name": "Nách 5",
+              "image": "upload/feedback/giam-tham-nach/nach5.png",
+              "serviceId": "peel-image"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hifu-new-doublo-2.0",
+      "name": "HIFU NEW DOUBLO 2.0",
+      "image": "upload/feedback/menu/ic-services-dieutrida.svg",
+      "isShowMenu": true,
+      "subMenu": [
+        {
+          "id": "hifu",
+          "name": "Hifu new doublo 2.0",
+          "feedbacks": [
+            {
+              "id": "hifu-1",
+              "name": "Hifu 1",
+              "image": "upload/feedback/hifu/hifu1.png",
+              "serviceId": "cang-bong-cap-am"
+            },
+            {
+              "id": "hifu-2",
+              "name": "Hifu 2",
+              "image": "upload/feedback/hifu/hifu2.png",
+              "serviceId": "cang-bong-cap-am"
+            },
+            {
+              "id": "hifu-3",
+              "name": "Hifu 3",
+              "image": "upload/feedback/hifu/hifu3.png",
+              "serviceId": "cang-bong-cap-am"
+            },
+            {
+              "id": "hifu-4",
+              "name": "Hifu 4",
+              "image": "upload/feedback/hifu/hifu4.png",
+              "serviceId": "cang-bong-cap-am"
+            },
+            {
+              "id": "hifu-5",
+              "name": "Hifu 5",
+              "image": "upload/feedback/hifu/hifu5.png",
+              "serviceId": "cang-bong-cap-am"
             }
           ]
         }
@@ -73,122 +179,85 @@
     {
       "id": "phun-xam",
       "name": "PHUN XĂM",
-      "image": "upload/feedback/menu/ic-services-phunxam.svg",
+      "image": "upload/feedback/menu/ic-services-dieutrida.svg",
+      "isShowMenu": true,
       "subMenu": [
         {
-          "id": "phay-may-sieu-thuc",
-          "name": "Phẩy mày siêu thực",
+          "id": "px",
+          "name": "Phun xăm",
           "feedbacks": [
             {
-              "id": "lap-kin-may-loang-lo",
-              "name": "Phẩy mày siêu thực – 60 phút – Lấp kín mày loang lổ",
-              "image": "upload/feedback/phunsam/moi-hong-dao-rang-ro.png"
+              "id": "phun-1",
+              "name": "Phun 1",
+              "image": "upload/feedback/phun-xam/phun1.png",
+              "serviceId": "nang-co-vung-ma"
             },
             {
-              "id": "tao-duoi-may-sac-net",
-              "name": "Phẩy mày siêu thực – 75 phút – Tạo đuôi mày sắc nét",
-              "image": "upload/feedback/phunsam/moi-hong-sang-da.png"
+              "id": "phun-2",
+              "name": "Phun 2",
+              "image": "upload/feedback/phun-xam/phun2.png",
+              "serviceId": "nang-co-vung-ma"
             },
             {
-              "id": "may-len-mau-tu-nhien",
-              "name": "Phẩy mày siêu thực – 60 phút – Mày lên màu tự nhiên",
-              "image": "upload/feedback/phunsam/moi-cam-san-ho-tre-trung.png"
+              "id": "phun-3",
+              "name": "Phun 3",
+              "image": "upload/feedback/phun-xam/phun3.png",
+              "serviceId": "nang-co-vung-ma"
             },
             {
-              "id": "may-mem-mai-can-doi",
-              "name": "Phẩy mày siêu thực – 60 phút – Mày mềm mại cân đối",
-              "image": "upload/feedback/phunsam/may-min-deu-cuon-hut.png"
-            }
-          ]
-        },
-        {
-          "id": "phun-may-cham-hat",
-          "name": "Phun mày chạm hạt",
-          "feedbacks": [
-            {
-              "id": "may-gon-gang-deu-net",
-              "name": "Phun mày chạm hạt – 60 phút – Mày gọn gàng đều nét",
-              "image": "upload/feedback/phunsam/may-deu-mau-sac-sao.png"
+              "id": "phun-4",
+              "name": "Phun 4",
+              "image": "upload/feedback/phun-xam/phun4.png",
+              "serviceId": "nang-co-vung-ma"
             },
             {
-              "id": "may-sac-net-cuon-hut",
-              "name": "Phun mày chạm hạt – 60 phút – Mày sắc nét cuốn hút",
-              "image": "upload/feedback/phunsam/moi-hong-sang-da.png"
-            },
-            {
-              "id": "may-dam-net-tu-nhien",
-              "name": "Phun mày chạm hạt – 60 phút – Mày đậm nét tự nhiên",
-              "image": "upload/feedback/phunsam/moi-cam-san-ho-tre-trung.png"
+              "id": "phun-5",
+              "name": "Phun 5",
+              "image": "upload/feedback/phun-xam/phun5.png",
+              "serviceId": "nang-co-vung-ma"
             }
           ]
         }
       ]
     },
     {
-      "id": "dieu-tri-da",
-      "name": "ĐIỀU TRỊ DA",
+      "id": "triet-long-diode-laser",
+      "name": "TRIỆT LÔNG DIODE LASER",
       "image": "upload/feedback/menu/ic-services-dieutrida.svg",
       "subMenu": [
         {
-          "id": "dieu-tri-tham",
-          "name": "Điều trị thâm",
+          "id": "tl-diode-laser",
+          "name": "Triệt lông diode laser",
           "feedbacks": [
             {
-              "id": "tam-biet-ve-met-moi-u-am",
-              "name": "Trị thâm mắt – 5 liệu trình – Tạm biệt vẻ mệt mỏi u ám",
-              "image": "upload/feedback/phunsam/moi-hong-dao-rang-ro.png"
-            }
-          ]
-        },
-        {
-          "id": "se-khit-lo-chan-long",
-          "name": "Se khít lỗ chân lông",
-          "feedbacks": [
-            {
-              "id": "da-lang-min-rang-ro",
-              "name": "Se khít lỗ chân lông – 6 Buổi – Da láng mịn rạng rỡ",
-              "image": "upload/feedback/phunsam/may-deu-mau-sac-sao.png"
+              "id": "triet-1",
+              "name": "Triệt 1",
+              "image": "upload/feedback/triet-long/triet1.png",
+              "serviceId": "triet-mat"
             },
             {
-              "id": "giam-dau-thua-tren-da",
-              "name": "Se khít lỗ chân lông – 5 Buổi – Giảm dầu thừa trên da",
-              "image": "upload/feedback/phunsam/moi-hong-sang-da.png"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "lieu-trinh-combo",
-      "name": "LIỆU TRÌNH COMBO",
-      "image": "upload/feedback/menu/ic-services-dieutrida.svg",
-      "subMenu": [
-        {
-          "id": "combo-cham-soc-da",
-          "name": "Combo chăm sóc da",
-          "feedbacks": [
+              "id": "triet-2",
+              "name": "Triệt 2",
+              "image": "upload/feedback/triet-long/triet2.png",
+              "serviceId": "triet-mat"
+            },
             {
-              "id": "da-giam-nam-deu-mau",
-              "name": "Trẻ hóa da – 7 buổi – Da giảm nám đều màu",
-              "image": "upload/feedback/phunsam/moi-hong-dao-rang-ro.png"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "cong-nghe-cao",
-      "name": "CÔNG NGHỆ CAO",
-      "image": "upload/feedback/menu/ic-services-dieutrida.svg",
-      "subMenu": [
-        {
-          "id": "u-trang-mat-skin-white",
-          "name": "Ủ trắng mặt Skin White",
-          "feedbacks": [
+              "id": "triet-3",
+              "name": "Triệt 3",
+              "image": "upload/feedback/triet-long/triet3.png",
+              "serviceId": "triet-mat"
+            },
             {
-              "id": "da-sang-min-rang-ro",
-              "name": "Ủ trắng mặt skin white – 8 buổi – Da sáng mịn rạng rỡ",
-              "image": "upload/feedback/phunsam/moi-hong-dao-rang-ro.png"
+              "id": "triet-4",
+              "name": "Triệt 4",
+              "image": "upload/feedback/triet-long/triet4.png",
+              "serviceId": "triet-mat"
+            },
+            {
+              "id": "triet-5",
+              "name": "Triệt 5",
+              "image": "upload/feedback/triet-long/triet5.png",
+              "serviceId": "triet-mat"
             }
           ]
         }
