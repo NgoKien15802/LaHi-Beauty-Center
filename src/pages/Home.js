@@ -2,56 +2,21 @@ import React, { useEffect, useState } from "react";
 import ServiceList from "../components/ServiceList";
 import FeedbackList from "../components/FeedbackList";
 import { Link } from "react-router-dom";
+import { useFormSubmission } from "../utils/formSubmission";
 
 const Home = () => {
-  // State for form submission
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState("");
+  const { isSubmitting, submitMessage, handleFormSubmit } = useFormSubmission();
 
-  // Handle form submission to Google Sheets
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleNewsletterSubmit = (e) => {
+    const formFields = {
+      'fullname-newsletter': 'họ tên',
+      'phone-newsletter': 'số điện thoại'
+    };
     
-    const fullname = e.target.querySelector('#fullname-newsletter').value;
-    const phone = e.target.querySelector('#phone-newsletter').value.toString();
-    
-    if (!fullname.trim() || !phone.trim()) {
-      setSubmitMessage("Vui lòng nhập đầy đủ thông tin");
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitMessage("");
-
-    const url = "https://script.google.com/macros/s/AKfycbz6TPx3j3icGYw2N55dF3mk8BsTYdW6ifbuEjhpfqflGvUPdzi_V20_YBH5noUJariTYA/exec";
-    
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: `timestamp=${encodeURIComponent(new Date().toLocaleString('vi-VN', { 
-        year: 'numeric', 
-        month: '2-digit', 
-        day: '2-digit', 
-        hour: '2-digit', 
-        minute: '2-digit', 
-        second: '2-digit',
-        hour12: false 
-      }))}&Fullname=${encodeURIComponent(fullname)}&PhoneNumber=${encodeURIComponent("'" + phone)}`,
-    })
-    .then(response => response.text())
-    .then(data => {
-      console.log("Success:", data);
-      setSubmitMessage("Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.");
-      e.target.reset();
-    })
-    .catch(error => {
-      console.error("Error:", error);
-      setSubmitMessage("Có lỗi xảy ra, vui lòng thử lại sau.");
-    })
-    .finally(() => {
-      setIsSubmitting(false);
+    handleFormSubmit(e, formFields).then((result) => {
+      if (result?.success) {
+        e.target.reset();
+      }
     });
   };
 
@@ -431,7 +396,7 @@ const Home = () => {
                 <form
                   className="validation-newsletter form_validation"
                   id="form_newsletter"
-                  onSubmit={handleSubmit}
+                  onSubmit={handleNewsletterSubmit}
                 >
                   <div className="newsletter_grid">
                     <div className="newsletter-input validation-input">
