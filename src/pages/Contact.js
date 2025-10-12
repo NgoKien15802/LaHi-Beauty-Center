@@ -154,14 +154,27 @@ const Contact = () => {
           </div>
         </div>
 
-        <div
-          className="contac_form"
-          style={{
-            background:
-              "url('upload/news/462767223122112361532539291361829581168189458n-1732160429.jpg') no-repeat center center / cover",
-          }}
-        >
-          <div className="section contact-form">
+         <div
+           className="contac_form"
+           style={{
+             background:
+               "url('upload/about/nen.jpeg') no-repeat center center / cover",
+             position: "relative",
+           }}
+         >
+           {/* Overlay */}
+           <div
+             style={{
+               position: "absolute",
+               top: 0,
+               left: 0,
+               right: 0,
+               bottom: 0,
+               backgroundColor: "rgba(0, 0, 0, 0.5)",
+               zIndex: 1,
+             }}
+           />
+          <div className="section contact-form" style={{ position: "relative", zIndex: 2 }}>
             <div className="container">
               <div className="row justify-content-center">
                 <div className="col-12 col-lg-8">
