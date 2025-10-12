@@ -410,12 +410,12 @@ const ServiceDetail = () => {
                     <div className="dvnb_pic service-pic scale-img hover-glass">
                       <picture>
                         <source
-                          srcSet={`/${service.image}`}
+                          srcSet={`/${encodeURIComponent(service.image)}`}
                           media="(min-width: 0px)"
                         />
                         <img
                           className="d-inline-block w-100"
-                          data-src={`/${service.image}`}
+                          data-src={`/${encodeURIComponent(service.image)}`}
                           src="/thumbs/300x345x2/assets/images/noimage.png.webp"
                             alt={service.name}
                           onError={(e) =>
@@ -507,7 +507,7 @@ const ServiceDetail = () => {
       <div className="service-detail-container">
         <div className="service-detail-header">
           <img
-            src={`/${service.image}`}
+            src={`/${encodeURIComponent(service.image)}`}
             alt={service.title}
             className="service-detail-image"
           />

@@ -179,7 +179,8 @@ const Services = () => {
               </div>
 
               {serviceGroups.map((group) => (
-                <div key={group.id} className="col-4 col-md-4 col-lg-2 text-center mb-1">
+                  group?.isShowMenu && (
+                     <div key={group.id} className="col-4 col-md-4 col-lg-2 text-center mb-1">
                   <Link
                     to={`/services?category=${group.id}`}
                     className={`d-block ${
@@ -202,7 +203,7 @@ const Services = () => {
                       style={{ width: 80, height: 80, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}
                     >
                       <img
-                        src={group.image}
+                        src={`/${encodeURIComponent(group.image)}`}
                         alt={group.name}
                         className="img-fluid"
                         style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
@@ -212,6 +213,8 @@ const Services = () => {
                     <div>{group.name}</div>
                   </Link>
                 </div>
+                  )
+                
               ))}
             </div>
 

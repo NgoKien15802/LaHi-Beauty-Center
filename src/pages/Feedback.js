@@ -212,7 +212,7 @@ const Feedback = () => {
                         <Link to={`/feedback/${group.id}`} className={`d-block ${activeCategory === group.id ? "text-primary fw-bold" : "text-secondary"}`}>
                             <div className={`rounded-circle border ${activeCategory === group.id ? "border-primary" : "border-secondary"} mx-auto`} 
                                 style={{ width: 80, height: 80, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-                                <img src={group.image} alt={group.name} className="img-fluid" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
+                                <img src={`/${encodeURIComponent(group.image)}`} alt={group.name} className="img-fluid" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
                             </div>
                             <div>{group.name}</div>
                         </Link>
