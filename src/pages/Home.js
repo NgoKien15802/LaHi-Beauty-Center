@@ -4,6 +4,57 @@ import FeedbackList from "../components/FeedbackList";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  // State for form submission
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  // Handle form submission to Google Sheets
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const fullname = e.target.querySelector('#fullname-newsletter').value;
+    const phone = e.target.querySelector('#phone-newsletter').value.toString();
+    
+    if (!fullname.trim() || !phone.trim()) {
+      setSubmitMessage("Vui lòng nhập đầy đủ thông tin");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitMessage("");
+
+    const url = "https://script.google.com/macros/s/AKfycbz6TPx3j3icGYw2N55dF3mk8BsTYdW6ifbuEjhpfqflGvUPdzi_V20_YBH5noUJariTYA/exec";
+    
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `timestamp=${encodeURIComponent(new Date().toLocaleString('vi-VN', { 
+        year: 'numeric', 
+        month: '2-digit', 
+        day: '2-digit', 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit',
+        hour12: false 
+      }))}&Fullname=${encodeURIComponent(fullname)}&PhoneNumber=${encodeURIComponent("'" + phone)}`,
+    })
+    .then(response => response.text())
+    .then(data => {
+      console.log("Success:", data);
+      setSubmitMessage("Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.");
+      e.target.reset();
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      setSubmitMessage("Có lỗi xảy ra, vui lòng thử lại sau.");
+    })
+    .finally(() => {
+      setIsSubmitting(false);
+    });
+  };
+
   // Dữ liệu hình ảnh gallery
   const galleryImages = [
     {
@@ -380,10 +431,7 @@ const Home = () => {
                 <form
                   className="validation-newsletter form_validation"
                   id="form_newsletter"
-                  novalidate
-                  method="post"
-                  action="http://herskinlab.com.vn/dangkynhanudai"
-                  enctype="multipart/form-data"
+                  onSubmit={handleSubmit}
                 >
                   <div className="newsletter_grid">
                     <div className="newsletter-input validation-input">
@@ -400,14 +448,15 @@ const Home = () => {
                     </div>
                     <div className="newsletter-input validation-input">
                       <input
-                        type="number"
+                        type="text"
+                        pattern="[0-9]*"
+                        inputMode="numeric"
                         onKeyDown={(e) => e.keyCode !== 69}
                         onInput={(e) => {
-                          if (e.target.value.length > e.target.maxLength) {
-                            e.target.value = e.target.value.slice(
-                              0,
-                              e.target.maxLength
-                            );
+                          // Chỉ cho phép số
+                          e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                          if (e.target.value.length > 10) {
+                            e.target.value = e.target.value.slice(0, 10);
                           }
                         }}
                         maxLength="10"
@@ -423,23 +472,25 @@ const Home = () => {
                   </div>
                   <div className="newsletter-button">
                     <input
-                      type="hidden"
-                      name="csrf_token"
-                      value="6a8bd0bf2151c2f0151bc4d77935b8b263a5de0880ebf1a5fc9379ee4c17f539"
-                    />
-                    <input type="hidden" name="submit-newsletter" value="1" />
-                    <input
-                      type="hidden"
-                      name="recaptcha_response_newsletter"
-                      id="recaptchaResponseNewsletter"
-                    />
-                    <input
                       type="submit"
                       className="btn_newsletter btn_validation"
-                      value="Đăng ký ngay"
-                      disabled
+                      value={isSubmitting ? "Đang gửi..." : "Đăng ký ngay"}
+                      disabled={isSubmitting}
                     />
                   </div>
+                  {submitMessage && (
+                    <div className={`submit-message ${submitMessage.includes("thành công") ? "success" : "error"}`} style={{
+                      marginTop: "10px",
+                      padding: "10px",
+                      borderRadius: "5px",
+                      textAlign: "center",
+                      backgroundColor: submitMessage.includes("thành công") ? "#d4edda" : "#f8d7da",
+                      color: submitMessage.includes("thành công") ? "#155724" : "#721c24",
+                      border: `1px solid ${submitMessage.includes("thành công") ? "#c3e6cb" : "#f5c6cb"}`
+                    }}>
+                      {submitMessage}
+                    </div>
+                  )}
                 </form>
               </div>
             </div>
