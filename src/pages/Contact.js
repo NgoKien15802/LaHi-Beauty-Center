@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useFormSubmission } from "../utils/formSubmission";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
   // Use form submission utility
@@ -21,6 +23,7 @@ const Contact = () => {
 
   return (
     <>
+      <ToastContainer position="top-right" autoClose={2500} hideProgressBar closeOnClick pauseOnHover draggable theme="light" />
       {/* breadcrumbs */}
       <div className="breadCrumbs">
         <div className="max-width">
@@ -243,16 +246,23 @@ const Contact = () => {
                           name="csrf_token"
                           value="6a8bd0bf2151c2f0151bc4d77935b8b263a5de0880ebf1a5fc9379ee4c17f539"
                         />
-                         <input
-                           type="submit"
-                           className="btn_validation btn  mr-2"
-						  style={{
-							border: '1px solid #70501f'
-						  }}
-                           name="submit-contact"
-                           value={isSubmitting ? "Đang gửi..." : "Gửi"}
-                           disabled={isSubmitting}
-                         />
+                        <button
+                          type="submit"
+                          className="btn_validation btn  mr-2"
+                          name="submit-contact"
+                          disabled={isSubmitting}
+                          style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', border: '1px solid #70501f' }}
+                        >
+                          {isSubmitting && (
+                            <span
+                              className="spinner-border spinner-border-sm"
+                              role="status"
+                              aria-hidden="true"
+                              style={{ width: '1rem', height: '1rem', borderWidth: '.15em' }}
+                            />
+                          )}
+                          {isSubmitting ? "Đang gửi..." : "Gửi"}
+                        </button>
                          <input
                            type="reset"
                            className="btn btn-secondary"
@@ -264,19 +274,7 @@ const Contact = () => {
                            id="recaptchaResponseContact"
                          />
                        </div>
-                       {submitMessage && (
-                         <div className={`submit-message ${submitMessage.includes("thành công") ? "success" : "error"}`} style={{
-                           marginTop: "10px",
-                           padding: "10px",
-                           borderRadius: "5px",
-                           textAlign: "center",
-                           backgroundColor: submitMessage.includes("thành công") ? "#d4edda" : "#f8d7da",
-                           color: submitMessage.includes("thành công") ? "#155724" : "#721c24",
-                           border: `1px solid ${submitMessage.includes("thành công") ? "#c3e6cb" : "#f5c6cb"}`
-                         }}>
-                           {submitMessage}
-                         </div>
-                       )}
+                      {/* Toast will handle messages; inline message removed */}
                      </form>
                   </div>
                 </div>

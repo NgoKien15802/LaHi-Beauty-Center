@@ -1,10 +1,16 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz6TPx3j3icGYw2N55dF3mk8BsTYdW6ifbuEjhpfqflGvUPdzi_V20_YBH5noUJariTYA/exec";
 
 export const useFormSubmission = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
+
+  const showToast = (message, type = "success") => {
+    if (type === "success") toast.success(message);
+    else toast.error(message);
+  };
 
   const submitToGoogleSheets = async (formData) => {
     setIsSubmitting(true);
@@ -49,11 +55,13 @@ export const useFormSubmission = () => {
       console.log("Success:", data);
       
       setSubmitMessage("Gửi thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.");
+      showToast("Gửi thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.", "success");
       return { success: true, data };
       
     } catch (error) {
       console.error("Error:", error);
       setSubmitMessage("Có lỗi xảy ra, vui lòng thử lại sau.");
+      showToast("Có lỗi xảy ra, vui lòng thử lại sau.", "error");
       return { success: false, error };
     } finally {
       setIsSubmitting(false);

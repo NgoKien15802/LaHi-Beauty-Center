@@ -3,6 +3,8 @@ import ServiceList from "../components/ServiceList";
 import FeedbackList from "../components/FeedbackList";
 import { Link } from "react-router-dom";
 import { useFormSubmission } from "../utils/formSubmission";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   const { isSubmitting, submitMessage, handleFormSubmit } = useFormSubmission();
@@ -181,6 +183,7 @@ const Home = () => {
         </div>
       </div>
 
+      <ToastContainer position="top-right" autoClose={2500} hideProgressBar closeOnClick pauseOnHover draggable theme="light" />
       <div className="wrap-all">
         <div className="gioithieu_wrap spacer">
           <div className="wrap-content">
@@ -436,26 +439,26 @@ const Home = () => {
                     </div>
                   </div>
                   <div className="newsletter-button">
-                    <input
-                      type="submit"
-                      className="btn_newsletter btn_validation"
-                      value={isSubmitting ? "Đang gửi..." : "Đăng ký ngay"}
-                      disabled={isSubmitting}
+                <button
+                  type="submit"
+                  className="btn_newsletter btn_validation"
+                  disabled={isSubmitting}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textAlign: 'center',
+                    justifyContent: 'center',
+                   }}
+                >
+                  {isSubmitting && (
+                    <span
+                      className="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                      style={{ width: '1rem', height: '1rem', borderWidth: '.15em' }}
                     />
-                  </div>
-                  {submitMessage && (
-                    <div className={`submit-message ${submitMessage.includes("thành công") ? "success" : "error"}`} style={{
-                      marginTop: "10px",
-                      padding: "10px",
-                      borderRadius: "5px",
-                      textAlign: "center",
-                      backgroundColor: submitMessage.includes("thành công") ? "#d4edda" : "#f8d7da",
-                      color: submitMessage.includes("thành công") ? "#155724" : "#721c24",
-                      border: `1px solid ${submitMessage.includes("thành công") ? "#c3e6cb" : "#f5c6cb"}`
-                    }}>
-                      {submitMessage}
-                    </div>
                   )}
+                  {isSubmitting ? "Đang gửi..." : "Đăng ký ngay"}
+                </button>
+                  </div>
+                {/* Toast will handle messages; inline message removed */}
                 </form>
               </div>
             </div>
