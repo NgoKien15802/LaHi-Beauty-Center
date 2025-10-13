@@ -1,7 +1,4 @@
 
 
 .service-pic img {
-  height: 300px !important;
-  object-position: center !important;
-  transition: transform 0.3s ease;
 }
