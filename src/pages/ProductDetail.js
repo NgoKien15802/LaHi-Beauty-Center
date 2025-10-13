@@ -134,6 +134,15 @@ const ProductDetail = () => {
     return <p className="text-center my-4">Không tìm thấy sản phẩm.</p>;
   }
 
+  const handleContact = () => {
+    const pageUsernameOrId = "lahibeautycenter1"; 
+    const messengerUrl = `https://m.me/${pageUsernameOrId}`;
+    const fallbackUrl = `https://www.facebook.com/messages/t/${pageUsernameOrId}`;
+
+    const urlToOpen = messengerUrl || fallbackUrl;
+    window.open(urlToOpen, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <div className="wrap-all">
       <div className="breadCrumbs">
@@ -273,6 +282,7 @@ const ProductDetail = () => {
                       <button
                         type="button"
                         className="btn btn-lg btn-gray btn-cart add_to_cart btn_buy add_to_cart"
+                        onClick={handleContact}
                       >
                         <span className="txt-main">Liên hệ để mua</span>
                         <span className="text-add">
