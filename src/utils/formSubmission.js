@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz6TPx3j3icGYw2N55dF3mk8BsTYdW6ifbuEjhpfqflGvUPdzi_V20_YBH5noUJariTYA/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby0pwd8wiyCge4yMeAaWS5cKXPXk7-z1oNJJ_-lMgsHRWG0amDLmlfV7NnWUqo2jQOz/exec";
 
 export const useFormSubmission = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
