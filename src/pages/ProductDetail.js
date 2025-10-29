@@ -184,14 +184,14 @@ const ProductDetail = () => {
                         key={`slide-${idx}`}
                       >
                         <a
-                          href={`/${img}`}
+                          href={encodeURI(`/${img}`)}
                           data-fancybox="gallery"
                           title="Click để xem"
                         >
                           <img
-                            src={`/${img}`}
+                            src={encodeURI(`/${img}`)}
                             alt={product.name}
-                            data-image={`/${img}`}
+                            data-image={encodeURI(`/${img}`)}
                             className="img-responsive mx-auto d-block center-block"
                             style={{
                               maxWidth: "100%",
@@ -228,9 +228,9 @@ const ProductDetail = () => {
                         style={{ width: 100, height: 100 }}
                       >
                         <img
-                          src={`/${img}`}
+                          src={encodeURI(`/${img}`)}
                           alt={product.name}
-                          data-image={`/${img}`}
+                          data-image={encodeURI(`/${img}`)}
                           style={{
                             width: "100%",
                             height: "100%",
@@ -366,12 +366,13 @@ const ProductDetail = () => {
                       <div className="dvnb_pic service-pic scale-img hover-glass">
                         <picture>
                           <source
-                            srcSet={`/${rp.image}`}
+                            srcSet={encodeURI(`/${rp.image}`)}
+
                             media="(min-width: 0px)"
                           />
                           <img
                             className="d-inline-block w-100"
-                            data-src={`/${rp.image}`}
+                            data-src={encodeURI(`/${rp.image}`)}
                             src="/thumbs/300x345x2/assets/images/noimage.png.webp"
                             alt={rp.name}
                             onError={(e) =>

@@ -51,10 +51,10 @@ const ProductList = ({
               <Link to={`/product/${product.id}`} className="dvnb_box position-relative d-block text-decoration-none">
                 <div className="dvnb_pic service-pic scale-img hover-glass">
                   <picture>
-                    <source srcSet={`/${product.image}`} media="(min-width: 0px)" />
+                    <source srcSet={encodeURI(`/${product.image}`)} media="(min-width: 0px)" />
                     <img
                       className="d-inline-block w-100"
-                      data-src={`/${product.image}`}
+                      data-src={encodeURI(`/${product.image}`)}
                       src="/thumbs/300x345x2/assets/images/noimage.png.webp"
                       alt={product.name}
                       onError={(e) => (e.target.src = "/thumbs/300x345x2/assets/images/noimage.png.webp")}
