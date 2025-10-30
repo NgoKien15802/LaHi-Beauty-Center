@@ -1,0 +1,36 @@
+.share-wrapper {
+  background-color: #ece5d5;
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.share-inner {
+  max-width: 1200px;
+}
+
+.share-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.a2a_kit {
+  display: flex !important;
+}
+
+.a2a_kit a {
+  border-radius: 6px !important;
+  overflow: hidden;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.a2a_button_messenger svg path {
+  fill: #0084ff !important;
+}
+
+.a2a_kit a:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+  transition: all 0.2s ease-in-out;
+}
