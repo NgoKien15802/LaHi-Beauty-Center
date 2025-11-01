@@ -51,28 +51,8 @@ const Home = () => {
       alt: "Her Skinlab",
       width: "420",
       height: "315",
-    },
-    {
-      id: 5,
-      src: "upload/trangchu/snaptik_7472736510807133456_6.jpeg",
-      alt: "Her Skinlab",
-      width: "420",
-      height: "315",
-    },
-    {
-      id: 6,
-      src: "upload/trangchu/snaptik_7472736510807133456_8.jpeg",
-      alt: "Her Skinlab",
-      width: "420",
-      height: "315",
-    },
-    {
-      id: 7,
-      src: "upload/trangchu/snaptik_7472736510807133456_12.jpeg",
-      alt: "Her Skinlab",
-      width: "420",
-      height: "315",
-    },
+
+    }
   ];
 
   // Dịch vụ nổi bật (hiển thị danh sách + phân trang)
@@ -197,9 +177,9 @@ const Home = () => {
                     className="d-inline-block lazy w-100"
                     onError={(e) =>
                       (e.target.src =
-                        "upload/trangchu/snaptik_7472736510807133456_1.jpeg")
+                        "upload/trangchu/snaptik_7472736510807133456_8.jpeg")
                     }
-                    data-src="upload/trangchu/snaptik_7472736510807133456_1.jpeg"
+                    data-src="upload/trangchu/snaptik_7472736510807133456_8.jpeg"
                     alt="Lahi Beauty Center"
                   />
                 </a>
