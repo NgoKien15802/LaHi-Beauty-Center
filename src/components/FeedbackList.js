@@ -49,10 +49,10 @@ const FeedbackList = ({
           <p className="mt-3">Đang tải...</p>
         </div>
       ) : (
-        <div className={`row ${className}`} id={scrollToId}>
+        <div className={`row feedback-section ${className}`} id={scrollToId}>
           {currentItems.map((fb, index) => (
             <div key={fb.id} className="col-6 col-sm-4 col-md-3 mb-3">
-              <div className="border p-2 text-center">
+              <div className="border p-2 text-center feedback-card">
                 <img
                   src={`/${fb.image}`}
                   alt={fb.name}

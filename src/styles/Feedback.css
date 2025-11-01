@@ -84,3 +84,37 @@
     color: #c60002 !important;
 }
 
+.feedback-section {
+  align-items: stretch;
+}
+
+.feedback-section .feedback-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  border-radius: 12px;
+  background: #fffbea;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.feedback-section img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.feedback-section p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+  color: #333;
+  padding: 0 8px 10px;
+}
+
