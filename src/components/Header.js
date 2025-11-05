@@ -151,8 +151,8 @@ const Header = () => {
                       ) : servicesData && servicesData.categories ? (
                         servicesData.categories.map(category => (
                           <li key={`mobile-${category.id}`} className="level-0">
-                            <Link 
-                              to={`/services?category=${encodeURIComponent(category.name)}`}
+                          <Link 
+                              to={`/services?category=${category.id}`}
                               className="transition"
                               title={category.name}
                               onClick={closeMobileMenu}
