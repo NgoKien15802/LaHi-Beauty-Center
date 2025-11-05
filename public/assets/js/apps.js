@@ -309,7 +309,6 @@ NN_FRAMEWORK.AltImg = function () {
   });
 };
 
-
 /* Menu */
 NN_FRAMEWORK.Menu = function () {
   if (isExist(".plus-nClick")) {
@@ -364,7 +363,7 @@ NN_FRAMEWORK.Menu = function () {
 
   /* Menu mobile */
   var menu_mobi = $("ul.menu_desktop").html();
-  $(".load-menu").append("<ul>" + menu_mobi + "</ul>");
+  $(".load-menu ul").append(menu_mobi);
   $(".load-menu ul li").removeClass();
 
   $(".menu_mobi_add ul li").each(function (index, element) {
@@ -404,7 +403,7 @@ NN_FRAMEWORK.Menu = function () {
     }
   });
 
-  $(".icon_menu_mobi,.close_menu,.menu_baophu,#mmenu_trigger").click(
+  $(".icon_menu_mobi,.close_menu,.menu_baophu, #mmenu_trigger").click(
     function () {
       if ($(".menu_mobi_add").hasClass("menu_mobi_active")) {
         $(".menu_mobi_add").removeClass("menu_mobi_active");
@@ -416,8 +415,21 @@ NN_FRAMEWORK.Menu = function () {
       return false;
     }
   );
-};
 
+  $(".menu_mobi_add li a").click(function () {
+    $(".menu_mobi_add").removeClass("menu_mobi_active");
+    $(".menu_baophu").fadeOut(300);
+  });
+
+  $(document).on("click", "#services-menu-mobile-list li a", function () {
+    $(".menu_mobi_add").removeClass("menu_mobi_active");
+    $(".menu_baophu").fadeOut(300);
+
+    // Reset submenu (ẩn hết + remove active2)
+    $(".menu_mobi_add ul li a.active2").removeClass("active2");
+    $(".menu_mobi_add ul li div ul").hide(0);
+  });
+};
 
 /* Tools */
 NN_FRAMEWORK.Tools = function () {
