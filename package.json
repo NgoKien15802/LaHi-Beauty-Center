@@ -4,7 +4,7 @@
   "description": "LaHi Beauty Center - React SPA",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && node scripts/copy-htaccess.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
