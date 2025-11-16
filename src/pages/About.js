@@ -1,8 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/About.css";
+import { useEffect } from "react";
 
 const About = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://static.addtoany.com/menu/page.js";
+    script.async = true;
+
+    script.onload = () => {
+      if (window.a2a) a2a.init_all();
+    };
+
+    document.body.appendChild(script);
+  }, []);
+
+  useEffect(() => {
+    if (window.a2a) a2a.init_all();
+  });
+
   return (
     <>
       <div className="breadCrumbs">

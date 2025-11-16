@@ -1,8 +1,9 @@
 .share-wrapper {
   background-color: #ece5d5;
   width: 100%;
-  padding: 10px 15px;
+  padding: 12px 15px;
   border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .share-inner {
@@ -16,21 +17,17 @@
 
 .a2a_kit {
   display: flex !important;
+  gap: 5px;
+  align-items: center;
 }
 
-.a2a_kit a {
-  border-radius: 6px !important;
-  overflow: hidden;
-  width: 40px !important;
-  height: 40px !important;
-}
-
-.a2a_button_messenger svg path {
-  fill: #0084ff !important;
-}
-
-.a2a_kit a:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-  transition: all 0.2s ease-in-out;
+.a2a_kit a,
+.a2a_default_style a,
+.a2a_svg {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
