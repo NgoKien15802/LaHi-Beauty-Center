@@ -134,7 +134,7 @@ const Home = () => {
           <div className="splide__track">
             <div className="splide__list">
               <div className="splide__slide">
-                <a className="d-block" href="index.html" target="_blank">
+                <div className="d-block">
                   <picture>
                     <source
                       srcSet="upload/trangchu/bia.jpg"
@@ -156,7 +156,7 @@ const Home = () => {
                       }
                     />
                   </picture>
-                </a>
+                </div>
               </div>
             </div>
           </div>
@@ -172,7 +172,7 @@ const Home = () => {
                 className="gioithieu_left d-none d-md-block"
                 data-aos="fade-right"
               >
-                <a href="gioi-thieu.html" className="gioithieu__pic scale-img">
+                <Link to="/about" className="gioithieu__pic scale-img">
                   <img
                     className="d-inline-block lazy w-100"
                     onError={(e) =>
@@ -182,7 +182,7 @@ const Home = () => {
                     data-src="upload/trangchu/snaptik_7472736510807133456_8.jpeg"
                     alt="Lahi Beauty Center"
                   />
-                </a>
+                </Link>
               </div>
               <div className="gioithieu_right" data-aos="fade-left">
                 <div className="gioithieu__title">
@@ -209,12 +209,12 @@ const Home = () => {
                   </p>
                 </div>
                 <div className="about_viewmore">
-                  <a
-                    href="gioi-thieu.html"
+                  <Link
+                    to="/about"
                     className="btn_about_viewmore d-inline-block"
                   >
                     Tìm hiểu thêm
-                  </a>
+                  </Link>
                 </div>
                 <div className="about--gallery">
                   <div className="about__list">
