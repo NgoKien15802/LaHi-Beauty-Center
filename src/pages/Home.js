@@ -321,7 +321,7 @@ const Home = () => {
                           target="_blank"
                           rel="nofollow"
                         >
-                          0949 774 973
+                          0961 658 866
                         </a>
                       </div>
                       <hr className="newsletter__info-separator my-2" />

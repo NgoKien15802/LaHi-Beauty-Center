@@ -297,8 +297,8 @@ const ProductDetail = () => {
               <div className="hotline_product">
                 <span>
                   Gọi đặt mua:{" "}
-                  <a href="tel:0946115846" title="0946115846">
-                    0946 115 846
+                  <a href="tel:0961658866" title="0961658866">
+                    0961 658 866
                   </a>
                 </span>
                 <span> (miễn phí 8:30 - 21:30).</span>

@@ -69399,6 +69399,7 @@ span.name-banggia {
     }
 
     .search-res {
+        visibility: hidden;
         position: relative;
         width: 40px
     }

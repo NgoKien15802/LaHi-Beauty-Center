@@ -15,7 +15,7 @@ const Footer = () => {
               </div>
               <div className="footer_news">
                 <h3 className="footer_title">Thông tin liên hệ</h3>
-                <div className="footer_info" style={{ lineHeight: '1', fontSize: '16px' }}>
+                <div className="footer_info" style={{ lineHeight: '2', fontSize: '15px' }}>
                   <p>
                     <img alt="" height="20" src="upload/filemanager/files/icon/icons8-map-marker-20.png" width="20" /> 
                     CS1 : S2.16 - Vinhomes Ocean Park, Gia Lâm, Hà Nội
