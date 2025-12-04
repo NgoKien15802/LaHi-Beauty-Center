@@ -17,7 +17,7 @@
               "description": "Liệu trình chăm sóc da chuyên sâu với công nghệ cao, giúp da khỏe mạnh và sáng mịn",
               "price": "500,000 VNĐ",
               "duration": "90 phút",
-              "image": "upload/service/chăm sóc da/Chăm sóc da chuyên sâu/chăm sóc da 1 (1).jpg",
+              "image": "upload/service/chăm sóc da/Chăm sóc da chuyên sâu/chăm sóc da.png",
               "docxPath": "upload/service/chăm sóc da/Chăm sóc da chuyên sâu/chăm sóc da chuyên sâu.docx",
               "relatedServices": [
                 "thanh-loc-da-phyto",
@@ -26,12 +26,12 @@
             },
             {
               "id": "thanh-loc-da-phyto",
-              "name": "THANH LỌC DA, KIỂM SOÁT DẦU MỤN PHYTO",
+              "name": "PHYTO - THANH LỌC DA",
               "description": "Liệu trình thanh lọc da và kiểm soát dầu mụn bằng công nghệ Phyto",
               "price": "450,000 VNĐ",
               "duration": "75 phút",
-              "image": "upload/service/chăm sóc da/Thanh lọc da, kiểm soát dầu mụn Phyto/pexels-arina-krasnikova-6663459 (1).jpg",
-              "docxPath": "upload/service/chăm sóc da/Thanh lọc da, kiểm soát dầu mụn Phyto/Tài liệu không có tiêu đề.docx",
+              "image": "upload/service/chăm sóc da/Phyto - Thanh lọc da/Phyto - thanh lọc da.png",
+              "docxPath": "upload/service/chăm sóc da/Phyto - Thanh lọc da/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "cham-soc-da-chuyen-sau",
                 "toning-tre-hoa-da"
@@ -43,7 +43,7 @@
               "description": "Liệu trình toning giúp trẻ hóa da, cải thiện độ đàn hồi và săn chắc",
               "price": "400,000 VNĐ",
               "duration": "60 phút",
-              "image": "upload/service/chăm sóc da/Toning trẻ hoá da/pexels-arina-krasnikova-6663456 (1).jpg",
+              "image": "upload/service/chăm sóc da/Toning trẻ hoá da/toning trẻ hoá da.png",
               "docxPath": "upload/service/chăm sóc da/Toning trẻ hoá da/Toning trẻ hoá da.docx",
               "relatedServices": [
                 "cham-soc-da-chuyen-sau",
@@ -67,11 +67,11 @@
           "services": [
             {
               "id": "giam-nam-tan-nhang-chuyen-nghiep",
-              "name": "GIẢM NÁM - TÀN NHANG CHUYÊN NGHIỆP",
+              "name": "GIẢM NÁM - TÀN NHANG",
               "description": "Điều trị nám và tàn nhang với công nghệ laser hiện đại, an toàn và hiệu quả",
               "price": "800,000 VNĐ",
               "duration": "120 phút",
-              "image": "upload/service/giảm nám - tàn nhang/nám 2 (1).jpg",
+              "image": "upload/service/giảm nám - tàn nhang/giảm nám - tàn nhang.png",
               "docxPath": "upload/service/giảm nám - tàn nhang/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "cham-soc-da-chuyen-sau"
@@ -97,7 +97,7 @@
               "description": "Liệu trình peel Image chuyên nghiệp giúp cải thiện kết cấu da",
               "price": "600,000 VNĐ",
               "duration": "90 phút",
-              "image": "upload/service/chemical peel/Peel Image/DeWatermark.ai_1754969562817 (1).jpeg",
+              "image": "upload/service/chemical peel/Peel Image/peel image.png",
               "docxPath": "upload/service/chemical peel/Peel Image/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "peel-recovery",
@@ -110,7 +110,7 @@
               "description": "Liệu trình phục hồi da sau peel, giúp da khỏe mạnh và mịn màng",
               "price": "550,000 VNĐ",
               "duration": "75 phút",
-              "image": "upload/service/chemical peel/peel recovery/peel recovery (2).jpg",
+              "image": "upload/service/chemical peel/peel recovery/peel recovery.png",
               "docxPath": "upload/service/chemical peel/peel recovery/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "peel-image",
@@ -123,7 +123,7 @@
               "description": "Liệu trình peel tảo thiên nhiên, cung cấp dưỡng chất cho da",
               "price": "500,000 VNĐ",
               "duration": "80 phút",
-              "image": "upload/service/chemical peel/Peel tảo/pexels-shvetsa-5069423 (1).jpg",
+              "image": "upload/service/chemical peel/Peel tảo/peel tảo.png",
               "docxPath": "upload/service/chemical peel/Peel tảo/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "peel-image",
@@ -147,24 +147,24 @@
           "services": [
             {
               "id": "cang-bong-cap-am",
-              "name": "CĂNG BÓNG, CẤP ẨM, THU NHỎ LỖ CHÂN LÔNG",
+              "name": "CĂNG BÓNG - CẤP ẨM",
               "description": "Liệu trình căng bóng da, cấp ẩm và thu nhỏ lỗ chân lông hiệu quả",
               "price": "700,000 VNĐ",
               "duration": "100 phút",
-              "image": "upload/service/glass skin đa tầng/Căng bóng, cấp ẩm, thu nhỏ lỗ chân lông/ca (1).jpg",
-              "docxPath": "upload/service/glass skin đa tầng/Căng bóng, cấp ẩm, thu nhỏ lỗ chân lông/Tài liệu không có tiêu đề.docx",
+              "image": "upload/service/glass skin đa tầng/Căng bóng - Cấp ẩm/căng bóng - cấp ẩm.png",
+              "docxPath": "upload/service/glass skin đa tầng/Căng bóng - Cấp ẩm/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "giam-dau-mun-thu-nho-lo-chan-long"
               ]
             },
             {
               "id": "giam-dau-mun-thu-nho-lo-chan-long",
-              "name": "GIẢM DẦU MỤN - THU NHỎ LỖ CHÂN LÔNG",
+              "name": "THU NHỎ LỖ CHÂN LÔNG",
               "description": "Liệu trình giảm dầu mụn và thu nhỏ lỗ chân lông với công nghệ glass skin",
               "price": "650,000 VNĐ",
               "duration": "90 phút",
-              "image": "upload/service/glass skin đa tầng/Giảm dầu mụn - Thu nhỏ lỗ chân lông/glass skin đa tầng 1 (1).jpg",
-              "docxPath": "upload/service/glass skin đa tầng/Giảm dầu mụn - Thu nhỏ lỗ chân lông/Tài liệu không có tiêu đề.docx",
+              "image": "upload/service/glass skin đa tầng/Thu nhỏ lỗ chân lông/thu nhỏ lỗ chân lông.png",
+              "docxPath": "upload/service/glass skin đa tầng/Thu nhỏ lỗ chân lông/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "cang-bong-cap-am"
               ]
@@ -186,11 +186,11 @@
           "services": [
             {
               "id": "kiem-soat-dau-mun-chuyen-nghiep",
-              "name": "KIỂM SOÁT DẦU MỤN CHUYÊN NGHIỆP",
+              "name": "KIỂM SOÁT DẦU MỤN",
               "description": "Liệu trình kiểm soát dầu mụn chuyên nghiệp với công nghệ hiện đại",
               "price": "580,000 VNĐ",
               "duration": "85 phút",
-              "image": "upload/service/kiểm soát dầu mụn/kiểm soát dầu mụn 1 (1).jpg",
+              "image": "upload/service/kiểm soát dầu mụn/kiểm soát dầu mụn.png",
               "docxPath": "upload/service/kiểm soát dầu mụn/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "thanh-loc-da-phyto"
@@ -212,12 +212,12 @@
           "services": [
             {
               "id": "nang-co-vung-ma",
-              "name": "NÂNG CƠ VÙNG MÁ, CHỐNG CHẢY XỆ",
+              "name": "NÂNG CƠ VÙNG MÁ",
               "description": "Liệu trình nâng cơ vùng má và chống chảy xệ với công nghệ HIFU",
               "price": "1,200,000 VNĐ",
               "duration": "120 phút",
-              "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Nâng cơ vùng má, chống chảy xệ/hifu1 (1).jpg",
-              "docxPath": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Nâng cơ vùng má, chống chảy xệ/Tài liệu không có tiêu đề.docx",
+              "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Nâng cơ vùng má/Nâng cơ vùng má.png",
+              "docxPath": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Nâng cơ vùng má/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "xoa-nong-cam",
                 "xoa-ranh-cuoi"
@@ -229,7 +229,7 @@
               "description": "Điều trị xóa nọng cằm với công nghệ HIFU tiên tiến",
               "price": "1,000,000 VNĐ",
               "duration": "90 phút",
-              "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Xoá nọng cằm/cằm 2 (1).jpg",
+              "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Xoá nọng cằm/xoá nọng cằm.png",
               "docxPath": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Xoá nọng cằm/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "nang-co-vung-ma",
@@ -242,7 +242,7 @@
               "description": "Điều trị xóa rãnh cười hiệu quả với công nghệ HIFU",
               "price": "900,000 VNĐ",
               "duration": "80 phút",
-              "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Xoá rãnh cười/rãnh cười (2).jpg",
+              "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Xoá rãnh cười/xoá rãnh cười.png",
               "docxPath": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Xoá rãnh cười/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "nang-co-vung-ma",
@@ -270,7 +270,7 @@
               "description": "Triệt lông nách vĩnh viễn với công nghệ lạnh",
               "price": "250,000 VNĐ",
               "duration": "30 phút",
-              "image": "upload/service/triệt lông lạnh/triệt nách/triệt lông lạnh (1).jpg",
+              "image": "upload/service/triệt lông lạnh/triệt nách/triệt nách.png",
               "docxPath": "upload/service/triệt lông lạnh/triệt nách/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "triet-mat",
@@ -283,7 +283,7 @@
               "description": "Triệt lông tay với công nghệ lạnh chuyên nghiệp",
               "price": "350,000 VNĐ",
               "duration": "60 phút",
-              "image": "upload/service/triệt lông lạnh/triệt tay/triệt lông lạnh 3 (1).jpg",
+              "image": "upload/service/triệt lông lạnh/triệt tay/triệt tay.png",
               "docxPath": "upload/service/triệt lông lạnh/triệt tay/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "triet-mat",

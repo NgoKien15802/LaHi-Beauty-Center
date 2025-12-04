@@ -179,7 +179,12 @@ const NewsDetail = () => {
         const result = await mammoth.convertToHtml(
           { arrayBuffer },
           {
-            convertImage: mammoth.images.inline(),
+            // Ép mammoth inline ảnh trong file Word thành data URL (base64)
+            convertImage: mammoth.images.inline((element) =>
+              element.read("base64").then((imageBuffer) => ({
+                src: `data:${element.contentType};base64,${imageBuffer}`,
+              }))
+            ),
           }
         );
         // Build TOC from generated HTML and inject IDs
