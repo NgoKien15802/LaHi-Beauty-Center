@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
+import { encodeImagePath } from "../utils/imageUtils";
 
 const ServiceList = ({
   services = [],
@@ -62,12 +63,12 @@ const ServiceList = ({
                 <div className="dvnb_pic service-pic scale-img hover-glass">
                   <picture>
                     <source
-                      srcSet={`/${encodeURIComponent(service.image)}`}
+                      srcSet={`/${encodeImagePath(service.image)}`}
                       media="(min-width: 0px)"
                     />
                     <img
                       className="d-inline-block w-100"
-                      data-src={`/${encodeURIComponent(service.image)}`}
+                      data-src={`/${encodeImagePath(service.image)}`}
                       src="/thumbs/300x345x2/assets/images/noimage.png.webp"
                       alt={service.name}
                       onError={(e) =>

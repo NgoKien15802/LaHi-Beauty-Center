@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import mammoth from "mammoth/mammoth.browser";
 import { useParams, Link } from "react-router-dom";
 import "../styles/DetailPages.css";
+import { encodeImagePath } from "../utils/imageUtils";
 
 // Helper functions for rendering content
 const createHTMLHelpers = () => ({
@@ -546,12 +547,12 @@ const ServiceDetail = () => {
                     <div className="dvnb_pic service-pic scale-img hover-glass">
                       <picture>
                         <source
-                          srcSet={`/${encodeURIComponent(service.image)}`}
+                          srcSet={`/${encodeImagePath(service.image)}`}
                           media="(min-width: 0px)"
                         />
                         <img
                           className="d-inline-block w-100"
-                          data-src={`/${encodeURIComponent(service.image)}`}
+                          data-src={`/${encodeImagePath(service.image)}`}
                           src="/thumbs/300x345x2/assets/images/noimage.png.webp"
                           alt={service.name}
                           onError={(e) =>
@@ -686,7 +687,7 @@ const ServiceDetail = () => {
       <div className="service-detail-container">
         <div className="service-detail-header">
           <img
-            src={`/${encodeURIComponent(service.image)}`}
+            src={`/${encodeImagePath(service.image)}`}
             alt={service.title}
             className="service-detail-image"
           />

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import "../styles/Services.css";
 import ServiceList from "../components/ServiceList";
+import { encodeImagePath } from "../utils/imageUtils";
 
 const Services = () => {
   const [serviceGroups, setServiceGroups] = useState([]);
@@ -203,7 +204,7 @@ const Services = () => {
                       style={{ width: 80, height: 80, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}
                     >
                       <img
-                        src={`/${encodeURIComponent(group.image)}`}
+                        src={`/${encodeImagePath(group.image)}`}
                         alt={group.name}
                         className="img-fluid"
                         style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
