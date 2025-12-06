@@ -17,7 +17,7 @@
               "description": "Liệu trình chăm sóc da chuyên sâu với công nghệ cao, giúp da khỏe mạnh và sáng mịn",
               "price": "500,000 VNĐ",
               "duration": "90 phút",
-              "image": "upload/service/chăm sóc da/Chăm sóc da chuyên sâu/chăm sóc da.png",
+              "image": "upload/service/chăm sóc da/chăm sóc da chuyên sâu/chăm sóc da.png",
               "docxPath": "upload/service/chăm sóc da/Chăm sóc da chuyên sâu/chăm sóc da chuyên sâu.docx",
               "relatedServices": [
                 "thanh-loc-da-phyto",
@@ -30,7 +30,7 @@
               "description": "Liệu trình thanh lọc da và kiểm soát dầu mụn bằng công nghệ Phyto",
               "price": "450,000 VNĐ",
               "duration": "75 phút",
-              "image": "upload/service/chăm sóc da/Phyto - Thanh lọc da/Phyto - thanh lọc da.png",
+              "image": "upload/service/chăm sóc da/phyto - thanh lọc da/phyto - thanh lọc da.png",
               "docxPath": "upload/service/chăm sóc da/Phyto - Thanh lọc da/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "cham-soc-da-chuyen-sau",
@@ -43,7 +43,7 @@
               "description": "Liệu trình toning giúp trẻ hóa da, cải thiện độ đàn hồi và săn chắc",
               "price": "400,000 VNĐ",
               "duration": "60 phút",
-              "image": "upload/service/chăm sóc da/Toning trẻ hoá da/toning trẻ hoá da.png",
+              "image": "upload/service/chăm sóc da/toning trẻ hoá da/toning trẻ hoá da.png",
               "docxPath": "upload/service/chăm sóc da/Toning trẻ hoá da/Toning trẻ hoá da.docx",
               "relatedServices": [
                 "cham-soc-da-chuyen-sau",
@@ -97,7 +97,7 @@
               "description": "Liệu trình peel Image chuyên nghiệp giúp cải thiện kết cấu da",
               "price": "600,000 VNĐ",
               "duration": "90 phút",
-              "image": "upload/service/chemical peel/Peel Image/peel image.png",
+              "image": "upload/service/chemical peel/peel image/peel image.png",
               "docxPath": "upload/service/chemical peel/Peel Image/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "peel-recovery",
@@ -123,7 +123,7 @@
               "description": "Liệu trình peel tảo thiên nhiên, cung cấp dưỡng chất cho da",
               "price": "500,000 VNĐ",
               "duration": "80 phút",
-              "image": "upload/service/chemical peel/Peel tảo/peel tảo.png",
+              "image": "upload/service/chemical peel/peel tảo/peel tảo.png",
               "docxPath": "upload/service/chemical peel/Peel tảo/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "peel-image",
@@ -151,7 +151,7 @@
               "description": "Liệu trình căng bóng da, cấp ẩm và thu nhỏ lỗ chân lông hiệu quả",
               "price": "700,000 VNĐ",
               "duration": "100 phút",
-              "image": "upload/service/glass skin đa tầng/Căng bóng - Cấp ẩm/căng bóng - cấp ẩm.png",
+              "image": "upload/service/glass skin đa tầng/căng bóng - cấp ẩm/căng bóng - cấp ẩm.png",
               "docxPath": "upload/service/glass skin đa tầng/Căng bóng - Cấp ẩm/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "giam-dau-mun-thu-nho-lo-chan-long"
@@ -163,7 +163,7 @@
               "description": "Liệu trình giảm dầu mụn và thu nhỏ lỗ chân lông với công nghệ glass skin",
               "price": "650,000 VNĐ",
               "duration": "90 phút",
-              "image": "upload/service/glass skin đa tầng/Thu nhỏ lỗ chân lông/thu nhỏ lỗ chân lông.png",
+              "image": "upload/service/glass skin đa tầng/thu nhỏ lỗ chân lông/thu nhỏ lỗ chân lông.png",
               "docxPath": "upload/service/glass skin đa tầng/Thu nhỏ lỗ chân lông/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "cang-bong-cap-am"
@@ -216,7 +216,7 @@
               "description": "Liệu trình nâng cơ vùng má và chống chảy xệ với công nghệ HIFU",
               "price": "1,200,000 VNĐ",
               "duration": "120 phút",
-              "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Nâng cơ vùng má/Nâng cơ vùng má.png",
+              "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/nâng cơ vùng má/nâng cơ vùng má.png",
               "docxPath": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Nâng cơ vùng má/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "xoa-nong-cam",
@@ -229,7 +229,7 @@
               "description": "Điều trị xóa nọng cằm với công nghệ HIFU tiên tiến",
               "price": "1,000,000 VNĐ",
               "duration": "90 phút",
-              "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Xoá nọng cằm/xoá nọng cằm.png",
+              "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/xoá nọng cằm/xoá nọng cằm.png",
               "docxPath": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Xoá nọng cằm/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "nang-co-vung-ma",
@@ -242,7 +242,7 @@
               "description": "Điều trị xóa rãnh cười hiệu quả với công nghệ HIFU",
               "price": "900,000 VNĐ",
               "duration": "80 phút",
-              "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Xoá rãnh cười/xoá rãnh cười.png",
+              "image": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/xoá rãnh cười/xoá rãnh cười.png",
               "docxPath": "upload/service/nâng cơ - trẻ hoá - xoá nhăn/Xoá rãnh cười/Tài liệu không có tiêu đề.docx",
               "relatedServices": [
                 "nang-co-vung-ma",
