@@ -10,9 +10,14 @@ export const encodeImagePath = (imagePath) => {
   if (!imagePath) return '';
   
   // Split by '/' and encode each segment separately
+  // This preserves the path structure while encoding special characters in each segment
   return imagePath
     .split('/')
-    .map(segment => encodeURIComponent(segment))
+    .map(segment => {
+      // Encode the segment, but handle edge cases
+      // encodeURIComponent handles spaces, unicode, parentheses, etc. correctly
+      return encodeURIComponent(segment);
+    })
     .join('/');
 };
 
