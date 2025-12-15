@@ -68,7 +68,7 @@
             },
             {
               "id": "nam-3",
-              "name": "Phan Minh Tâm – 34 tuổi – Số 15 ngõ 89 Thái Hà, Phường Trung Liệt, Quận Đống Đa, Hà Nội",
+              "name": "Trịnh Hồng Như – 36 tuổi – Ngõ 12, Phố Chùa Bộc, Phường Quang Trung, Quận Đống Đa, Hà Nội",
               "image": "upload/feedback/giam-nam-tan-nhang/nam3.png",
               "serviceId": "giam-nam-tan-nhang-chuyen-nghiep"
             },
@@ -156,8 +156,8 @@
             },
             {
               "id": "hifu-3",
-              "name": "Vũ Ngọc Lan – 36 tuổi – Số 4 ngõ 35 Cát Linh, Phường Cát Linh, Quận Đống Đa, Hà Nội",
-              "image": "upload/feedback/hifu/hifu3.png",
+              "name": "Vũ Ngọc Lan – 36 tuổi – Số 4 ngõ 35 Cát Linh, Phường Cát Linh, Quận Đống Đa, Hà Nội",
+              "image": "upload/feedback/hifu/hifu3.jpg",
               "serviceId": "cang-bong-cap-am"
             },
             {
@@ -243,7 +243,7 @@
             },
             {
               "id": "triet-3",
-              "name": "Ngô Trí Thành – 25 tuổi, ngõ 95 Láng, phường Thịnh Quang",
+              "name": "Đỗ Mạnh Cường – 30 tuổi, phố Huỳnh Thúc Kháng, phường Láng Hạ",
               "image": "upload/feedback/triet-long/triet3.png",
               "serviceId": "triet-mat"
             },
